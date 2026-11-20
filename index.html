@@ -23,6 +23,9 @@
   --tadzio: #5cc8ff;
   --tadzio-jasny: #e6f7ff;
   --tadzio-ciemny: #1f8fd1;
+  /* Twitch */
+  --twitch: #9146ff;
+  --twitch-ciemny: #5c16c5;
 }
 
 * { box-sizing: border-box; }
@@ -280,6 +283,41 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 .news p { margin: 0 0 4px; line-height: 1.5; text-align: left; }
 #brak-wynikow { display: none; padding: 15px; text-align: center; color: #888; }
 
+.tytul-odcinka {
+  margin: 6px 0 0;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--zielony-ciemny);
+}
+.tytul-odcinka:empty { display: none; }
+
+/* ---------- Twitch – fioletowy panel transmisji ---------- */
+.ramka.twitch {
+  border: 2px solid var(--twitch);
+  box-shadow: 0 0 10px rgba(145,70,255,.5);
+}
+.ramka.twitch > h2 {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(to bottom, #b58cff 0%, #9146ff 50%, #772ce8 51%, #8a43f5 100%);
+}
+.ramka.twitch > h2::before { color: #fff; }
+.ramka.twitch .srodek { background: #f4eeff; }
+.ramka.twitch .wiecej a { color: var(--twitch-ciemny); }
+.na-zywo {
+  margin-left: auto;
+  padding: 1px 6px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  background: var(--czerwony);
+  border-radius: 3px;
+  animation: mrugaj-live 1s steps(1) infinite;
+}
+@keyframes mrugaj-live { 50% { opacity: .4; } }
+.twitch-okno iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+
 /* ---------- TadzioTV – osobny, jasnoniebieski boks ---------- */
 .tadziotv {
   margin-bottom: 15px;
@@ -407,7 +445,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   #baner { height: 200px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  #tasma .pas span, #tasma .etykieta { animation: none; }
+  #tasma .pas span, #tasma .etykieta, .na-zywo { animation: none; }
   #tasma .pas span { padding-left: 10px; }
 }
 </style>
@@ -428,8 +466,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
       <b>Polski Związek Hydraulików</b>
     </div>
     <div class="prawa">
-      <!-- WKLEJ TU LINK DO KANAŁU -->
-      <a class="subskrybuj" href="#" target="_blank">SUBSKRYBUJ</a>
+      <a class="subskrybuj" href="https://www.youtube.com/@polskizwiazekhydraulikow?sub_confirmation=1" target="_blank">SUBSKRYBUJ</a>
       <form id="szukaj" role="search" onsubmit="return false;">
         <input type="text" id="pole-szukaj" placeholder="Szukaj w Tadzienniku..." aria-label="Szukaj w Tadzienniku">
         <button type="submit" aria-label="Szukaj"><img src="lupka.png" alt=""></button>
@@ -465,6 +502,15 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
         </div>
       </div>
 
+      <!-- Panel Twitcha – pokazuje się sam, tylko gdy trwa transmisja -->
+      <div class="ramka twitch" id="twitch-panel" hidden>
+        <h2>Na żywo na Twitchu <span class="na-zywo">● LIVE</span></h2>
+        <div class="srodek">
+          <div class="twitch-okno" id="twitch-okno"></div>
+          <div class="wiecej"><a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank">Oglądaj i pisz na czacie na Twitchu »</a></div>
+        </div>
+      </div>
+
       <div class="ramka">
         <h2>Witaj w Związku!</h2>
         <div class="srodek powitanie">
@@ -473,7 +519,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
             <p>Witaj na oficjalnej stronie <b>Polskiego Związku Hydraulików</b> – kanału na YouTube.</p>
             <p>Tu znajdziesz nasze najnowsze odcinki, linki do wszystkich naszych miejsc w sieci oraz najświeższe wydanie Tadziennika Informacyjnego na TadzioTV.</p>
           </div>
-          <a class="subskrybuj" href="#" target="_blank">SUBSKRYBUJ</a>
+          <a class="subskrybuj" href="https://www.youtube.com/@polskizwiazekhydraulikow?sub_confirmation=1" target="_blank">SUBSKRYBUJ</a>
         </div>
       </div>
 
@@ -481,11 +527,12 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
         <h2>Najnowszy odcinek</h2>
         <div class="srodek">
           <!-- najnowszy film na górze, starsze niżej -->
-          <iframe class="odcinek-glowny" loading="lazy" src="https://www.youtube.com/embed/PViwwb9S1nQ?si=7NTyvzaWLygx43zi" title="Najnowszy odcinek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="odcinki-male">
+          <iframe class="odcinek-glowny" id="odcinek-glowny" loading="lazy" src="https://www.youtube.com/embed/PViwwb9S1nQ?si=7NTyvzaWLygx43zi" title="Najnowszy odcinek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="tytul-odcinka" id="tytul-odcinka"></div>
+          <div class="odcinki-male" id="odcinki-male">
             <iframe loading="lazy" src="https://www.youtube.com/embed/SE9dzLk2qHg?si=tkgS-BOYTNjyybNo" title="Poprzedni odcinek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
-          <div class="wiecej"><a href="#" target="_blank">Wszystkie odcinki na naszym kanale »</a></div>
+          <div class="wiecej"><a href="https://www.youtube.com/@polskizwiazekhydraulikow/videos" target="_blank">Wszystkie odcinki na naszym kanale »</a></div>
         </div>
       </div>
 
@@ -522,10 +569,10 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
       <div class="ramka">
         <h2>Znajdziesz nas na</h2>
         <div class="srodek spolecznosc">
-          <!-- WKLEJ LINKI w href="#" -->
+          <!-- WKLEJ LINK DO DISCORDA w href="#" -->
           <a href="#" target="_blank"><img src="discor.png" alt="Discord"></a>
-          <a href="#" target="_blank"><img src="utube.png" alt="YouTube"></a>
-          <a href="#" target="_blank"><img src="twatch.png" alt="Twitch"></a>
+          <a href="https://www.youtube.com/@polskizwiazekhydraulikow" target="_blank"><img src="utube.png" alt="YouTube"></a>
+          <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank"><img src="twatch.png" alt="Twitch"></a>
           <a href="#" target="_blank"><img src="pikpok.png" alt="PikPok"></a>
           <a href="#" target="_blank"><img src="eks_logo.png" alt="Elektryk"></a>
           <a href="#"><img src="placeholder.png" alt="Miejsce na kolejne logo"></a>
@@ -633,6 +680,68 @@ odswiezTasme();
       odswiezTasme();
     })
     .catch(function () { /* nie udało się wczytać – zostaje przykładowy news */ });
+})();
+
+/* ---------- Twitch: panel pokazuje się tylko w trakcie transmisji ---------- */
+(function () {
+  var KANAL = 'zwiazekhydraulikow';
+  var panel = document.getElementById('twitch-panel');
+  var okno = document.getElementById('twitch-okno');
+
+  function pokaz() {
+    if (!panel.hidden) return;
+    var iframe = document.createElement('iframe');
+    // Twitch wymaga podania domeny strony w parametrze "parent"
+    iframe.src = 'https://player.twitch.tv/?channel=' + KANAL +
+      '&parent=' + encodeURIComponent(location.hostname || 'localhost') + '&muted=true';
+    iframe.title = 'Transmisja na żywo – Twitch';
+    iframe.allowFullscreen = true;
+    okno.appendChild(iframe);
+    panel.hidden = false;
+  }
+  function ukryj() {
+    panel.hidden = true;
+    okno.textContent = ''; // usuwa odtwarzacz, żeby nie grał w tle
+  }
+  function sprawdz() {
+    // decapi.me odpowiada "... is offline" albo czasem trwania transmisji, np. "1 hour, 5 minutes"
+    fetch('https://decapi.me/twitch/uptime/' + KANAL, { cache: 'no-store' })
+      .then(function (odp) { return odp.text(); })
+      .then(function (tekst) {
+        var naZywo = /\d+\s+(second|minute|hour|day)/i.test(tekst) && !/offline|error/i.test(tekst);
+        if (naZywo) pokaz(); else ukryj();
+      })
+      .catch(function () { /* brak odpowiedzi – zostawiamy jak jest */ });
+  }
+  sprawdz();
+  setInterval(sprawdz, 2 * 60 * 1000); // sprawdza ponownie co 2 minuty
+})();
+
+/* ---------- Najnowszy odcinek: wczytanie z filmy.json (robi go automat) ---------- */
+(function () {
+  fetch('filmy.json', { cache: 'no-cache' })
+    .then(function (odp) { if (!odp.ok) throw new Error(odp.status); return odp.json(); })
+    .then(function (filmy) {
+      if (!Array.isArray(filmy) || !filmy.length) return; // zostają filmy wpisane w HTML
+      var glowny = document.getElementById('odcinek-glowny');
+      glowny.src = 'https://www.youtube.com/embed/' + encodeURIComponent(filmy[0].id);
+      glowny.title = filmy[0].tytul;
+      document.getElementById('tytul-odcinka').textContent = filmy[0].tytul;
+
+      var male = document.getElementById('odcinki-male');
+      male.textContent = '';
+      filmy.slice(1).forEach(function (f) {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(f.id);
+        iframe.title = f.tytul;
+        iframe.loading = 'lazy';
+        iframe.allowFullscreen = true;
+        iframe.setAttribute('allow', 'accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        male.appendChild(iframe);
+      });
+    })
+    .catch(function () { /* brak filmy.json – zostają filmy wpisane w HTML */ });
 })();
 
 /* ---------- rotacja banera ---------- */
