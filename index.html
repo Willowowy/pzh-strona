@@ -263,14 +263,23 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 .news:last-child { border-bottom: 0; }
 .news:nth-of-type(even) { background: var(--tadzio-jasny); }
-.news .miniatura {
+/* zdjęcia pod tekstem, jak na Discordzie: 1 zdjęcie = pełna szerokość, 2 = obok siebie */
+.news .zdjecia {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  margin-top: 8px;
+}
+.news .zdjecia.dwa { grid-template-columns: 1fr 1fr; }
+.news .zdjecia a {
   display: block;
-  margin-bottom: 8px;
   background: #eee;
   border: 1px solid #b8e2f8;
-  padding: 3px;
+  padding: 2px;
 }
-.news .miniatura img { display: block; width: 100%; height: auto; }
+.news .zdjecia img { display: block; width: 100%; height: auto; }
+.news .zdjecia:not(.dwa) img { max-height: 400px; object-fit: contain; } /* bardzo wysokie zdjęcie nie rozciąga newsa */
+.news .zdjecia.dwa img { aspect-ratio: 1 / 1; object-fit: cover; } /* dwa równe kafelki */
 .news h3 {
   margin: 0 0 3px;
   padding: 5px;
@@ -555,11 +564,11 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
             (np. przy otwieraniu strony dwuklikiem z dysku).
           -->
           <article class="news">
-            <a class="miniatura" href="placeholder.png" target="_blank"><img src="placeholder.png" alt="Przykładowy news" loading="lazy"></a>
-            <div>
-              <h3>PRZYKŁADOWY NEWS</h3>
-              <div class="info">dodał: Redakcja</div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h3>PRZYKŁADOWY NEWS</h3>
+            <div class="info">dodał: Redakcja</div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <div class="zdjecia">
+              <a href="placeholder.png" target="_blank"><img src="placeholder.png" alt="Przykładowy news" loading="lazy"></a>
             </div>
           </article>
         </div>
@@ -648,26 +657,33 @@ odswiezTasme();
 
   function zbudujNews(n) {
     var art = element('article', 'news');
-    (n.obrazki || []).forEach(function (src) {
-      var a = element('a', 'miniatura');
-      a.href = src;
-      a.target = '_blank';
-      var img = element('img');
-      img.src = src;
-      img.alt = n.tytul;
-      img.loading = 'lazy';
-      a.appendChild(img);
-      art.appendChild(a);
-    });
-    var div = element('div');
-    div.appendChild(element('h3', '', n.tytul));
+
+    // najpierw tytuł, autor i tekst...
+    art.appendChild(element('h3', '', n.tytul));
     var data = new Date(n.data).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
-    div.appendChild(element('div', 'info', 'dodał: ' + n.autor + ' • ' + data + (n.edytowane ? ' (edytowane)' : '')));
+    art.appendChild(element('div', 'info', 'dodał: ' + n.autor + ' • ' + data + (n.edytowane ? ' (edytowane)' : '')));
     n.tresc.split(/\n+/).forEach(function (akapit) {
       akapit = akapit.trim();
-      if (akapit) div.appendChild(element('p', '', akapit));
+      if (akapit) art.appendChild(element('p', '', akapit));
     });
-    art.appendChild(div);
+
+    // ...a pod nim zdjęcia: 0 = brak, 1 = jedno na całą szerokość, 2 = obok siebie
+    var obrazki = (n.obrazki || []).slice(0, 2);
+    if (obrazki.length) {
+      var zdjecia = element('div', obrazki.length === 2 ? 'zdjecia dwa' : 'zdjecia');
+      obrazki.forEach(function (src) {
+        var a = element('a');
+        a.href = src;
+        a.target = '_blank';
+        var img = element('img');
+        img.src = src;
+        img.alt = n.tytul;
+        img.loading = 'lazy';
+        a.appendChild(img);
+        zdjecia.appendChild(a);
+      });
+      art.appendChild(zdjecia);
+    }
     return art;
   }
 
