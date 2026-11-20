@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>:: POLSKI ZWIĄZEK HYDRAULIKÓW :: Mapa ::</title>
+<link rel="shortcut icon" href="teto.png" type="image/x-icon">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="strona">
+
+  <div id="gorny-pasek">
+    <span id="data">Dziś jest ...</span>
+    <span><a href="#">Dodaj do ulubionych</a> | <a href="#">Ustaw jako stronę startową</a></span>
+  </div>
+
+  <header id="naglowek">
+    <a href="index.html"><img src="logo.png" alt="Polski Związek Hydraulików" class="logo"></a>
+    <div class="slogan">
+      Oficjalna strona kanału na YouTube<span class="wersja-beta">BETA</span><br>
+      <b>Polski Związek Hydraulików</b>
+    </div>
+    <div class="prawa">
+      <a class="subskrybuj" href="https://www.youtube.com/@polskizwiazekhydraulikow?sub_confirmation=1" target="_blank">SUBSKRYBUJ</a>
+      <form id="szukaj" role="search" action="index.html" method="get">
+        <input type="text" id="pole-szukaj" name="szukaj" placeholder="Szukaj w Tadzienniku..." aria-label="Szukaj w Tadzienniku">
+        <button type="submit" aria-label="Szukaj"><img src="lupka.png" alt=""></button>
+      </form>
+    </div>
+  </header>
+
+  <nav id="menu">
+    <a href="index.html">STRONA GŁÓWNA</a>
+    <a href="pracownicy.html">PRACOWNICY</a>
+    <a href="instalki.html">INSTALKI</a>
+    <a href="tapety.html">TAPETY</a>
+    <a href="mapa.html" class="aktywny">MAPA</a>
+    <a href="patroni.html">PATRONI PROJEKTU</a>
+  </nav>
+
+  <div id="tasma">
+    <div class="etykieta">TADZIENNIK</div>
+    <div class="pas"><span id="tasma-tekst"></span></div>
+  </div>
+
+  <div id="tresc">
+
+    <main id="glowna">
+
+      <div class="okruszki">Jesteś tutaj: <a href="index.html">Strona główna</a> » <b>Mapa</b></div>
+
+      <div class="ramka">
+        <h2>Mapa</h2>
+        <div class="srodek wstep">
+          <p>TU NAPISZ, CO PRZEDSTAWIA MAPA.</p>
+        </div>
+      </div>
+
+      <div class="ramka">
+        <h2>Mapa</h2>
+        <div class="srodek">
+          <!-- Podmień placeholder.png na obrazek mapy (w obu miejscach). Kliknięcie otwiera pełny rozmiar. -->
+          <a class="mapa-obraz" href="placeholder.png" target="_blank"><img src="placeholder.png" alt="Mapa"></a>
+        </div>
+      </div>
+
+      <div class="ramka">
+        <h2>Legenda</h2>
+        <div class="srodek">
+          <!-- Kolor kropki zmieniasz w style="background: ..." -->
+          <ul class="legenda">
+            <li><span class="kropka" style="background:#d60000"></span>Miejsce 1</li>
+            <li><span class="kropka" style="background:#138a43"></span>Miejsce 2</li>
+            <li><span class="kropka" style="background:#1f8fd1"></span>Miejsce 3</li>
+            <li><span class="kropka" style="background:#f0a800"></span>Miejsce 4</li>
+          </ul>
+        </div>
+      </div>
+
+    </main>
+
+    <aside id="boczna">
+
+      <div class="ramka">
+        <h2>Znajdziesz nas na</h2>
+        <div class="srodek spolecznosc">
+          <!-- WKLEJ LINK DO DISCORDA w href="#" -->
+          <a href="#" target="_blank"><img src="discor.png" alt="Discord"></a>
+          <a href="https://www.youtube.com/@polskizwiazekhydraulikow" target="_blank"><img src="utube.png" alt="YouTube"></a>
+          <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank"><img src="twatch.png" alt="Twitch"></a>
+          <a href="#" target="_blank"><img src="pikpok.png" alt="PikPok"></a>
+          <a href="#" target="_blank"><img src="eks_logo.png" alt="Elektryk"></a>
+          <a href="#"><img src="placeholder.png" alt="Miejsce na kolejne logo"></a>
+        </div>
+      </div>
+
+      <div class="ramka" id="licznik">
+        <h2>Licznik odwiedzin</h2>
+        <div class="srodek">
+          Jesteś naszym<br>
+          <div class="cyfry" id="cyfry"></div><br>
+          gościem!<br>
+          <small>od 01.01.2008</small>
+        </div>
+      </div>
+
+      <div class="uwaga">
+        Strona najlepiej wygląda w rozdzielczości <b>1024x768</b><br>
+        w przeglądarce <b>Internet Explorer 6.0</b>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer id="stopka">
+    <div class="plakietki">
+      <div class="plakietka p1"><big>PZH</big>member</div>
+      <div class="plakietka p2"><big>HTML</big>valid (chyba)</div>
+      <div class="plakietka p3">zrobione w<big>Notatniku</big></div>
+      <div class="plakietka p4">oglądaj<big>TadzioTV</big></div>
+      <div class="plakietka p5">get<big>Flash</big>player</div>
+    </div>
+    &copy; 2008–<span id="rok">2026</span> Polski Związek Hydraulików. Wszelkie prawa zastrzeżone.<br>
+    Kopiowanie treści bez zgody Związku grozi zalaniem piwnicy.
+  </footer>
+
+</div>
+
+<script src="wspolne.js"></script>
+
+</body>
+</html>

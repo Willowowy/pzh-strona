@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>:: POLSKI ZWIĄZEK HYDRAULIKÓW :: Instalki ::</title>
+<link rel="shortcut icon" href="teto.png" type="image/x-icon">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="strona">
+
+  <div id="gorny-pasek">
+    <span id="data">Dziś jest ...</span>
+    <span><a href="#">Dodaj do ulubionych</a> | <a href="#">Ustaw jako stronę startową</a></span>
+  </div>
+
+  <header id="naglowek">
+    <a href="index.html"><img src="logo.png" alt="Polski Związek Hydraulików" class="logo"></a>
+    <div class="slogan">
+      Oficjalna strona kanału na YouTube<span class="wersja-beta">BETA</span><br>
+      <b>Polski Związek Hydraulików</b>
+    </div>
+    <div class="prawa">
+      <a class="subskrybuj" href="https://www.youtube.com/@polskizwiazekhydraulikow?sub_confirmation=1" target="_blank">SUBSKRYBUJ</a>
+      <form id="szukaj" role="search" action="index.html" method="get">
+        <input type="text" id="pole-szukaj" name="szukaj" placeholder="Szukaj w Tadzienniku..." aria-label="Szukaj w Tadzienniku">
+        <button type="submit" aria-label="Szukaj"><img src="lupka.png" alt=""></button>
+      </form>
+    </div>
+  </header>
+
+  <nav id="menu">
+    <a href="index.html">STRONA GŁÓWNA</a>
+    <a href="pracownicy.html">PRACOWNICY</a>
+    <a href="instalki.html" class="aktywny">INSTALKI</a>
+    <a href="tapety.html">TAPETY</a>
+    <a href="mapa.html">MAPA</a>
+    <a href="patroni.html">PATRONI PROJEKTU</a>
+  </nav>
+
+  <div id="tasma">
+    <div class="etykieta">TADZIENNIK</div>
+    <div class="pas"><span id="tasma-tekst"></span></div>
+  </div>
+
+  <div id="tresc">
+
+    <main id="glowna">
+
+      <div class="okruszki">Jesteś tutaj: <a href="index.html">Strona główna</a> » <b>Instalki</b></div>
+
+      <div class="ramka">
+        <h2>Instalki do pobrania</h2>
+        <div class="srodek wstep">
+          <p>TU NAPISZ WSTĘP – co tu można pobrać.</p>
+        </div>
+      </div>
+
+      <div class="ramka">
+        <h2>Pliki</h2>
+        <div>
+          <!--
+            TEMPLATE INSTALKI – skopiuj cały blok <div class="plik"> ... </div>.
+            Plik do pobrania wrzuć do repozytorium (np. do folderu "pliki")
+            i wpisz jego ścieżkę w href, np. href="pliki/program.zip".
+            Duże pliki (ponad ~25 MB) lepiej trzymać np. na Google Drive i wkleić link.
+          -->
+
+          <div class="plik">
+            <img class="ikona" src="placeholder.png" alt="">
+            <div class="opis">
+              <h3>Nazwa programu 1 <small>v1.1</small></h3>
+              <p>Krótki opis – co to jest i do czego służy.</p>
+              <div class="meta">Rozmiar: 12 MB • System: Windows • Dodano: 01.01.2026</div>
+            </div>
+            <a class="przycisk" href="#" download>POBIERZ »</a>
+          </div>
+
+          <div class="plik">
+            <img class="ikona" src="placeholder.png" alt="">
+            <div class="opis">
+              <h3>Nazwa programu 2 <small>v1.2</small></h3>
+              <p>Krótki opis – co to jest i do czego służy.</p>
+              <div class="meta">Rozmiar: 3,4 MB • System: Windows • Dodano: 01.01.2026</div>
+            </div>
+            <a class="przycisk" href="#" download>POBIERZ »</a>
+          </div>
+
+          <div class="plik">
+            <img class="ikona" src="placeholder.png" alt="">
+            <div class="opis">
+              <h3>Nazwa programu 3 <small>v1.3</small></h3>
+              <p>Krótki opis – co to jest i do czego służy.</p>
+              <div class="meta">Rozmiar: 640 KB • System: Windows • Dodano: 01.01.2026</div>
+            </div>
+            <a class="przycisk" href="#" download>POBIERZ »</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="uwaga">Wszystkie pliki zostały sprawdzone programem antywirusowym (chyba).</div>
+
+    </main>
+
+    <aside id="boczna">
+
+      <div class="ramka">
+        <h2>Znajdziesz nas na</h2>
+        <div class="srodek spolecznosc">
+          <!-- WKLEJ LINK DO DISCORDA w href="#" -->
+          <a href="#" target="_blank"><img src="discor.png" alt="Discord"></a>
+          <a href="https://www.youtube.com/@polskizwiazekhydraulikow" target="_blank"><img src="utube.png" alt="YouTube"></a>
+          <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank"><img src="twatch.png" alt="Twitch"></a>
+          <a href="#" target="_blank"><img src="pikpok.png" alt="PikPok"></a>
+          <a href="#" target="_blank"><img src="eks_logo.png" alt="Elektryk"></a>
+          <a href="#"><img src="placeholder.png" alt="Miejsce na kolejne logo"></a>
+        </div>
+      </div>
+
+      <div class="ramka" id="licznik">
+        <h2>Licznik odwiedzin</h2>
+        <div class="srodek">
+          Jesteś naszym<br>
+          <div class="cyfry" id="cyfry"></div><br>
+          gościem!<br>
+          <small>od 01.01.2008</small>
+        </div>
+      </div>
+
+      <div class="uwaga">
+        Strona najlepiej wygląda w rozdzielczości <b>1024x768</b><br>
+        w przeglądarce <b>Internet Explorer 6.0</b>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer id="stopka">
+    <div class="plakietki">
+      <div class="plakietka p1"><big>PZH</big>member</div>
+      <div class="plakietka p2"><big>HTML</big>valid (chyba)</div>
+      <div class="plakietka p3">zrobione w<big>Notatniku</big></div>
+      <div class="plakietka p4">oglądaj<big>TadzioTV</big></div>
+      <div class="plakietka p5">get<big>Flash</big>player</div>
+    </div>
+    &copy; 2008–<span id="rok">2026</span> Polski Związek Hydraulików. Wszelkie prawa zastrzeżone.<br>
+    Kopiowanie treści bez zgody Związku grozi zalaniem piwnicy.
+  </footer>
+
+</div>
+
+<script src="wspolne.js"></script>
+
+</body>
+</html>
