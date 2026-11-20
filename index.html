@@ -238,6 +238,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 /* ---------- odcinki ---------- */
 .odcinek-glowny { aspect-ratio: 16 / 9; width: 100%; display: block; border: 1px solid #ccc; }
 .odcinki-male { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+.odcinki-male:empty { display: none; }
 .odcinki-male iframe { width: 100%; aspect-ratio: 16 / 9; border: 1px solid #ccc; }
 .wiecej { margin-top: 8px; text-align: right; font-weight: bold; }
 
@@ -526,12 +527,11 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
       <div class="ramka">
         <h2>Najnowszy odcinek</h2>
         <div class="srodek">
-          <!-- najnowszy film na górze, starsze niżej -->
-          <iframe class="odcinek-glowny" id="odcinek-glowny" loading="lazy" src="https://www.youtube.com/embed/PViwwb9S1nQ?si=7NTyvzaWLygx43zi" title="Najnowszy odcinek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <!-- Najnowszy film wstawia się sam: z filmy.json (automat), a jeśli go nie ma –
+               z playlisty "filmy z kanału" YouTube, która zawsze zaczyna się od najnowszego. -->
+          <iframe class="odcinek-glowny" id="odcinek-glowny" loading="lazy" src="https://www.youtube.com/embed/videoseries?list=UULFUktYQ_61Mw5TWSnmMdpUmA" title="Najnowszy odcinek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           <div class="tytul-odcinka" id="tytul-odcinka"></div>
-          <div class="odcinki-male" id="odcinki-male">
-            <iframe loading="lazy" src="https://www.youtube.com/embed/SE9dzLk2qHg?si=tkgS-BOYTNjyybNo" title="Poprzedni odcinek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
+          <div class="odcinki-male" id="odcinki-male"></div>
           <div class="wiecej"><a href="https://www.youtube.com/@polskizwiazekhydraulikow/videos" target="_blank">Wszystkie odcinki na naszym kanale »</a></div>
         </div>
       </div>
