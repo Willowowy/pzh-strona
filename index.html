@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>:: POLSKI ZWIĄZEK HYDRAULIKÓW :: Oficjalna strona kanału ::</title>
+<link rel="shortcut icon" href="teto.png" type="image/x-icon">
+<style>
+/* =========================================================
+   POLSKI ZWIĄZEK HYDRAULIKÓW – oficjalna strona kanału
+   styl: "Web 2.0" ok. 2007. Kolory zmieniasz tutaj:
+   ========================================================= */
+:root {
+  --zielony-ciemny: #0b5a2b;
+  --zielony: #138a43;
+  --zielony-jasny: #3fbf6f;
+  --mieta: #e8f8ee;
+  --ramka: #8fcca3;
+  --tekst: #222;
+  --link: #0a55a8;
+  --czerwony: #d60000;
+  /* TadzioTV */
+  --tadzio: #5cc8ff;
+  --tadzio-jasny: #e6f7ff;
+  --tadzio-ciemny: #1f8fd1;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 15px 0 30px;
+  font-family: Verdana, Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  color: var(--tekst);
+  background: #0e7a3c url("backgrond.png") center / cover fixed;
+}
+a { color: var(--link); }
+a:hover { color: var(--czerwony); }
+a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted #ffcc00; outline-offset: 2px; }
+
+#strona {
+  width: 980px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #0a4a24;
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(0,0,0,.55);
+  overflow: hidden;
+}
+
+/* ---------- górny pasek ---------- */
+#gorny-pasek {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 12px;
+  font-size: 10px;
+  color: #cfe9d8;
+  background: #062f17;
+}
+#gorny-pasek a { color: #fff; }
+
+/* ---------- nagłówek ---------- */
+#naglowek {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 20px;
+  background: linear-gradient(to bottom, #fff, #dcf5e4);
+  border-bottom: 1px solid var(--ramka);
+}
+#naglowek .logo { height: 95px; width: auto; display: block; }
+#naglowek .slogan {
+  flex: 1;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--zielony);
+}
+#naglowek .slogan b { color: var(--zielony-ciemny); font-style: normal; font-size: 15px; }
+.wersja-beta {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 5px;
+  font-size: 9px;
+  font-weight: bold;
+  font-style: normal;
+  color: #fff;
+  background: linear-gradient(#ff8a00, #e05a00);
+  border-radius: 3px;
+  transform: rotate(-6deg);
+}
+#naglowek .prawa { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+
+/* szklany czerwony przycisk SUBSKRYBUJ */
+.subskrybuj {
+  display: inline-block;
+  padding: 8px 18px;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff !important;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.4);
+  background: linear-gradient(to bottom, #ff5a5a 0%, #e01010 50%, #c00000 51%, #e02020 100%);
+  border: 1px solid #900;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.4);
+}
+.subskrybuj:hover { background: linear-gradient(to bottom, #ff7a7a 0%, #f02020 50%, #d00000 51%, #f03030 100%); }
+.subskrybuj::before { content: "▶ "; }
+
+#szukaj {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  background: #fff;
+  border: 1px solid var(--ramka);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.15);
+}
+#szukaj input { width: 150px; border: 0; font: inherit; padding: 2px 6px; background: transparent; }
+#szukaj button { border: 0; padding: 0; background: none; cursor: pointer; }
+#szukaj img { width: 18px; height: 18px; display: block; }
+
+/* ---------- menu ---------- */
+#menu {
+  display: flex;
+  gap: 2px;
+  padding: 0 10px;
+  background: linear-gradient(to bottom, #2bb35f 0%, #149045 50%, #0b7a37 51%, #0d6e33 100%);
+  border-top: 1px solid #5fd98c;
+  border-bottom: 3px solid var(--zielony-ciemny);
+}
+#menu a {
+  padding: 9px 16px;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.4);
+  border-left: 1px solid rgba(255,255,255,.2);
+  border-right: 1px solid rgba(0,0,0,.2);
+}
+#menu a:hover, #menu a.aktywny {
+  background: linear-gradient(to bottom, #ffe066 0%, #ffc61a 50%, #f0a800 51%, #ffcc33 100%);
+  color: #3a2a00;
+  text-shadow: 0 1px 0 rgba(255,255,255,.6);
+}
+
+/* ---------- przewijany pasek ---------- */
+#tasma {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  background: var(--tadzio-jasny);
+  border-bottom: 1px solid var(--tadzio);
+  overflow: hidden;
+}
+#tasma .etykieta {
+  flex-shrink: 0;
+  height: 100%;
+  padding: 0 10px;
+  line-height: 26px;
+  font-weight: bold;
+  color: #fff;
+  background: var(--tadzio-ciemny);
+  animation: mrugaj 1s steps(1) infinite;
+}
+@keyframes mrugaj { 50% { background: var(--tadzio); } }
+#tasma .pas { flex: 1; overflow: hidden; white-space: nowrap; }
+#tasma .pas span { display: inline-block; padding-left: 100%; animation: przewijaj 45s linear infinite; }
+#tasma .pas span b { color: var(--tadzio-ciemny); margin: 0 6px; }
+#tasma:hover .pas span { animation-play-state: paused; }
+@keyframes przewijaj { to { transform: translateX(-100%); } }
+
+/* ---------- kolumny ---------- */
+#tresc {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  background: linear-gradient(to bottom, var(--mieta), #fff 300px);
+}
+#glowna { flex: 1; min-width: 0; }
+#boczna { width: 320px; flex-shrink: 0; }
+
+/* ---------- ramki ---------- */
+.ramka {
+  margin-bottom: 15px;
+  background: #fff;
+  border: 1px solid var(--ramka);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.ramka > h2 {
+  margin: 0;
+  padding: 5px 10px;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 13px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(to bottom, #3cc06f 0%, #17964a 50%, #0f8040 51%, #129048 100%);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.35);
+}
+.ramka > h2::before { content: "» "; color: #ffe066; }
+.ramka .srodek { padding: 10px; }
+
+/* ---------- baner ---------- */
+#baner { position: relative; height: 290px; background: #000; }
+#baner img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+#baner img.widoczny { opacity: 1; }
+#baner .kropki { position: absolute; right: 10px; bottom: 8px; display: flex; gap: 5px; }
+#baner .kropki button {
+  width: 12px; height: 12px; padding: 0;
+  border: 1px solid #fff; border-radius: 50%;
+  background: rgba(255,255,255,.3);
+  cursor: pointer;
+}
+#baner .kropki button.widoczny { background: #ffcc00; }
+
+/* ---------- powitanie ---------- */
+.powitanie { display: flex; gap: 15px; align-items: center; }
+.powitanie p { margin: 0 0 6px; line-height: 1.6; }
+.powitanie .tekst { flex: 1; }
+
+/* ---------- odcinki ---------- */
+.odcinek-glowny { aspect-ratio: 16 / 9; width: 100%; display: block; border: 1px solid #ccc; }
+.odcinki-male { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+.odcinki-male iframe { width: 100%; aspect-ratio: 16 / 9; border: 1px solid #ccc; }
+.wiecej { margin-top: 8px; text-align: right; font-weight: bold; }
+
+/* ---------- Tadziennik Informacyjny (newsy) w przewijanym okienku ---------- */
+#tadziennik-newsy {
+  max-height: 750px;
+  overflow-y: auto;
+  background: #fff;
+  border-top: 2px solid var(--tadzio);
+}
+#tadziennik-newsy::-webkit-scrollbar { width: 14px; }
+#tadziennik-newsy::-webkit-scrollbar-thumb {
+  background: #ffd84a url('SCROLLMERRY.png') center / contain no-repeat;
+  border-radius: 7px;
+}
+#tadziennik-newsy::-webkit-scrollbar-track { background-color: var(--tadzio-jasny); }
+
+.news {
+  padding: 10px;
+  border-bottom: 1px dashed var(--tadzio);
+  text-align: center;
+}
+.news:last-child { border-bottom: 0; }
+.news:nth-of-type(even) { background: var(--tadzio-jasny); }
+.news .miniatura {
+  display: block;
+  margin-bottom: 8px;
+  background: #eee;
+  border: 1px solid #b8e2f8;
+  padding: 3px;
+}
+.news .miniatura img { display: block; width: 100%; height: auto; }
+.news h3 {
+  margin: 0 0 3px;
+  padding: 5px;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 13px;
+  color: #fff;
+  background: var(--tadzio-ciemny);
+  border-radius: 3px;
+}
+.news .info { margin-bottom: 5px; font-size: 10px; color: #6a9cbd; }
+.news p { margin: 0 0 4px; line-height: 1.5; text-align: left; }
+#brak-wynikow { display: none; padding: 15px; text-align: center; color: #888; }
+
+/* ---------- TadzioTV – osobny, jasnoniebieski boks ---------- */
+.tadziotv {
+  margin-bottom: 15px;
+  background: var(--tadzio-jasny);
+  border: 2px solid var(--tadzio);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(92,200,255,.6);
+}
+.tadziotv h2 {
+  margin: 0;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,60,100,.6);
+  background: linear-gradient(to bottom, #a8e4ff 0%, #5cc8ff 50%, #33b4f5 51%, #6fd0ff 100%);
+}
+.tadziotv h2 small {
+  padding: 1px 5px;
+  font-size: 9px;
+  font-style: normal;
+  letter-spacing: 1px;
+  background: var(--tadzio-ciemny);
+  border-radius: 3px;
+}
+.tadziotv .ekran {
+  margin: 10px;
+  padding: 6px;
+  background: #222;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px #000;
+}
+.tadziotv .ekran img { display: block; width: 100%; border-radius: 6px; background: var(--tadzio-jasny); }
+.tadziotv .tadziennik {
+  margin: 0;
+  padding: 6px;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-align: center;
+  color: var(--tadzio-ciemny);
+  background: linear-gradient(#fff, var(--tadzio-jasny));
+}
+.tadziotv .tadziennik::before, .tadziotv .tadziennik::after { content: " ★ "; color: var(--tadzio); }
+
+/* ---------- boczne ---------- */
+.spolecznosc {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+.spolecznosc a {
+  display: block;
+  height: 60px;
+  border: 1px solid #ccc;
+  background: #f4f4f4;
+  overflow: hidden;
+}
+.spolecznosc img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+#licznik { text-align: center; }
+#licznik .cyfry { display: inline-flex; gap: 2px; margin: 6px 0; }
+#licznik .cyfry span {
+  width: 18px;
+  padding: 3px 0;
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: #3f6;
+  background: #000;
+  border: 1px solid #444;
+  border-radius: 2px;
+}
+#licznik small { color: #888; font-size: 10px; }
+
+.uwaga {
+  padding: 8px;
+  font-size: 11px;
+  text-align: center;
+  background: #fffbe0;
+  border: 1px dashed #e0c040;
+}
+
+/* ---------- stopka ---------- */
+#stopka {
+  padding: 12px 15px;
+  font-size: 10px;
+  text-align: center;
+  color: #cfe9d8;
+  background: var(--zielony-ciemny);
+  border-top: 3px solid var(--zielony-jasny);
+}
+#stopka a { color: #fff; }
+.plakietki { display: flex; justify-content: center; gap: 6px; margin: 8px 0; }
+.plakietka {
+  width: 88px; height: 31px;
+  display: flex; flex-direction: column; justify-content: center;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 8px; line-height: 1.1; font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid #000;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,.5);
+}
+.plakietka big { font-size: 11px; }
+.p1 { background: linear-gradient(#fff, #ccc); color: #c00; }
+.p2 { background: #000; color: #3f6; }
+.p3 { background: linear-gradient(#4a8de0, #1a4ea0); color: #fff; }
+.p4 { background: linear-gradient(#a8e4ff, #33b4f5); color: #fff; text-shadow: 0 1px 1px #1a5f8a; }
+.p5 { background: linear-gradient(#a0f, #509); color: #fff; }
+
+/* ---------- telefon ---------- */
+@media (max-width: 1000px) {
+  #strona { width: auto; margin: 0 8px; }
+  #tresc, .powitanie { flex-direction: column; }
+  .odcinki-male { grid-template-columns: 1fr; }
+  #boczna { width: auto; }
+  #naglowek { flex-wrap: wrap; }
+  #naglowek .prawa { align-items: flex-start; }
+  #menu { flex-wrap: wrap; }
+  #baner { height: 200px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #tasma .pas span, #tasma .etykieta { animation: none; }
+  #tasma .pas span { padding-left: 10px; }
+}
+</style>
+</head>
+<body>
+
+<div id="strona">
+
+  <div id="gorny-pasek">
+    <span id="data">Dziś jest ...</span>
+    <span><a href="#">Dodaj do ulubionych</a> | <a href="#">Ustaw jako stronę startową</a></span>
+  </div>
+
+  <header id="naglowek">
+    <a href="#"><img src="logo.png" alt="Polski Związek Hydraulików" class="logo"></a>
+    <div class="slogan">
+      Oficjalna strona kanału na YouTube<span class="wersja-beta">BETA</span><br>
+      <b>Polski Związek Hydraulików</b>
+    </div>
+    <div class="prawa">
+      <!-- WKLEJ TU LINK DO KANAŁU -->
+      <a class="subskrybuj" href="#" target="_blank">SUBSKRYBUJ</a>
+      <form id="szukaj" role="search" onsubmit="return false;">
+        <input type="text" id="pole-szukaj" placeholder="Szukaj w Tadzienniku..." aria-label="Szukaj w Tadzienniku">
+        <button type="submit" aria-label="Szukaj"><img src="lupka.png" alt=""></button>
+      </form>
+    </div>
+  </header>
+
+  <nav id="menu">
+    <a href="#" class="aktywny">STRONA GŁÓWNA</a>
+    <a href="https://www.portal.brodnica.pl/uploads/pub/news/news_5158/zajawki/93d877afb7a4f19ba0b97c570cfc64198ce0e57f.png" target="_blank">PRACOWNICY</a>
+    <a href="#">INSTALKI</a>
+    <a href="#">TAPETY</a>
+    <a href="#">MAPA</a>
+    <a href="#">PATRONI PROJEKTU</a>
+  </nav>
+
+  <div id="tasma">
+    <div class="etykieta">TADZIENNIK</div>
+    <div class="pas"><span id="tasma-tekst"></span></div>
+  </div>
+
+  <div id="tresc">
+
+    <!-- ================= GŁÓWNA KOLUMNA ================= -->
+    <main id="glowna">
+
+      <div class="ramka">
+        <div id="baner">
+          <img src="baner.png" alt="Baner" class="widoczny">
+          <img src="Screenshot_928.png" alt="Baner 2">
+          <img src="placeholder.png" alt="Baner 3">
+          <div class="kropki"></div>
+        </div>
+      </div>
+
+      <div class="ramka">
+        <h2>Witaj w Związku!</h2>
+        <div class="srodek powitanie">
+          <div class="tekst">
+            <!-- TU NAPISZ KILKA ZDAŃ O KANALE -->
+            <p>Witaj na oficjalnej stronie <b>Polskiego Związku Hydraulików</b> – kanału na YouTube.</p>
+            <p>Tu znajdziesz nasze najnowsze odcinki, linki do wszystkich naszych miejsc w sieci oraz najświeższe wydanie Tadziennika Informacyjnego na TadzioTV.</p>
+          </div>
+          <a class="subskrybuj" href="#" target="_blank">SUBSKRYBUJ</a>
+        </div>
+      </div>
+
+      <div class="ramka">
+        <h2>Najnowszy odcinek</h2>
+        <div class="srodek">
+          <!-- najnowszy film na górze, starsze niżej -->
+          <iframe class="odcinek-glowny" loading="lazy" src="https://www.youtube.com/embed/PViwwb9S1nQ?si=7NTyvzaWLygx43zi" title="Najnowszy odcinek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="odcinki-male">
+            <iframe loading="lazy" src="https://www.youtube.com/embed/SE9dzLk2qHg?si=tkgS-BOYTNjyybNo" title="Poprzedni odcinek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="wiecej"><a href="#" target="_blank">Wszystkie odcinki na naszym kanale »</a></div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ================= BOCZNA KOLUMNA ================= -->
+    <aside id="boczna">
+
+      <div class="tadziotv">
+        <h2>TadzioTV <small>NA ANTENIE</small></h2>
+        <div class="ekran">
+          <img src="tadzikplaceholder.png" alt="TadzioTV">
+        </div>
+        <h3 class="tadziennik">TADZIENNIK INFORMACYJNY</h3>
+        <div id="tadziennik-newsy">
+
+          <!--
+            Newsy wczytują się same z pliku newsy.json (robi go automat z Discorda).
+            Ten przykładowy news widać tylko wtedy, gdy newsy.json się nie wczyta
+            (np. przy otwieraniu strony dwuklikiem z dysku).
+          -->
+          <article class="news">
+            <a class="miniatura" href="placeholder.png" target="_blank"><img src="placeholder.png" alt="Przykładowy news" loading="lazy"></a>
+            <div>
+              <h3>PRZYKŁADOWY NEWS</h3>
+              <div class="info">dodał: Redakcja</div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+          </article>
+        </div>
+        <div id="brak-wynikow">Brak wiadomości pasujących do wyszukiwania :(</div>
+      </div>
+
+      <div class="ramka">
+        <h2>Znajdziesz nas na</h2>
+        <div class="srodek spolecznosc">
+          <!-- WKLEJ LINKI w href="#" -->
+          <a href="#" target="_blank"><img src="discor.png" alt="Discord"></a>
+          <a href="#" target="_blank"><img src="utube.png" alt="YouTube"></a>
+          <a href="#" target="_blank"><img src="twatch.png" alt="Twitch"></a>
+          <a href="#" target="_blank"><img src="pikpok.png" alt="PikPok"></a>
+          <a href="#" target="_blank"><img src="eks_logo.png" alt="Elektryk"></a>
+          <a href="#"><img src="placeholder.png" alt="Miejsce na kolejne logo"></a>
+        </div>
+      </div>
+
+      <div class="ramka" id="licznik">
+        <h2>Licznik odwiedzin</h2>
+        <div class="srodek">
+          Jesteś naszym<br>
+          <div class="cyfry" id="cyfry"></div><br>
+          gościem!<br>
+          <small>od 01.01.2008</small>
+        </div>
+      </div>
+
+      <div class="uwaga">
+        Strona najlepiej wygląda w rozdzielczości <b>1024x768</b><br>
+        w przeglądarce <b>Internet Explorer 6.0</b>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer id="stopka">
+    <div class="plakietki">
+      <div class="plakietka p1"><big>PZH</big>member</div>
+      <div class="plakietka p2"><big>HTML</big>valid (chyba)</div>
+      <div class="plakietka p3">zrobione w<big>Notatniku</big></div>
+      <div class="plakietka p4">oglądaj<big>TadzioTV</big></div>
+      <div class="plakietka p5">get<big>Flash</big>player</div>
+    </div>
+    &copy; 2008–<span id="rok">2026</span> Polski Związek Hydraulików. Wszelkie prawa zastrzeżone.<br>
+    Kopiowanie treści bez zgody Związku grozi zalaniem piwnicy.
+  </footer>
+
+</div>
+
+<script>
+/* ---------- data ---------- */
+(function () {
+  var teraz = new Date();
+  document.getElementById('data').textContent = 'Dziś jest ' +
+    teraz.toLocaleDateString('pl-PL', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  document.getElementById('rok').textContent = teraz.getFullYear();
+})();
+
+/* ---------- przewijany pasek – tytuły z Tadziennika (bierze je sam) ---------- */
+function odswiezTasme() {
+  var tytuly = Array.prototype.map.call(document.querySelectorAll('.news h3'), function (h) {
+    return h.textContent.trim();
+  });
+  tytuly.unshift('Subskrybuj kanał!');
+  var tasma = document.getElementById('tasma-tekst');
+  tasma.textContent = '';
+  tytuly.forEach(function (t, i) {
+    if (i) { var b = document.createElement('b'); b.textContent = '+++'; tasma.appendChild(b); }
+    tasma.appendChild(document.createTextNode(t));
+  });
+}
+odswiezTasme();
+
+/* ---------- Tadziennik: wczytanie newsów z newsy.json ---------- */
+(function () {
+  var kontener = document.getElementById('tadziennik-newsy');
+
+  function element(tag, klasa, tekst) {
+    var el = document.createElement(tag);
+    if (klasa) el.className = klasa;
+    if (tekst) el.textContent = tekst; // textContent = bezpiecznie, bez wstrzykiwania HTML
+    return el;
+  }
+
+  function zbudujNews(n) {
+    var art = element('article', 'news');
+    (n.obrazki || []).forEach(function (src) {
+      var a = element('a', 'miniatura');
+      a.href = src;
+      a.target = '_blank';
+      var img = element('img');
+      img.src = src;
+      img.alt = n.tytul;
+      img.loading = 'lazy';
+      a.appendChild(img);
+      art.appendChild(a);
+    });
+    var div = element('div');
+    div.appendChild(element('h3', '', n.tytul));
+    var data = new Date(n.data).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+    div.appendChild(element('div', 'info', 'dodał: ' + n.autor + ' • ' + data + (n.edytowane ? ' (edytowane)' : '')));
+    n.tresc.split(/\n+/).forEach(function (akapit) {
+      akapit = akapit.trim();
+      if (akapit) div.appendChild(element('p', '', akapit));
+    });
+    art.appendChild(div);
+    return art;
+  }
+
+  fetch('newsy.json', { cache: 'no-cache' })
+    .then(function (odp) { if (!odp.ok) throw new Error(odp.status); return odp.json(); })
+    .then(function (newsy) {
+      if (!Array.isArray(newsy) || !newsy.length) return; // brak newsów – zostaw przykładowy
+      kontener.querySelectorAll('.news').forEach(function (stary) { stary.remove(); });
+      newsy.forEach(function (n) { kontener.appendChild(zbudujNews(n)); });
+      odswiezTasme();
+    })
+    .catch(function () { /* nie udało się wczytać – zostaje przykładowy news */ });
+})();
+
+/* ---------- rotacja banera ---------- */
+(function () {
+  var obrazki = document.querySelectorAll('#baner img');
+  var kropki = document.querySelector('#baner .kropki');
+  if (obrazki.length < 2) return;
+  var obecny = 0;
+  obrazki.forEach(function (img, i) {
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', 'Baner ' + (i + 1));
+    b.addEventListener('click', function () { pokaz(i); });
+    kropki.appendChild(b);
+  });
+  function pokaz(i) {
+    obrazki[obecny].classList.remove('widoczny');
+    kropki.children[obecny].classList.remove('widoczny');
+    obecny = i;
+    obrazki[obecny].classList.add('widoczny');
+    kropki.children[obecny].classList.add('widoczny');
+  }
+  pokaz(0);
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setInterval(function () { pokaz((obecny + 1) % obrazki.length); }, 10000); // 10 sekund
+  }
+})();
+
+/* ---------- wyszukiwarka w Tadzienniku ---------- */
+(function () {
+  var pole = document.getElementById('pole-szukaj');
+  var brak = document.getElementById('brak-wynikow');
+  function filtruj() {
+    var szukane = pole.value.trim().toLowerCase();
+    var ile = 0;
+    document.querySelectorAll('.news').forEach(function (n) {
+      var pasuje = n.textContent.toLowerCase().indexOf(szukane) !== -1;
+      n.style.display = pasuje ? '' : 'none';
+      if (pasuje) ile++;
+    });
+    brak.style.display = ile ? 'none' : 'block';
+  }
+  pole.addEventListener('input', filtruj);
+  document.getElementById('szukaj').addEventListener('submit', function () {
+    filtruj();
+    document.getElementById('tadziennik-newsy').scrollIntoView({ behavior: 'smooth' });
+  });
+})();
+
+/* ---------- licznik odwiedzin (liczy wizyty w tej przeglądarce) ---------- */
+(function () {
+  var start = 13742; // "historyczne" odwiedziny – zmień jak chcesz
+  var wizyty = 1;
+  try {
+    wizyty = parseInt(localStorage.getItem('pzh-wizyty') || '0', 10) + 1;
+    localStorage.setItem('pzh-wizyty', wizyty);
+  } catch (e) {}
+  var cyfry = document.getElementById('cyfry');
+  String(start + wizyty).padStart(7, '0').split('').forEach(function (c) {
+    var s = document.createElement('span');
+    s.textContent = c;
+    cyfry.appendChild(s);
+  });
+})();
+</script>
+
+</body>
+</html>

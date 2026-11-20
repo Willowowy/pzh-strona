@@ -1,0 +1,37 @@
+name: Pobierz newsy z Discorda
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # co 15 minut (GitHub czasem się spóźnia o kilka minut)
+  workflow_dispatch:          # przycisk "Run workflow" do ręcznego odpalenia
+
+permissions:
+  contents: write
+
+concurrency:
+  group: newsy
+  cancel-in-progress: false
+
+jobs:
+  newsy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pobierz newsy
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          KANAL_ID: ${{ secrets.KANAL_ID }}
+          ZATWIERDZAJACY: ${{ secrets.ZATWIERDZAJACY }}
+        run: python skrypty/pobierz_newsy.py
+
+      - name: Zapisz zmiany (jeśli są)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A newsy.json newsy-img
+          git diff --staged --quiet || (git commit -m "Tadziennik: aktualizacja newsów" && git push)
