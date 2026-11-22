@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>:: POLSKI ZWIĄZEK HYDRAULIKÓW :: Chlaśnij Niecika ::</title>
+<link rel="shortcut icon" href="teto.png" type="image/x-icon">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="strona">
+
+  <div id="gorny-pasek"></div>
+
+  <header id="naglowek">
+    <a href="index.html"><img src="logo.png" alt="Polski Związek Hydraulików" class="logo"></a>
+    <div class="slogan">
+      Oficjalna strona kanału na YouTube<span class="wersja-beta">BETA</span><br>
+      <b>Polski Związek Hydraulików</b>
+    </div>
+    <div class="prawa">
+      <a class="subskrybuj" href="https://www.youtube.com/@polskizwiazekhydraulikow?sub_confirmation=1" target="_blank">SUBSKRYBUJ</a>
+      <form id="szukaj" role="search" action="index.html" method="get">
+        <input type="text" id="pole-szukaj" name="szukaj" placeholder="Szukaj w Tadzienniku..." aria-label="Szukaj w Tadzienniku">
+        <button type="submit" aria-label="Szukaj"><img src="lupka.png" alt=""></button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Przyciski z class="zablokowany" są tymczasowo wyłączone.
+       Żeby włączyć przycisk, usuń z niego: class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1" -->
+  <nav id="menu">
+    <a href="index.html">STRONA GŁÓWNA</a>
+    <a href="pracownicy.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PRACOWNICY</a>
+    <a href="instalki.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">INSTALKI</a>
+    <a href="tapety.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">TAPETY</a>
+    <a href="minecraft.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">MINECRAFT</a>
+    <a href="patroni.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PATRONI PROJEKTU</a>
+    <a href="gra.html" class="aktywny">CHLAŚNIJ NIECIKA<span class="nowosc">NOWOŚĆ!!!</span></a>
+  </nav>
+
+  <div id="tasma">
+    <div class="etykieta">TADZIENNIK</div>
+    <div class="pas"><span id="tasma-tekst"></span></div>
+  </div>
+
+  <div id="tresc">
+
+    <main id="glowna">
+
+      <div class="okruszki">Jesteś tutaj: <a href="index.html">Strona główna</a> » <b>Chlaśnij Niecika</b></div>
+
+      <div class="ramka">
+        <h2>Gra: Chlaśnij Niecika!</h2>
+        <div class="srodek">
+
+          <!--
+            USTAWIENIA GRY:
+            - obrazek Niecika: src w <img id="cn-niecik"> (niecik.jpg)
+            - obrazek ręki:    src w <img id="cn-reka">   (reka.png)
+              Najlepiej PNG z przezroczystym tłem.
+            - teksty: w skrypcie na dole strony, sekcja TEKSTY
+            - muzyka w tle: plik muzyka.mp3 (podmień na inny .mp3 o tej samej nazwie)
+          -->
+          <div class="cn" id="cn">
+            <div class="cn-pasek"><button type="button" class="cn-muzyka" id="cn-muzyka" title="Muzyka w tle">♫ MUZYKA: WŁ</button></div>
+
+            <div class="cn-scena" id="cn-scena">
+
+              <img class="cn-niecik" id="cn-niecik" src="niecik.jpg" alt="Niecik" draggable="false">
+              <img class="cn-reka" id="cn-reka" src="reka.png" alt="Ręka – złap ją!" draggable="false" hidden>
+
+              <!-- EKRAN 1: wstęp -->
+              <div class="cn-ekran" id="cn-wstep">
+                <div class="cn-maszyna" id="cn-maszyna"></div>
+                <button type="button" class="cn-guzik" id="cn-start">W MORDE GO</button>
+              </div>
+
+              <!-- EKRAN 2: "masz okazję" -->
+              <div class="cn-okazja" id="cn-okazja" hidden>MASZ OKAZJE<br>CHLAŚNIJ GO W RYJ</div>
+
+              <!-- dymek przy ręce -->
+              <div class="cn-dymek" id="cn-dymek" hidden><span>ZUAP MIE I<br>CHLAŚNIJ GO</span></div>
+
+              <!-- EKRAN 3: wynik -->
+              <div class="cn-ekran cn-wynik" id="cn-wynik" hidden>
+                <div class="cn-wynik-tytul">NIECIK POLECIAŁ</div>
+                <div class="cn-metry" id="cn-metry">0,0 m</div>
+                <div class="cn-rekord" id="cn-rekord-info"></div>
+                <button type="button" class="cn-guzik" id="cn-znowu">JESZCZE RAZ</button>
+              </div>
+
+              <div class="cn-podpis-lewy">Hosted by PZH.pl</div>
+              <a class="cn-podpis-prawy" href="index.html">więcej śmiesznych gier</a>
+            </div>
+
+            <div class="cn-pasek"></div>
+          </div>
+          <div class="cn-rekord-staly">Twój rekord: <b id="cn-rekord">0,0 m</b></div>
+
+        </div>
+      </div>
+
+      <div class="ramka">
+        <h2>Jak grać</h2>
+        <div class="srodek wstep">
+          <p>Złap rękę myszką (albo palcem), odciągnij ją i <b>szybko przeciągnij w lewo</b> prosto w Niecika. Im szybciej machniesz, tym dalej poleci. Za słabe chlaśnięcie się nie liczy – próbuj do skutku!</p>
+        </div>
+      </div>
+
+    </main>
+
+    <aside id="boczna">
+
+      <div class="ramka">
+        <h2>Znajdziesz nas na</h2>
+        <div class="srodek spolecznosc">
+          <!-- WKLEJ LINK DO DISCORDA w href="#" -->
+          <a href="#" target="_blank"><img src="discor.png" alt="Discord"></a>
+          <a href="https://www.youtube.com/@polskizwiazekhydraulikow" target="_blank"><img src="utube.png" alt="YouTube"></a>
+          <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank"><img src="twatch.png" alt="Twitch"></a>
+          <a href="#" target="_blank"><img src="pikpok.png" alt="PikPok"></a>
+          <a href="#" target="_blank"><img src="eks_logo.png" alt="Elektryk"></a>
+          <a href="#"><img src="placeholder.png" alt="Miejsce na kolejne logo"></a>
+        </div>
+      </div>
+
+      <div class="ramka" id="licznik">
+        <h2>Licznik odwiedzin</h2>
+        <div class="srodek">
+          Jesteś naszym<br>
+          <div class="cyfry" id="cyfry"></div><br>
+          gościem!<br>
+          <small>od 01.01.2008</small>
+        </div>
+      </div>
+
+      <div class="uwaga">
+        Strona najlepiej wygląda w rozdzielczości <b>1024x768</b><br>
+        w przeglądarce <b>Internet Explorer 6.0</b>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer id="stopka">
+    <div class="plakietki">
+      <div class="plakietka p1"><big>PZH</big>member</div>
+      <div class="plakietka p2"><big>HTML</big>valid (chyba)</div>
+      <div class="plakietka p3">zrobione w<big>Notatniku</big></div>
+      <div class="plakietka p4">oglądaj<big>TadzioTV</big></div>
+      <div class="plakietka p5">get<big>Flash</big>player</div>
+    </div>
+    &copy; 2008–<span id="rok">2026</span> Polski Związek Hydraulików. Wszelkie prawa zastrzeżone.<br>
+    Kopiowanie treści bez zgody Związku grozi zalaniem piwnicy.
+  </footer>
+
+</div>
+
+<script src="wspolne.js"></script>
+<script>
+/* =========================================================
+   GRA: CHLAŚNIJ NIECIKA – czysty HTML/CSS/JS
+   ========================================================= */
+(function () {
+  /* ---------- TEKSTY ---------- */
+  var WSTEP = 'Pewnego dnia na twojej drodze stanął NIECIK...';
+  var MIN_PREDKOSC = 0.9; // poniżej tego chlaśnięcie jest za słabe
+
+  var $ = function (id) { return document.getElementById(id); };
+  var scena = $('cn-scena'), niecik = $('cn-niecik'), reka = $('cn-reka'), dymek = $('cn-dymek');
+  var stan = 'wstep', rekord = 0, timery = [];
+
+  try { rekord = parseFloat(localStorage.getItem('pzh-niecik-rekord') || '0'); } catch (e) {}
+  function metry(m) { return m.toFixed(1).replace('.', ',') + ' m'; }
+  $('cn-rekord').textContent = metry(rekord);
+
+  function pozniej(f, ms) { timery.push(setTimeout(f, ms)); }
+  function wyczyscTimery() { timery.forEach(clearTimeout); timery = []; }
+
+  /* ---------- pozycje (w pikselach sceny) ---------- */
+  var N = {}, R = {};          // Niecik i ręka: x, y, obrót
+  function ustawNiecika() { niecik.style.transform = 'translate(' + N.x + 'px,' + N.y + 'px) rotate(' + N.r + 'deg)'; }
+  function ustawReke() { reka.style.transform = 'translate(' + R.x + 'px,' + R.y + 'px) rotate(' + R.r + 'deg)'; }
+  function wymiary() { return { w: scena.clientWidth, h: scena.clientHeight }; }
+
+  /* ---------- EKRAN 1: wstęp ---------- */
+  function wstep() {
+    wyczyscTimery();
+    stan = 'wstep';
+    var s = wymiary();
+    $('cn-wynik').hidden = true; $('cn-okazja').hidden = true; dymek.hidden = true; reka.hidden = true;
+    $('cn-wstep').hidden = false;
+    scena.classList.add('na-wstepie');
+    niecik.hidden = false;
+    N = { x: s.w - niecik.offsetWidth - 4, y: 10, r: 0 }; ustawNiecika();
+    $('cn-maszyna').textContent = WSTEP;
+    $('cn-start').classList.add('widac');
+  }
+
+  /* ---------- EKRAN 2: "masz okazję" ---------- */
+  function okazja() {
+    wyczyscTimery();
+    stan = 'okazja';
+    var s = wymiary();
+    $('cn-wstep').hidden = true;
+    $('cn-wynik').hidden = true;
+    scena.classList.remove('na-wstepie');
+    N = { x: 60, y: 10, r: 0 }; ustawNiecika();
+    var napis = $('cn-okazja');
+    napis.hidden = false;
+    napis.classList.remove('pokaz'); void napis.offsetWidth; napis.classList.add('pokaz');
+    pozniej(function () { napis.hidden = true; gra(); }, 2600);
+  }
+
+  /* ---------- EKRAN 3: chlaśnięcie ---------- */
+  var startReki = {};
+  function gra() {
+    stan = 'gra';
+    var s = wymiary();
+    reka.hidden = false;
+    startReki = { x: s.w - reka.offsetWidth - 40, y: s.h / 2 - reka.offsetHeight / 2 - 20 };
+    R = { x: startReki.x, y: startReki.y, r: 0 }; ustawReke();
+    dymek.hidden = false;
+  }
+
+  /* przeciąganie ręki */
+  var trzyma = false, chwyt = {}, historia = [];
+  reka.addEventListener('pointerdown', function (e) {
+    if (stan !== 'gra') return;
+    trzyma = true;
+    reka.setPointerCapture(e.pointerId);
+    reka.classList.add('trzymana');
+    dymek.hidden = true;
+    var sr = scena.getBoundingClientRect();
+    chwyt = { dx: e.clientX - sr.left - R.x, dy: e.clientY - sr.top - R.y };
+    historia = [];
+    e.preventDefault();
+  });
+  reka.addEventListener('pointermove', function (e) {
+    if (!trzyma || stan !== 'gra') return;
+    var sr = scena.getBoundingClientRect(), s = wymiary();
+    R.x = Math.max(-20, Math.min(s.w - reka.offsetWidth + 20, e.clientX - sr.left - chwyt.dx));
+    R.y = Math.max(-20, Math.min(s.h - reka.offsetHeight, e.clientY - sr.top - chwyt.dy));
+    R.r = 0;
+    ustawReke();
+    var t = performance.now();
+    historia.push({ x: R.x, t: t });
+    historia = historia.filter(function (h) { return t - h.t < 80; });
+
+    // trafienie: lewa krawędź ręki dotyka Niecika
+    var nPrawa = N.x + niecik.offsetWidth * 0.85;
+    var nachodzi = R.y + reka.offsetHeight > N.y + 20 && R.y < N.y + niecik.offsetHeight;
+    if (R.x < nPrawa && nachodzi) {
+      var pierwszy = historia[0];
+      var v = pierwszy ? (pierwszy.x - R.x) / Math.max(t - pierwszy.t, 1) : 0; // prędkość w lewo (px/ms)
+      chlast(v);
+    }
+  });
+  function pusc() {
+    if (!trzyma) return;
+    trzyma = false;
+    reka.classList.remove('trzymana');
+    if (stan === 'gra') wrocReka();
+  }
+  reka.addEventListener('pointerup', pusc);
+  reka.addEventListener('pointercancel', pusc);
+
+  function wrocReka() {
+    reka.classList.add('wraca');
+    R = { x: startReki.x, y: startReki.y, r: 0 }; ustawReke();
+    pozniej(function () { reka.classList.remove('wraca'); if (stan === 'gra') dymek.hidden = false; }, 400);
+  }
+
+  function napis(tekst, x, y) {
+    var n = document.createElement('div');
+    n.className = 'cn-napis';
+    n.textContent = tekst;
+    n.style.left = x + 'px'; n.style.top = y + 'px';
+    scena.appendChild(n);
+    setTimeout(function () { n.remove(); }, 800);
+  }
+
+  function chlast(v) {
+    trzyma = false;
+    reka.classList.remove('trzymana');
+    var x = N.x + niecik.offsetWidth * 0.6, y = N.y + 60;
+
+    if (v < MIN_PREDKOSC) {             // za słabo – Niecik tylko się chwieje
+      napis('ZA SŁABO!', x, y);
+      niecik.classList.remove('chwieje'); void niecik.offsetWidth; niecik.classList.add('chwieje');
+      plask(0.3);
+      wrocReka();
+      return;
+    }
+
+    stan = 'lot';
+    plask(Math.min(1, v / 4));
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      scena.classList.remove('trzesie'); void scena.offsetWidth; scena.classList.add('trzesie');
+    }
+    // ręka przelatuje dalej w lewo i wraca
+    R.x -= 60; R.r = -20; ustawReke();
+    pozniej(wrocReka, 250);
+
+    // odległość: zależy od prędkości machnięcia
+    var odleglosc = Math.round((v * 55 + Math.random() * 8) * 10) / 10;
+    lot(v, odleglosc);
+  }
+
+  /* lot Niecika poza ekran */
+  function lot(v, odleglosc) {
+    var vx = -Math.min(v, 8) * 0.9, vy = -Math.min(v, 8) * 0.35, g = 0.0025, obrot = -Math.min(v, 8) * 0.6;
+    var poprzedni = performance.now();
+    (function klatka(t) {
+      var dt = Math.min(t - poprzedni, 40); poprzedni = t;
+      vy += g * dt;
+      N.x += vx * dt; N.y += vy * dt; N.r += obrot * dt;
+      ustawNiecika();
+      var s = wymiary();
+      if (N.x + niecik.offsetWidth < -50 || N.y > s.h + 50) { koniec(odleglosc); return; }
+      requestAnimationFrame(klatka);
+    })(poprzedni);
+  }
+
+  /* ---------- EKRAN 4: czarny ekran i wynik ---------- */
+  function koniec(odleglosc) {
+    stan = 'wynik';
+    niecik.hidden = true; reka.hidden = true; dymek.hidden = true;
+    pozniej(function () {
+      var nowy = odleglosc > rekord;
+      if (nowy) {
+        rekord = odleglosc;
+        try { localStorage.setItem('pzh-niecik-rekord', String(rekord)); } catch (e) {}
+        $('cn-rekord').textContent = metry(rekord);
+      }
+      $('cn-rekord-info').textContent = '';
+      $('cn-wynik').hidden = false;
+
+      // licznik metrów nabija się jak w starych grach
+      var start = performance.now(), czas = 1200;
+      (function licz(t) {
+        var p = Math.min(1, (t - start) / czas);
+        $('cn-metry').textContent = metry(odleglosc * p);
+        if (p < 1) { requestAnimationFrame(licz); return; }
+        $('cn-rekord-info').textContent = nowy ? '★ NOWY REKORD! ★' : 'Rekord: ' + metry(rekord);
+      })(start);
+    }, 1200); // chwila czarnego ekranu
+  }
+
+  /* ---------- dźwięk plaśnięcia (generowany, bez plików) ---------- */
+  var audio = null;
+  function plask(moc) {
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      var dl = 0.15, bufor = audio.createBuffer(1, audio.sampleRate * dl, audio.sampleRate), d = bufor.getChannelData(0);
+      for (var i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 3);
+      var zrodlo = audio.createBufferSource(); zrodlo.buffer = bufor;
+      var filtr = audio.createBiquadFilter(); filtr.type = 'bandpass'; filtr.frequency.value = 800 + moc * 1500;
+      var g = audio.createGain(); g.gain.value = 0.3 + moc;
+      zrodlo.connect(filtr); filtr.connect(g); g.connect(audio.destination);
+      zrodlo.start();
+    } catch (e) {}
+  }
+
+  /* ---------- muzyka w tle (MP3, w pętli) ---------- */
+  // przeglądarki pozwalają włączyć dźwięk dopiero po kliknięciu – muzyka rusza przy pierwszym kliknięciu w grę
+  var muzyka = new Audio('muzyka.mp3');
+  muzyka.loop = true;
+  muzyka.preload = 'none';   // plik pobiera się dopiero, gdy muzyka ma zagrać
+  muzyka.volume = 0.5;       // głośność od 0 do 1
+  muzyka.graj = function () { if (muzyka.paused) muzyka.play().catch(function () {}); };
+  muzyka.stop = function () { muzyka.pause(); };
+  var muzykaWl = true;
+  try { muzykaWl = localStorage.getItem('pzh-muzyka') !== 'wyl'; } catch (e) {}
+  function pokazPrzycisk() { $('cn-muzyka').textContent = muzykaWl ? '♫ MUZYKA: WŁ' : '♫ MUZYKA: WYŁ'; }
+  pokazPrzycisk();
+  $('cn').addEventListener('pointerdown', function () { if (muzykaWl) muzyka.graj(); });
+  $('cn-muzyka').addEventListener('click', function (e) {
+    e.stopPropagation();
+    muzykaWl = !muzykaWl;
+    try { localStorage.setItem('pzh-muzyka', muzykaWl ? 'wl' : 'wyl'); } catch (er) {}
+    if (muzykaWl) muzyka.graj(); else muzyka.stop();
+    pokazPrzycisk();
+  });
+  $('cn-muzyka').addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+
+  $('cn-start').addEventListener('click', okazja);
+  $('cn-znowu').addEventListener('click', function () {
+    niecik.hidden = false;
+    N = { x: 60, y: 10, r: 0 }; ustawNiecika();
+    okazja();
+  });
+  wstep();
+})();
+</script>
+
+</body>
+</html>

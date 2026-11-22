@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>:: POLSKI ZWIĄZEK HYDRAULIKÓW :: Postacie fabularne ::</title>
+<link rel="shortcut icon" href="teto.png" type="image/x-icon">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="strona">
+
+  <div id="gorny-pasek"></div>
+
+  <header id="naglowek">
+    <a href="index.html"><img src="logo.png" alt="Polski Związek Hydraulików" class="logo"></a>
+    <div class="slogan">
+      Oficjalna strona kanału na YouTube<span class="wersja-beta">BETA</span><br>
+      <b>Polski Związek Hydraulików</b>
+    </div>
+    <div class="prawa">
+      <a class="subskrybuj" href="https://www.youtube.com/@polskizwiazekhydraulikow?sub_confirmation=1" target="_blank">SUBSKRYBUJ</a>
+      <form id="szukaj" role="search" action="index.html" method="get">
+        <input type="text" id="pole-szukaj" name="szukaj" placeholder="Szukaj w Tadzienniku..." aria-label="Szukaj w Tadzienniku">
+        <button type="submit" aria-label="Szukaj"><img src="lupka.png" alt=""></button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Przyciski z class="zablokowany" są tymczasowo wyłączone.
+       Żeby włączyć przycisk, usuń z niego: class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1" -->
+  <nav id="menu">
+    <a href="index.html">STRONA GŁÓWNA</a>
+    <a href="pracownicy.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PRACOWNICY</a>
+    <a href="instalki.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">INSTALKI</a>
+    <a href="tapety.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">TAPETY</a>
+    <a href="minecraft.html" class="aktywny">MINECRAFT</a>
+    <a href="patroni.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PATRONI PROJEKTU</a>
+    <a href="gra.html">CHLAŚNIJ NIECIKA<span class="nowosc">NOWOŚĆ!!!</span></a>
+  </nav>
+
+  <div id="tasma">
+    <div class="etykieta">TADZIENNIK</div>
+    <div class="pas"><span id="tasma-tekst"></span></div>
+  </div>
+
+  <div id="tresc">
+
+    <main id="glowna">
+
+      <div class="okruszki">Jesteś tutaj: <a href="index.html">Strona główna</a> » <a href="minecraft.html">Minecraft</a> » <b>Postacie fabularne</b></div>
+
+      <div class="ramka">
+        <h2>Postacie fabularne</h2>
+        <div class="srodek wstep">
+          <p>TU NAPISZ WSTĘP – kto jest kim w świecie naszego serwera.</p>
+        </div>
+      </div>
+
+      <div class="ramka">
+        <h2>Galeria postaci</h2>
+        <div class="srodek galeria-postaci">
+          <!--
+            TEMPLATE POSTACI – skopiuj cały blok <div class="postac"> ... </div>
+            i podmień obrazek, imię, tytuł, frakcję, gracza i opis.
+          -->
+
+          <div class="postac">
+            <!-- Zamiast placeholder.png możesz dać render skina, np. https://mc-heads.net/body/NICK -->
+            <img class="postac-skin" src="placeholder.png" alt="Postać 1">
+            <div class="postac-dane">
+              <h3>Postać 1</h3>
+              <div class="postac-tytul">Władca Kanalizacji</div>
+              <div class="postac-meta">Frakcja: <b>TU WPISZ</b> • Gra: <b>NICK GRACZA</b></div>
+              <p>Krótki opis postaci – kim jest, czym się zajmuje, z kim jest skłócona.</p>
+            </div>
+          </div>
+
+          <div class="postac">
+            <!-- Zamiast placeholder.png możesz dać render skina, np. https://mc-heads.net/body/NICK -->
+            <img class="postac-skin" src="placeholder.png" alt="Postać 2">
+            <div class="postac-dane">
+              <h3>Postać 2</h3>
+              <div class="postac-tytul">Zbuntowany Czeladnik</div>
+              <div class="postac-meta">Frakcja: <b>TU WPISZ</b> • Gra: <b>NICK GRACZA</b></div>
+              <p>Krótki opis postaci – kim jest, czym się zajmuje, z kim jest skłócona.</p>
+            </div>
+          </div>
+
+          <div class="postac">
+            <!-- Zamiast placeholder.png możesz dać render skina, np. https://mc-heads.net/body/NICK -->
+            <img class="postac-skin" src="placeholder.png" alt="Postać 3">
+            <div class="postac-dane">
+              <h3>Postać 3</h3>
+              <div class="postac-tytul">Tajemniczy Kupiec</div>
+              <div class="postac-meta">Frakcja: <b>TU WPISZ</b> • Gra: <b>NICK GRACZA</b></div>
+              <p>Krótki opis postaci – kim jest, czym się zajmuje, z kim jest skłócona.</p>
+            </div>
+          </div>
+
+          <div class="postac">
+            <!-- Zamiast placeholder.png możesz dać render skina, np. https://mc-heads.net/body/NICK -->
+            <img class="postac-skin" src="placeholder.png" alt="Postać 4">
+            <div class="postac-dane">
+              <h3>Postać 4</h3>
+              <div class="postac-tytul">Strażnik Zaworów</div>
+              <div class="postac-meta">Frakcja: <b>TU WPISZ</b> • Gra: <b>NICK GRACZA</b></div>
+              <p>Krótki opis postaci – kim jest, czym się zajmuje, z kim jest skłócona.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="wiecej"><a href="minecraft.html">« Wróć do serwera Minecraft</a></div>
+
+    </main>
+
+    <aside id="boczna">
+
+      <div class="ramka">
+        <h2>Znajdziesz nas na</h2>
+        <div class="srodek spolecznosc">
+          <!-- WKLEJ LINK DO DISCORDA w href="#" -->
+          <a href="#" target="_blank"><img src="discor.png" alt="Discord"></a>
+          <a href="https://www.youtube.com/@polskizwiazekhydraulikow" target="_blank"><img src="utube.png" alt="YouTube"></a>
+          <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank"><img src="twatch.png" alt="Twitch"></a>
+          <a href="#" target="_blank"><img src="pikpok.png" alt="PikPok"></a>
+          <a href="#" target="_blank"><img src="eks_logo.png" alt="Elektryk"></a>
+          <a href="#"><img src="placeholder.png" alt="Miejsce na kolejne logo"></a>
+        </div>
+      </div>
+
+      <div class="ramka" id="licznik">
+        <h2>Licznik odwiedzin</h2>
+        <div class="srodek">
+          Jesteś naszym<br>
+          <div class="cyfry" id="cyfry"></div><br>
+          gościem!<br>
+          <small>od 01.01.2008</small>
+        </div>
+      </div>
+
+      <div class="uwaga">
+        Strona najlepiej wygląda w rozdzielczości <b>1024x768</b><br>
+        w przeglądarce <b>Internet Explorer 6.0</b>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer id="stopka">
+    <div class="plakietki">
+      <div class="plakietka p1"><big>PZH</big>member</div>
+      <div class="plakietka p2"><big>HTML</big>valid (chyba)</div>
+      <div class="plakietka p3">zrobione w<big>Notatniku</big></div>
+      <div class="plakietka p4">oglądaj<big>TadzioTV</big></div>
+      <div class="plakietka p5">get<big>Flash</big>player</div>
+    </div>
+    &copy; 2008–<span id="rok">2026</span> Polski Związek Hydraulików. Wszelkie prawa zastrzeżone.<br>
+    Kopiowanie treści bez zgody Związku grozi zalaniem piwnicy.
+  </footer>
+
+</div>
+
+<script src="wspolne.js"></script>
+
+</body>
+</html>

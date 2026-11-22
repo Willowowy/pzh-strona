@@ -3,12 +3,10 @@
    (data, przewijany pasek, licznik odwiedzin, wyszukiwarka na podstronach)
    ========================================================= */
 
-/* ---------- data w górnym pasku i rok w stopce ---------- */
+/* ---------- rok w stopce ---------- */
 (function () {
-  var teraz = new Date();
-  document.getElementById('data').textContent = 'Dziś jest ' +
-    teraz.toLocaleDateString('pl-PL', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-  document.getElementById('rok').textContent = teraz.getFullYear();
+  var rok = document.getElementById('rok');
+  if (rok) rok.textContent = new Date().getFullYear();
 })();
 
 /* ---------- przewijany pasek – tytuły z Tadziennika (newsy.json) ---------- */
@@ -47,3 +45,8 @@
     cyfry.appendChild(s);
   });
 })();
+
+/* ---------- tymczasowo wyłączone przyciski menu ---------- */
+document.querySelectorAll('#menu a.zablokowany').forEach(function (a) {
+  a.addEventListener('click', function (e) { e.preventDefault(); });
+});

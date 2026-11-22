@@ -47,14 +47,9 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 
 /* ---------- górny pasek ---------- */
 #gorny-pasek {
-  display: flex;
-  justify-content: space-between;
-  padding: 4px 12px;
-  font-size: 10px;
-  color: #cfe9d8;
+  height: 6px;              /* sam ciemny pasek, bez tekstu */
   background: #062f17;
 }
-#gorny-pasek a { color: #fff; }
 
 /* ---------- nagłówek ---------- */
 #naglowek {
@@ -130,9 +125,10 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   border-bottom: 3px solid var(--zielony-ciemny);
 }
 #menu a {
-  padding: 9px 16px;
+  padding: 9px 11px;
+  white-space: nowrap;
   font-family: "Trebuchet MS", Verdana, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
   color: #fff;
   text-decoration: none;
@@ -140,10 +136,39 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   border-left: 1px solid rgba(255,255,255,.2);
   border-right: 1px solid rgba(0,0,0,.2);
 }
+/* czerwona plakietka NOWOŚĆ!!! przy przycisku w menu */
+.nowosc {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 1px 5px;
+  font-size: 9px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: none;
+  vertical-align: 2px;
+  background: linear-gradient(#ff4a4a, #c80000);
+  border: 1px solid #8a0000;
+  border-radius: 3px;
+  transform: rotate(-6deg);
+  animation: mrugaj-live 1s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) { .nowosc { animation: none; } }
+
+/* tymczasowo wyłączone przyciski */
 #menu a:hover, #menu a.aktywny {
   background: linear-gradient(to bottom, #ffe066 0%, #ffc61a 50%, #f0a800 51%, #ffcc33 100%);
   color: #3a2a00;
   text-shadow: 0 1px 0 rgba(255,255,255,.6);
+}
+
+/* tymczasowo wyłączone przyciski (klasa "zablokowany") */
+#menu a.zablokowany,
+#menu a.zablokowany:hover {
+  cursor: not-allowed;
+  opacity: .55;
+  background: none;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.4);
 }
 
 /* ---------- przewijany pasek ---------- */
@@ -610,7 +635,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 .tapeta .rozdzielczosci { font-size: 10px; }
 
-/* ---------- MAPA ---------- */
+/* ---------- MINECRAFT ---------- */
 .mapa-obraz {
   display: block;
   padding: 4px;
@@ -677,4 +702,311 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   .legitymacje, .galeria, .patroni, .patroni.duzi { grid-template-columns: 1fr; }
   .plik, .zostan-patronem { flex-wrap: wrap; }
   .legenda { columns: 1; }
+}
+
+.brak-newsow { margin: 0; padding: 20px 10px; text-align: center; color: #6a9cbd; font-style: italic; }
+
+/* ---------- MINECRAFT: wpis serwera jak na liście serwerów w grze ---------- */
+.mc-serwer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  font-family: "Courier New", Consolas, monospace;
+  font-weight: bold;
+  background: #0c0c0c;
+  border: 2px solid #808080;
+  box-shadow: inset 0 0 0 1px #000;
+}
+.mc-ikona {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+  object-fit: cover;
+  background: #333;
+}
+.mc-srodek { flex: 1; min-width: 0; }
+.mc-nazwa { color: #fff; font-size: 14px; text-shadow: 2px 2px 0 #3f3f3f; margin-bottom: 3px; }
+.mc-motd { font-size: 13px; line-height: 1.35; }
+.mc-motd div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mc-motd span { text-shadow: 2px 2px 0 rgba(0,0,0,.75); }
+.mc-prawa { align-self: flex-start; display: flex; align-items: center; gap: 6px; }
+.mc-gracze { color: #aaa; font-size: 13px; text-shadow: 2px 2px 0 #2a2a2a; }
+
+/* kreski sygnału */
+.mc-sygnal { display: flex; align-items: flex-end; gap: 1px; height: 14px; }
+.mc-sygnal i { display: block; width: 2px; background: #555; }
+.mc-sygnal i:nth-child(1) { height: 3px; }
+.mc-sygnal i:nth-child(2) { height: 5px; }
+.mc-sygnal i:nth-child(3) { height: 8px; }
+.mc-sygnal i:nth-child(4) { height: 11px; }
+.mc-sygnal i:nth-child(5) { height: 14px; }
+.mc-sygnal.online i { background: #3f3; box-shadow: 1px 1px 0 #070; }
+.mc-sygnal.offline i { background: #555; }
+.mc-sygnal.offline::after { content: "✖"; margin-left: 3px; color: #f44; font-size: 12px; line-height: 14px; }
+
+.mc-info { margin-top: 8px; }
+.mc-ip { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.mc-ip code {
+  padding: 4px 8px;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--zielony-ciemny);
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.mc-ip button { cursor: pointer; font-family: inherit; }
+.mc-status { margin-top: 6px; font-size: 11px; color: #777; }
+.mc-status.on { color: #138a43; font-weight: bold; }
+.mc-status.off { color: #c00; }
+.mc-podpis { margin: 5px 0 0; font-size: 10px; color: #888; text-align: center; }
+.mc-mapa-iframe { display: block; width: 100%; height: 450px; border: 1px solid #ccc; }
+.mc-postacie-zajawka { display: flex; align-items: center; gap: 15px; }
+.mc-postacie-zajawka p { flex: 1; margin: 0; }
+
+/* ---------- LORE (boczna kolumna) – stara księga ---------- */
+.ramka.lore { border-color: #b38b4d; }
+.ramka.lore > h2 { background: linear-gradient(to bottom, #c99a5b 0%, #a0713a 50%, #8a5d2c 51%, #9c6a35 100%); }
+.ramka.lore .srodek {
+  max-height: 300px;
+  overflow-y: auto;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #3b2a14;
+  background: linear-gradient(#fbf3df, #f1e2bf);
+}
+.ramka.lore p { margin: 0 0 8px; }
+.lore-inicjal::first-letter {
+  float: left;
+  margin: 2px 4px 0 0;
+  font-size: 30px;
+  line-height: 1;
+  color: #8a1c1c;
+}
+
+/* ---------- POSTACIE FABULARNE ---------- */
+.galeria-postaci { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.postac {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: linear-gradient(#fbf3df, #f1e2bf);
+  border: 1px solid #c9a96b;
+  border-radius: 6px;
+}
+.postac-skin {
+  flex-shrink: 0;
+  width: 80px;
+  height: 160px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  background: rgba(0,0,0,.06);
+  border-radius: 4px;
+}
+.postac-dane { flex: 1; min-width: 0; }
+.postac h3 { margin: 0; font-family: Georgia, serif; font-size: 15px; color: #5a3a12; }
+.postac-tytul { font-style: italic; color: #8a1c1c; margin-bottom: 4px; }
+.postac-meta { font-size: 10px; color: #7a6040; margin-bottom: 6px; }
+.postac p { margin: 0; line-height: 1.5; color: #3b2a14; }
+
+@media (max-width: 1000px) {
+  .galeria-postaci { grid-template-columns: 1fr; }
+  .mc-postacie-zajawka { flex-wrap: wrap; }
+}
+
+/* ---------- GRA: Chlaśnij Niecika (styl starej gry Flash) ---------- */
+.cn { user-select: none; -webkit-user-select: none; background: #121018; border-radius: 6px; overflow: hidden; }
+.cn-pasek { height: 34px; display: flex; align-items: center; justify-content: flex-end; padding: 0 10px; background: linear-gradient(#221c3a, #18142a); }
+.cn-muzyka {
+  padding: 3px 9px;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #ffe066;
+  background: #2e2650;
+  border: 1px solid #4a3f7a;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.cn-muzyka:hover { background: #3b3166; }
+.cn-scena {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  background: #000;
+  touch-action: none;
+}
+.cn-niecik {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 155px;
+  height: 330px;
+  object-fit: cover;
+  background: #fff;
+  transform-origin: 50% 50%;
+}
+.cn-niecik.chwieje { animation: cn-chwieje .4s ease-out; }
+@keyframes cn-chwieje { 25% { margin-left: -8px; } 50% { margin-left: 5px; } 75% { margin-left: -2px; } }
+.cn-reka {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 120px;
+  height: 138px;
+  object-fit: contain;
+  cursor: grab;
+  touch-action: none;
+  filter: drop-shadow(3px 4px 0 rgba(255,255,255,.15));
+}
+.cn-reka.trzymana { cursor: grabbing; }
+.cn-reka.wraca { transition: transform .35s ease-out; }
+
+.cn-ekran {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
+.cn-ekran[hidden], .cn-okazja[hidden], .cn-dymek[hidden], .cn-reka[hidden], .cn-niecik[hidden] { display: none; }
+.cn-maszyna {
+  position: absolute;
+  left: 30px;
+  right: 170px;
+  top: 70px;
+  font-family: "Comic Sans MS", "Trebuchet MS", sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+.cn-guzik {
+  position: absolute;
+  right: 170px;
+  bottom: 22px;
+  padding: 6px 18px;
+  font-family: "Rockwell Extra Bold", "Rockwell", "Courier New", serif;
+  font-size: 26px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 1px;
+  color: #fff;
+  -webkit-text-stroke: 1.5px #000;
+  text-shadow: 2px 2px 0 #000;
+  background: #c8c8c8;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+}
+.cn-guzik.widac, .cn-wynik .cn-guzik { opacity: 1; pointer-events: auto; }
+.cn-guzik:hover { background: #e0e0e0; }
+
+.cn-okazja {
+  position: absolute;
+  left: 160px;
+  right: 10px;
+  top: 90px;
+  z-index: 2;
+  font-family: "Segoe UI", "Open Sans", Arial, sans-serif;
+  font-size: 36px;
+  line-height: 1.3;
+  white-space: nowrap;
+  color: #6b4208;
+  opacity: 0;
+}
+.cn-okazja.pokaz { animation: cn-okazja 2.6s ease-in-out forwards; }
+@keyframes cn-okazja { 0% { opacity: 0; } 25%, 75% { opacity: 1; } 100% { opacity: 0; } }
+
+/* pikselowy dymek */
+.cn-dymek {
+  position: absolute;
+  right: 150px;
+  top: 40px;
+  z-index: 2;
+  width: 230px;
+  height: 190px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  filter: drop-shadow(8px 8px 0 #777);
+  clip-path: polygon(
+    20% 0, 70% 0, 70% 8%, 85% 8%, 85% 16%, 93% 16%, 93% 28%, 100% 28%, 100% 72%, 93% 72%, 93% 84%,
+    85% 84%, 85% 92%, 70% 92%, 70% 100%, 30% 100%, 30% 92%, 15% 92%, 15% 84%, 7% 84%, 7% 72%,
+    0 72%, 0 28%, 7% 28%, 7% 16%, 15% 16%, 15% 8%, 20% 8%);
+}
+.cn-dymek span {
+  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.4;
+  text-align: center;
+  color: #000;
+}
+
+.cn-napis {
+  position: absolute;
+  z-index: 5;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 40px;
+  color: #ffe066;
+  -webkit-text-stroke: 2px #c00;
+  text-shadow: 3px 3px 0 #fff;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: cn-napis .8s ease-out forwards;
+}
+@keyframes cn-napis {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.3) rotate(-10deg); }
+  20% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) rotate(-6deg); }
+  100% { opacity: 0; transform: translate(-50%, -130%) scale(1) rotate(-6deg); }
+}
+.cn-scena.trzesie { animation: gra-trzes .3s linear; }
+@keyframes gra-trzes {
+  20% { transform: translate(-8px, 3px); } 40% { transform: translate(6px, -4px); }
+  60% { transform: translate(-4px, 4px); } 80% { transform: translate(3px, -2px); }
+}
+
+.cn-wynik {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+.cn-wynik .cn-guzik { position: static; margin-top: 14px; font-size: 22px; }
+.cn-wynik-tytul { font-family: "Palatino Linotype", Georgia, serif; font-size: 22px; color: #c00; font-weight: bold; }
+.cn-metry {
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 64px;
+  color: #ffe066;
+  text-shadow: 4px 4px 0 #6b4208;
+}
+.cn-rekord { min-height: 1.4em; margin-top: 4px; font-weight: bold; color: #ffe066; }
+
+.cn-podpis-lewy, .cn-podpis-prawy {
+  position: absolute;
+  bottom: 14px;
+  z-index: 6;
+  font-family: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #c4161c !important;
+  text-decoration: none;
+}
+.cn-podpis-lewy { left: 16px; }
+/* jak w oryginale: na wstępie tylko "Hosted by", potem tylko "więcej śmiesznych gier" */
+.cn-scena.na-wstepie .cn-podpis-prawy, .cn-scena:not(.na-wstepie) .cn-podpis-lewy { display: none; }
+.cn-podpis-prawy { right: 16px; }
+.cn-podpis-prawy:hover { text-decoration: underline; }
+.cn-rekord-staly { margin-top: 6px; font-size: 11px; text-align: right; color: #666; }
+
+@media (max-width: 1000px) {
+  .cn-okazja { font-size: 26px; }
+  .cn-dymek { right: 120px; transform: scale(.8); transform-origin: top right; }
 }

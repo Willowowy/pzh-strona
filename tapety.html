@@ -11,10 +11,7 @@
 
 <div id="strona">
 
-  <div id="gorny-pasek">
-    <span id="data">Dziś jest ...</span>
-    <span><a href="#">Dodaj do ulubionych</a> | <a href="#">Ustaw jako stronę startową</a></span>
-  </div>
+  <div id="gorny-pasek"></div>
 
   <header id="naglowek">
     <a href="index.html"><img src="logo.png" alt="Polski Związek Hydraulików" class="logo"></a>
@@ -31,13 +28,16 @@
     </div>
   </header>
 
+  <!-- Przyciski z class="zablokowany" są tymczasowo wyłączone.
+       Żeby włączyć przycisk, usuń z niego: class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1" -->
   <nav id="menu">
     <a href="index.html">STRONA GŁÓWNA</a>
-    <a href="pracownicy.html">PRACOWNICY</a>
-    <a href="instalki.html">INSTALKI</a>
-    <a href="tapety.html" class="aktywny">TAPETY</a>
-    <a href="mapa.html">MAPA</a>
-    <a href="patroni.html">PATRONI PROJEKTU</a>
+    <a href="pracownicy.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PRACOWNICY</a>
+    <a href="instalki.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">INSTALKI</a>
+    <a href="tapety.html" class="zablokowany aktywny" title="Wkrótce!" aria-disabled="true" tabindex="-1">TAPETY</a>
+    <a href="minecraft.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">MINECRAFT</a>
+    <a href="patroni.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PATRONI PROJEKTU</a>
+    <a href="gra.html">CHLAŚNIJ NIECIKA<span class="nowosc">NOWOŚĆ!!!</span></a>
   </nav>
 
   <div id="tasma">
