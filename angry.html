@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>:: POLSKI ZWIĄZEK HYDRAULIKÓW :: Angry Niecik ::</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="strona">
+
+  <div id="gorny-pasek"></div>
+
+  <header id="naglowek">
+    <a href="index.html"><img src="logo.png" alt="Polski Związek Hydraulików" class="logo"></a>
+    <div class="slogan">
+      Oficjalna strona kanału na YouTube<span class="wersja-beta">BETA</span><br>
+      <b>Polski Związek Hydraulików</b>
+    </div>
+    <div class="prawa">
+      <a class="subskrybuj" href="https://www.youtube.com/@polskizwiazekhydraulikow?sub_confirmation=1" target="_blank">SUBSKRYBUJ</a>
+      <form id="szukaj" role="search" action="index.html" method="get">
+        <input type="text" id="pole-szukaj" name="szukaj" placeholder="Szukaj w Tadzienniku..." aria-label="Szukaj w Tadzienniku">
+        <button type="submit" aria-label="Szukaj"><img src="lupka.png" alt=""></button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Przyciski z class="zablokowany" są tymczasowo wyłączone.
+       Żeby włączyć przycisk, usuń z niego: class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1" -->
+  <nav id="menu">
+    <a href="index.html">STRONA GŁÓWNA</a>
+    <a href="pracownicy.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PRACOWNICY</a>
+    <a href="instalki.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">INSTALKI</a>
+    <a href="tapety.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">TAPETY</a>
+    <a href="minecraft.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">MINECRAFT</a>
+    <a href="patroni.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PATRONI PROJEKTU</a>
+    <div class="menu-gry">
+      <button type="button" class="menu-gry-przycisk aktywny">GRY ▾<span class="nowosc">NOWOŚĆ!!!</span></button>
+      <div class="menu-gry-lista">
+        <a href="niecik.html">CHLAŚNIJ NIECIKA</a>
+        <!-- UKRYTE NA RAZIE – żeby przywrócić, usuń znaczniki komentarza wokół tych dwóch linijek
+        <a href="angry.html" class="aktywny">ANGRY NIECIK</a>
+        <a href="poprowadz.html">POPROWADŹ NIECIKA<span class="nowosc">NOWOŚĆ!!!</span></a>
+        -->
+      </div>
+    </div>
+  </nav>
+
+  <div id="tasma">
+    <div class="etykieta">TADZIENNIK</div>
+    <div class="pas"><span id="tasma-tekst"></span></div>
+  </div>
+
+  <div id="tresc">
+
+    <main id="glowna">
+
+      <div class="okruszki">Jesteś tutaj: <a href="index.html">Strona główna</a> » <b>Angry Niecik</b></div>
+
+      <div class="ramka">
+        <h2>Gra: Angry Niecik</h2>
+        <div class="srodek">
+
+          <!--
+            USTAWIENIA GRY (w skrypcie na dole strony):
+            - POZIOMY: układ bloków i świnek każdego poziomu
+            - MAT: wytrzymałość i punkty za drewno, szkło, kamień i świnki
+            - obrazek Niecika-ptaka: niecik-glowa.png
+            - muzyka: muzyka.mp3 (ta sama co w Chlaśnij Niecika)
+          -->
+          <div class="an" id="an">
+            <div class="an-hud">
+              <span>POZIOM: <b id="an-poziom">1/3</b></span>
+              <span>PUNKTY: <b id="an-punkty">0</b></span>
+              <span>NIECIKI: <b id="an-ptaki">0</b></span>
+              <span>ŚWINKI: <b id="an-swinie">0</b></span>
+              <button type="button" id="an-restart" title="Zacznij poziom od nowa">⟲ RESTART</button>
+              <button type="button" id="an-muzyka" title="Muzyka w tle">♫ WŁ</button>
+            </div>
+
+            <div class="an-scena">
+              <canvas id="an-canvas" width="900" height="500">Twoja przeglądarka nie obsługuje tej gry.</canvas>
+
+              <div class="an-ekran" id="an-menu">
+                <h3>ANGRY NIECIK</h3>
+                <p>Złap Niecika na procy, <b>odciągnij</b> i <b>puść</b>, żeby rozwalić budowle i wszystkie świnki.<br>
+                   W locie <b>kliknij</b>, żeby odpalić <b>TURBO DISCO</b>!</p>
+                <button type="button" class="an-guzik" id="an-graj">GRAJ!</button>
+              </div>
+
+              <div class="an-ekran" id="an-wynik" hidden>
+                <h3 id="an-wynik-tytul">POZIOM ZALICZONY!</h3>
+                <div class="an-gwiazdki" id="an-gwiazdki">★★★</div>
+                <p id="an-wynik-punkty"></p>
+                <p class="an-rekord" id="an-wynik-rekord"></p>
+                <div>
+                  <button type="button" class="an-guzik" id="an-od-nowa">JESZCZE RAZ</button>
+                  <button type="button" class="an-guzik" id="an-dalej">NASTĘPNY POZIOM »</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="ramka">
+        <h2>O grze</h2>
+        <div class="srodek wstep">
+          <p>Świnki zabarykadowały się w drewnie, szkle i kamieniu. Masz kilka Niecików i jedną procę – resztę wiesz. Za każdego niewykorzystanego Niecika dostajesz bonus 10 000 punktów, a rekord każdego poziomu zapisuje się w przeglądarce.</p>
+        </div>
+      </div>
+
+    </main>
+
+    <aside id="boczna">
+
+      <div class="ramka">
+        <h2>Znajdziesz nas na</h2>
+        <div class="srodek spolecznosc">
+          <!-- Kolejną ikonę dodasz, kopiując jedną linijkę <a ...> -->
+          <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank" rel="noopener" title="Twitch"><img src="ikona-twitch.png" alt="Twitch"></a>
+          <a href="https://x.com/papciosoft" target="_blank" rel="noopener" title="X (Twitter)"><img src="ikona-x.png" alt="X (Twitter)"></a>
+          <a href="https://www.tiktok.com/@papciosoft?lang=en-GB" target="_blank" rel="noopener" title="TikTok"><img src="ikona-tiktok.png" alt="TikTok"></a>
+          <a href="https://www.instagram.com/polskizwiazekhydraulikow/" target="_blank" rel="noopener" title="Instagram"><img src="ikona-instagram.png" alt="Instagram"></a>
+          <a href="https://www.facebook.com/profile.php?id=61579178634518&amp;locale=pl_PL" target="_blank" rel="noopener" title="Facebook"><img src="ikona-facebook.png" alt="Facebook"></a>
+        </div>
+      </div>
+
+      <div class="ramka" id="licznik">
+        <h2>Licznik odwiedzin</h2>
+        <div class="srodek">
+          Jesteś naszym<br>
+          <div class="cyfry" id="cyfry"></div><br>
+          gościem!<br>
+          <small>od 01.01.2008</small>
+        </div>
+      </div>
+
+      <div class="uwaga">
+        Strona najlepiej wygląda w rozdzielczości <b>1024x768</b><br>
+        w przeglądarce <b>Internet Explorer 6.0</b>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer id="stopka">
+    <div class="plakietki">
+      <div class="plakietka p1"><big>PZH</big>member</div>
+      <div class="plakietka p2"><big>HTML</big>valid (chyba)</div>
+      <div class="plakietka p3">zrobione w<big>Notatniku</big></div>
+      <div class="plakietka p4">oglądaj<big>TadzioTV</big></div>
+      <div class="plakietka p5">get<big>Flash</big>player</div>
+      <div class="plakietka p6">nie wspieramy<big>LORDA PALIWO</big></div>
+      <div class="plakietka p7"><big>GANJA TRIP</big>trwa</div>
+    </div>
+    &copy; 2008–<span id="rok">2026</span> Polski Związek Hydraulików. Wszelkie prawa zastrzeżone.<br>
+    Kopiowanie treści bez zgody Związku grozi zalaniem piwnicy.
+  </footer>
+
+</div>
+
+<script src="wspolne.js"></script>
+<script>
+/* =========================================================
+   ANGRY NIECIK – proca, fizyka i poziomy w czystym JS (canvas)
+   ========================================================= */
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var canvas = $('an-canvas'), ctx = canvas.getContext('2d');
+  var W = 900, H = 500, ZIEMIA = 450, G = 900;
+  var PROCA = { x: 170, y: ZIEMIA - 112 }, MAX_NACIAG = 90, SILA = 9.2, R_PTAKA = 20;
+
+  var glowa = new Image(); glowa.src = 'niecik-glowa.png';
+
+  /* ---------- MATERIAŁY ---------- */
+  var MAT = {
+    drewno: { gestosc: 1.0, hp: 90,  kruchosc: 0.35, punkty: 500 },
+    szklo:  { gestosc: 0.6, hp: 40,  kruchosc: 0.7,  punkty: 300 },
+    kamien: { gestosc: 2.6, hp: 220, kruchosc: 0.15, punkty: 800 },
+    swinia: { gestosc: 0.8, hp: 45,  kruchosc: 0.6,  punkty: 5000 }
+  };
+
+  /* ---------- POZIOMY ----------
+     blok(x, y, szer, wys, materiał) – x od lewej, y = wysokość nad ziemią (dół bloku)
+     swinia(x, y, promień)           – x środka, y = wysokość nad ziemią (dół świnki)
+     ptaki: ile Niecików dostaje gracz                                         */
+  var POZIOMY = [
+    { nazwa: 'Rozgrzewka', ptaki: 3, budowa: function (b, s) {
+      b(600, 0, 20, 100, 'drewno'); b(700, 0, 20, 100, 'drewno'); b(590, 100, 140, 20, 'drewno');
+      s(660, 0, 20); s(660, 120, 18);
+    }},
+    { nazwa: 'Szklane domy', ptaki: 4, budowa: function (b, s) {
+      b(560, 0, 20, 80, 'szklo'); b(640, 0, 20, 80, 'szklo'); b(550, 80, 120, 20, 'drewno');
+      s(610, 0, 18);
+      b(700, 0, 30, 140, 'kamien'); b(800, 0, 30, 140, 'kamien'); b(690, 140, 150, 20, 'drewno');
+      b(730, 160, 20, 60, 'szklo'); b(790, 160, 20, 60, 'szklo'); b(720, 220, 100, 20, 'drewno');
+      s(765, 0, 20); s(770, 160, 16); s(770, 240, 18);
+    }},
+    { nazwa: 'Twierdza', ptaki: 4, budowa: function (b, s) {
+      b(580, 0, 20, 70, 'drewno'); b(660, 0, 20, 70, 'drewno'); b(740, 0, 20, 70, 'drewno'); b(820, 0, 20, 70, 'drewno');
+      b(570, 70, 130, 20, 'kamien'); b(730, 70, 130, 20, 'kamien');
+      s(630, 0, 18); s(710, 0, 18); s(790, 0, 18);
+      b(600, 90, 20, 60, 'szklo'); b(820, 90, 20, 60, 'szklo'); b(590, 150, 260, 20, 'drewno');
+      s(660, 90, 18); s(770, 90, 18);
+      b(690, 170, 60, 50, 'kamien'); s(720, 220, 18);
+    }}
+  ];
+
+  /* ---------- stan gry ---------- */
+  var ciala = [], czastki = [], napisy = [], slad = [], staryslad = [];
+  var poziom = 0, punkty = 0, ptakiZostalo = 0, ptak = null, stan = 'menu';
+  var celujemy = false, celPozycja = null, turboUzyte = false, czasLotu = 0, wolno = 0;
+  var stabilizacja = 0, koniecZaplanowany = null, runda = 0;
+  var rekordy = {};
+  try { rekordy = JSON.parse(localStorage.getItem('pzh-angry-rekordy') || '{}'); } catch (e) {}
+
+  function cialo(o) {
+    o.vx = o.vx || 0; o.vy = o.vy || 0; o.kat = 0;
+    var mat = MAT[o.mat] || { gestosc: 1, hp: Infinity, kruchosc: 0 };
+    o.masa = o.stat ? Infinity : (o.r ? Math.PI * o.r * o.r : o.w * o.h) * mat.gestosc * 0.001;
+    o.odw = o.stat ? 0 : 1 / o.masa;
+    o.hp = o.hpMax = o.ptak ? Infinity : mat.hp;
+    o.sprez = o.mat === 'szklo' ? 0.15 : 0.2;
+    o.tarcie = 0.6;
+    ciala.push(o);
+    return o;
+  }
+
+  function zbudujPoziom(n) {
+    ciala = []; czastki = []; napisy = []; slad = []; staryslad = [];
+    cialo({ stat: true, x: W / 2, y: ZIEMIA + 100, w: W * 4, h: 200, ziemia: true });
+    POZIOMY[n].budowa(
+      function (x, y, w, h, m) { cialo({ x: x + w / 2, y: ZIEMIA - y - h / 2, w: w, h: h, mat: m }); },
+      function (x, y, r) { cialo({ x: x, y: ZIEMIA - y - r, r: r, mat: 'swinia', swinia: true }); }
+    );
+    ptakiZostalo = POZIOMY[n].ptaki;
+    ptak = null;
+    stabilizacja = 90;                       // przez chwilę budowle osiadają bez obrażeń
+    for (var i = 0; i < 60; i++) krok(1 / 60, true);
+    zaladujPtaka();
+    odswiezHud();
+  }
+
+  function zaladujPtaka() {
+    if (ptakiZostalo <= 0) { ptak = null; return; }
+    ptakiZostalo--;
+    ptak = { x: PROCA.x, y: PROCA.y, r: R_PTAKA, naProcy: true, kat: 0 };
+    turboUzyte = false; czasLotu = 0; wolno = 0;
+    odswiezHud();
+  }
+
+  /* ---------- KOLIZJE ---------- */
+  function kolizja(a, b) {
+    if (a.r && b.r) {
+      var dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy), suma = a.r + b.r;
+      if (d >= suma || d === 0) return null;
+      return { nx: dx / d, ny: dy / d, gl: suma - d };
+    }
+    if (!a.r && !b.r) {
+      var ox = (a.w + b.w) / 2 - Math.abs(b.x - a.x), oy = (a.h + b.h) / 2 - Math.abs(b.y - a.y);
+      if (ox <= 0 || oy <= 0) return null;
+      return ox < oy ? { nx: Math.sign(b.x - a.x) || 1, ny: 0, gl: ox } : { nx: 0, ny: Math.sign(b.y - a.y) || 1, gl: oy };
+    }
+    var kolo = a.r ? a : b, pud = a.r ? b : a, znak = a.r ? 1 : -1;
+    var cx = Math.max(pud.x - pud.w / 2, Math.min(kolo.x, pud.x + pud.w / 2));
+    var cy = Math.max(pud.y - pud.h / 2, Math.min(kolo.y, pud.y + pud.h / 2));
+    var ex = cx - kolo.x, ey = cy - kolo.y, dl = Math.hypot(ex, ey);
+    var n;
+    if (dl === 0) {                         // środek koła w środku pudełka
+      var px = pud.w / 2 + kolo.r - Math.abs(kolo.x - pud.x), py = pud.h / 2 + kolo.r - Math.abs(kolo.y - pud.y);
+      n = px < py ? { nx: Math.sign(pud.x - kolo.x) || 1, ny: 0, gl: px } : { nx: 0, ny: Math.sign(pud.y - kolo.y) || 1, gl: py };
+    } else {
+      if (dl >= kolo.r) return null;
+      n = { nx: ex / dl, ny: ey / dl, gl: kolo.r - dl };
+    }
+    n.nx *= znak; n.ny *= znak;
+    return n;
+  }
+
+  function obrazenia(o, uderzenie, inny) {
+    if (stabilizacja > 0 || o.stat || o.ptak || o.usuniete) return;
+    var mat = MAT[o.mat]; if (!mat) return;
+    var prog = 110;
+    if (uderzenie <= prog) return;
+    var waga = inny.stat ? 1.5 : Math.min(3, Math.max(0.3, Math.sqrt(inny.masa / o.masa)));
+    o.hp -= (uderzenie - prog) * mat.kruchosc * waga;
+    if (o.hp <= 0) zniszcz(o);
+  }
+
+  function zniszcz(o) {
+    if (o.usuniete) return;
+    o.usuniete = true;
+    var mat = MAT[o.mat];
+    punkty += mat ? mat.punkty : 0;
+    napisy.push({ x: o.x, y: o.y - 10, tekst: '+' + (mat ? mat.punkty : 0), zycie: 1, swinia: !!o.swinia });
+    var kolor = o.swinia ? '#7bd44a' : o.mat === 'szklo' ? '#bfe6ff' : o.mat === 'kamien' ? '#9a9a9a' : '#c8873a';
+    for (var i = 0; i < (o.swinia ? 18 : 10); i++) {
+      czastki.push({ x: o.x + (Math.random() - 0.5) * (o.w || o.r), y: o.y + (Math.random() - 0.5) * (o.h || o.r),
+        vx: (Math.random() - 0.5) * 300, vy: -Math.random() * 300, zycie: 1, kolor: kolor, rozm: 3 + Math.random() * 5 });
+    }
+    odswiezHud();
+  }
+
+  /* ---------- KROK FIZYKI ---------- */
+  function krok(dt, cicho) {
+    var lista = ciala.filter(function (c) { return !c.usuniete; });
+    if (ptak && !ptak.naProcy && !ptak.wcielony) {
+      ptak.wcielony = true;
+      ptak.vx = ptak.vx0; ptak.vy = ptak.vy0;
+      ptak.ptak = true; ptak.mat = null;
+      cialo(ptak); ptak.masa = 3.5; ptak.odw = 1 / ptak.masa; ptak.sprez = 0.3; ptak.tarcie = 0.5;
+      lista.push(ptak);
+    }
+    lista.forEach(function (c) {
+      if (c.stat) return;
+      c.vy += G * dt;
+      c.x += c.vx * dt; c.y += c.vy * dt;
+      if (c.r) c.kat += c.vx * dt / c.r;
+    });
+
+    var uderzenia = new Map();
+    for (var it = 0; it < 6; it++) {
+      for (var i = 0; i < lista.length; i++) for (var j = i + 1; j < lista.length; j++) {
+        var a = lista[i], b = lista[j];
+        if (a.stat && b.stat) continue;
+        var k = kolizja(a, b); if (!k) continue;
+        var rvx = b.vx - a.vx, rvy = b.vy - a.vy, vn = rvx * k.nx + rvy * k.ny;
+        var suma = a.odw + b.odw; if (suma === 0) continue;
+        if (it === 0 && vn < 0) {
+          var klucz = i * 1000 + j;
+          uderzenia.set(klucz, [a, b, -vn]);
+        }
+        if (vn < 0) {
+          var e = -vn < 60 ? 0 : Math.min(a.sprez, b.sprez);
+          var jn = -(1 + e) * vn / suma;
+          a.vx -= jn * k.nx * a.odw; a.vy -= jn * k.ny * a.odw;
+          b.vx += jn * k.nx * b.odw; b.vy += jn * k.ny * b.odw;
+          // tarcie
+          rvx = b.vx - a.vx; rvy = b.vy - a.vy;
+          var tx = rvx - (rvx * k.nx + rvy * k.ny) * k.nx, ty = rvy - (rvx * k.nx + rvy * k.ny) * k.ny, tl = Math.hypot(tx, ty);
+          if (tl > 0.0001) {
+            tx /= tl; ty /= tl;
+            var jt = -(rvx * tx + rvy * ty) / suma, mu = Math.sqrt(a.tarcie * b.tarcie);
+            jt = Math.max(-jn * mu, Math.min(jn * mu, jt));
+            a.vx -= jt * tx * a.odw; a.vy -= jt * ty * a.odw;
+            b.vx += jt * tx * b.odw; b.vy += jt * ty * b.odw;
+          }
+        }
+        var korekta = Math.max(k.gl - 0.3, 0) / suma * 0.5;
+        a.x -= korekta * k.nx * a.odw; a.y -= korekta * k.ny * a.odw;
+        b.x += korekta * k.nx * b.odw; b.y += korekta * k.ny * b.odw;
+      }
+    }
+    if (!cicho) uderzenia.forEach(function (u) { obrazenia(u[0], u[2], u[1]); obrazenia(u[1], u[2], u[0]); });
+
+    lista.forEach(function (c) {
+      if (c.stat) return;
+      var v = Math.hypot(c.vx, c.vy);
+      if (v < 6) { c.vx *= 0.5; c.vy *= 0.5; }            // uspokajanie, żeby wieże nie drgały
+      if (c.x < -150 || c.x > W + 250 || c.y > H + 150) {  // wypadło za planszę
+        if (c.ptak) c.poza = true; else zniszcz(c);
+      }
+    });
+    if (stabilizacja > 0) stabilizacja--;
+  }
+
+  /* ---------- PROCA: celowanie myszką / palcem ---------- */
+  function punkt(e) {
+    var r = canvas.getBoundingClientRect();
+    return { x: (e.clientX - r.left) * W / r.width, y: (e.clientY - r.top) * H / r.height };
+  }
+  canvas.addEventListener('pointerdown', function (e) {
+    if (stan !== 'gra') return;
+    var p = punkt(e);
+    if (ptak && ptak.naProcy && Math.hypot(p.x - ptak.x, p.y - ptak.y) < 45) {
+      celujemy = true; canvas.setPointerCapture(e.pointerId); e.preventDefault();
+    } else if (ptak && !ptak.naProcy && !turboUzyte && !ptak.koniec) {
+      turboUzyte = true;                     // kliknięcie w locie = TURBO
+      ptak.vx *= 1.6; ptak.vy *= 1.2;
+      napisy.push({ x: ptak.x, y: ptak.y - 30, tekst: 'TURBO DISCO!', zycie: 1, turbo: true });
+    }
+  });
+  canvas.addEventListener('pointermove', function (e) {
+    if (!celujemy) return;
+    var p = punkt(e), dx = p.x - PROCA.x, dy = p.y - PROCA.y, d = Math.hypot(dx, dy);
+    if (d > MAX_NACIAG) { dx *= MAX_NACIAG / d; dy *= MAX_NACIAG / d; }
+    ptak.x = PROCA.x + dx; ptak.y = PROCA.y + dy;
+  });
+  function pusc() {
+    if (!celujemy) return;
+    celujemy = false;
+    var dx = PROCA.x - ptak.x, dy = PROCA.y - ptak.y;
+    if (Math.hypot(dx, dy) < 15) { ptak.x = PROCA.x; ptak.y = PROCA.y; return; }   // za słabo – zostaje na procy
+    ptak.naProcy = false;
+    ptak.vx0 = dx * SILA; ptak.vy0 = dy * SILA;
+    staryslad = slad; slad = [];
+  }
+  canvas.addEventListener('pointerup', pusc);
+  canvas.addEventListener('pointercancel', pusc);
+
+  /* ---------- PĘTLA GRY ---------- */
+  var poprzedni = performance.now(), akumulator = 0, licznikSladu = 0;
+  function petla(t) {
+    var dt = Math.min((t - poprzedni) / 1000, 0.05); poprzedni = t;
+    if (stan === 'gra' || stan === 'koniec-czeka') {
+      akumulator += dt;
+      while (akumulator >= 1 / 120) { krok(1 / 120); akumulator -= 1 / 120; }
+      logika(dt);
+    }
+    czastki.forEach(function (c) { c.vy += G * dt * 0.6; c.x += c.vx * dt; c.y += c.vy * dt; c.zycie -= dt * 1.2; });
+    czastki = czastki.filter(function (c) { return c.zycie > 0; });
+    napisy.forEach(function (n) { n.y -= 40 * dt; n.zycie -= dt * 0.8; });
+    napisy = napisy.filter(function (n) { return n.zycie > 0; });
+    rysuj();
+    requestAnimationFrame(petla);
+  }
+
+  function zywychSwin() { return ciala.filter(function (c) { return c.swinia && !c.usuniete; }).length; }
+
+  function logika(dt) {
+    if (ptak && !ptak.naProcy) {
+      czasLotu += dt;
+      if (++licznikSladu % 4 === 0 && !ptak.koniec) slad.push({ x: ptak.x, y: ptak.y });
+      var v = Math.hypot(ptak.vx || 0, ptak.vy || 0);
+      wolno = v < 20 ? wolno + dt : 0;
+      if (!ptak.koniec && (wolno > 0.8 || ptak.poza || czasLotu > 9)) {
+        ptak.koniec = true;
+        var mojaRunda = runda;
+        setTimeout(function () {
+          if (mojaRunda !== runda) return;      // w międzyczasie ktoś zrestartował poziom
+          if (ptak) ptak.usuniete = true;
+          if (zywychSwin() > 0 && ptakiZostalo > 0) zaladujPtaka();
+          else if (zywychSwin() > 0) zaplanujKoniec(false);
+        }, 1200);
+      }
+    }
+    if (stan === 'gra' && zywychSwin() === 0) zaplanujKoniec(true);
+  }
+
+  function zaplanujKoniec(wygrana) {
+    if (koniecZaplanowany) return;
+    stan = 'koniec-czeka';
+    koniecZaplanowany = setTimeout(function () {
+      koniecZaplanowany = null;
+      wygrana = zywychSwin() === 0;          // świnka mogła jeszcze spaść w międzyczasie
+      if (wygrana) {
+        var bonus = (ptakiZostalo + (ptak && ptak.naProcy ? 1 : 0)) * 10000;
+        punkty += bonus;
+        odswiezHud();
+        var gwiazdki = bonus >= 20000 ? 3 : bonus >= 10000 ? 2 : 1;
+        var nowy = !rekordy[poziom] || punkty > rekordy[poziom];
+        if (nowy) { rekordy[poziom] = punkty; try { localStorage.setItem('pzh-angry-rekordy', JSON.stringify(rekordy)); } catch (e) {} }
+        $('an-wynik-tytul').textContent = poziom === POZIOMY.length - 1 ? 'WSZYSTKIE POZIOMY ZALICZONE!' : 'POZIOM ZALICZONY!';
+        $('an-gwiazdki').textContent = '★★★'.slice(0, gwiazdki) + '☆☆☆'.slice(gwiazdki);
+        $('an-wynik-punkty').textContent = punkty + ' pkt' + (bonus ? ' (w tym bonus ' + bonus + ' za Niecików)' : '');
+        $('an-wynik-rekord').textContent = nowy ? '★ NOWY REKORD POZIOMU! ★' : 'Rekord poziomu: ' + rekordy[poziom];
+        $('an-dalej').hidden = poziom === POZIOMY.length - 1;
+        $('an-od-nowa').textContent = poziom === POZIOMY.length - 1 ? 'OD POCZĄTKU' : 'JESZCZE RAZ';
+      } else {
+        $('an-wynik-tytul').textContent = 'PORAŻKA!';
+        $('an-gwiazdki').textContent = '☆☆☆';
+        $('an-wynik-punkty').textContent = 'Świnki przetrwały. Zostało: ' + zywychSwin();
+        $('an-wynik-rekord').textContent = '';
+        $('an-dalej').hidden = true;
+        $('an-od-nowa').textContent = 'SPRÓBUJ PONOWNIE';
+      }
+      $('an-wynik').dataset.wygrana = wygrana ? '1' : '';
+      $('an-wynik').hidden = false;
+      stan = 'wynik';
+    }, 1500);
+  }
+
+  /* ---------- RYSOWANIE ---------- */
+  var chmury = [{ x: 120, y: 70, s: 1 }, { x: 420, y: 110, s: 0.7 }, { x: 720, y: 60, s: 1.2 }];
+  function tlo() {
+    var g = ctx.createLinearGradient(0, 0, 0, ZIEMIA);
+    g.addColorStop(0, '#6fc3ff'); g.addColorStop(1, '#dff4ff');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#fff6a8'; ctx.beginPath(); ctx.arc(800, 80, 38, 0, 7); ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,.9)';
+    chmury.forEach(function (c) {
+      c.x += 0.15 * c.s; if (c.x > W + 120) c.x = -120;
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, 22 * c.s, 0, 7); ctx.arc(c.x + 25 * c.s, c.y - 10 * c.s, 28 * c.s, 0, 7); ctx.arc(c.x + 55 * c.s, c.y, 22 * c.s, 0, 7);
+      ctx.fill();
+    });
+    ctx.fillStyle = '#8fd17a';
+    ctx.beginPath(); ctx.moveTo(0, ZIEMIA);
+    for (var x = 0; x <= W; x += 30) ctx.lineTo(x, ZIEMIA - 50 - Math.sin(x / 90) * 25 - Math.sin(x / 37) * 8);
+    ctx.lineTo(W, ZIEMIA); ctx.fill();
+    ctx.fillStyle = '#8a5a2b'; ctx.fillRect(0, ZIEMIA, W, H - ZIEMIA);
+    ctx.fillStyle = '#4caf3a'; ctx.fillRect(0, ZIEMIA, W, 10);
+    ctx.fillStyle = '#3e8f2f'; for (var i = 0; i < W; i += 12) ctx.fillRect(i, ZIEMIA + 8, 6, 4);
+  }
+
+  function proca(przod) {
+    ctx.fillStyle = '#6b3d14'; ctx.strokeStyle = '#3e220a'; ctx.lineWidth = 2;
+    if (!przod) {
+      ctx.fillRect(PROCA.x - 6, PROCA.y + 10, 14, ZIEMIA - PROCA.y - 10);
+      ctx.save(); ctx.translate(PROCA.x + 4, PROCA.y + 14); ctx.rotate(0.35); ctx.fillRect(-5, -34, 11, 36); ctx.restore();
+    } else {
+      ctx.save(); ctx.translate(PROCA.x - 4, PROCA.y + 14); ctx.rotate(-0.35); ctx.fillRect(-6, -34, 11, 36); ctx.restore();
+    }
+  }
+  function gumy(przod) {
+    if (!ptak || !ptak.naProcy) return;
+    ctx.strokeStyle = '#3b1f0a'; ctx.lineWidth = 5;
+    ctx.beginPath();
+    if (przod) { ctx.moveTo(PROCA.x - 12, PROCA.y - 14); } else { ctx.moveTo(PROCA.x + 14, PROCA.y - 14); }
+    ctx.lineTo(ptak.x, ptak.y); ctx.stroke();
+  }
+
+  function rysujPtaka(p) {
+    ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.naProcy ? 0 : p.kat * 0.4);
+    ctx.fillStyle = '#d6001c'; ctx.beginPath(); ctx.arc(0, 0, p.r + 3, 0, 7); ctx.fill();
+    if (glowa.complete && glowa.naturalWidth) ctx.drawImage(glowa, -p.r, -p.r, p.r * 2, p.r * 2);
+    ctx.strokeStyle = '#000'; ctx.lineWidth = 3;            // gniewne brwi
+    ctx.beginPath(); ctx.moveTo(-12, -9); ctx.lineTo(-3, -5); ctx.moveTo(12, -9); ctx.lineTo(3, -5); ctx.stroke();
+    ctx.restore();
+  }
+  function rysujSwinie(c) {
+    ctx.save(); ctx.translate(c.x, c.y); ctx.rotate(c.kat * 0.3);
+    var r = c.r, ranna = c.hp < c.hpMax * 0.6;
+    ctx.fillStyle = ranna ? '#5fae36' : '#7bd44a'; ctx.strokeStyle = '#2f6b16'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(-r * 0.6, -r * 0.8, r * 0.28, 0, 7); ctx.arc(r * 0.6, -r * 0.8, r * 0.28, 0, 7); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.arc(0, 0, r, 0, 7); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#a6e870'; ctx.beginPath(); ctx.ellipse(0, r * 0.15, r * 0.38, r * 0.28, 0, 0, 7); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#2f6b16'; ctx.beginPath(); ctx.arc(-r * 0.13, r * 0.15, r * 0.08, 0, 7); ctx.arc(r * 0.13, r * 0.15, r * 0.08, 0, 7); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(-r * 0.4, -r * 0.3, r * 0.22, 0, 7); ctx.arc(r * 0.4, -r * 0.3, r * 0.22, 0, 7); ctx.fill();
+    ctx.fillStyle = '#000'; ctx.beginPath(); ctx.arc(-r * 0.36, -r * 0.28, r * 0.1, 0, 7); ctx.arc(r * 0.36, -r * 0.28, r * 0.1, 0, 7); ctx.fill();
+    if (ranna) { ctx.strokeStyle = '#2f6b16'; ctx.beginPath(); ctx.moveTo(-r * 0.6, -r * 0.55); ctx.lineTo(-r * 0.2, -r * 0.5); ctx.stroke(); }
+    ctx.restore();
+  }
+  function rysujBlok(c) {
+    var x = c.x - c.w / 2, y = c.y - c.h / 2;
+    if (c.mat === 'drewno') {
+      ctx.fillStyle = '#c8873a'; ctx.fillRect(x, y, c.w, c.h);
+      ctx.strokeStyle = '#8c5522'; ctx.lineWidth = 1;
+      for (var i = 1; i < 3; i++) {
+        ctx.beginPath();
+        if (c.w > c.h) { ctx.moveTo(x + 3, y + c.h * i / 3); ctx.lineTo(x + c.w - 3, y + c.h * i / 3); }
+        else { ctx.moveTo(x + c.w * i / 3, y + 3); ctx.lineTo(x + c.w * i / 3, y + c.h - 3); }
+        ctx.stroke();
+      }
+      ctx.strokeStyle = '#6b3d14';
+    } else if (c.mat === 'szklo') {
+      ctx.fillStyle = 'rgba(175,225,255,.75)'; ctx.fillRect(x, y, c.w, c.h);
+      ctx.strokeStyle = 'rgba(255,255,255,.9)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(x + 4, y + c.h - 4); ctx.lineTo(x + Math.min(c.w, c.h) * 0.6, y + 4); ctx.stroke();
+      ctx.strokeStyle = '#6aa9cf';
+    } else {
+      ctx.fillStyle = '#9a9a9a'; ctx.fillRect(x, y, c.w, c.h);
+      ctx.fillStyle = '#7d7d7d';
+      for (var s = 0; s < 4; s++) ctx.fillRect(x + ((s * 37) % (c.w - 4)) + 2, y + ((s * 23) % (c.h - 4)) + 2, 4, 3);
+      ctx.strokeStyle = '#555';
+    }
+    ctx.lineWidth = 2; ctx.strokeRect(x, y, c.w, c.h);
+    if (c.hp < c.hpMax * 0.6) {               // pęknięcia
+      ctx.strokeStyle = 'rgba(0,0,0,.55)'; ctx.lineWidth = 1.5; ctx.beginPath();
+      ctx.moveTo(x + c.w * 0.2, y + c.h * 0.1); ctx.lineTo(x + c.w * 0.5, y + c.h * 0.45);
+      ctx.lineTo(x + c.w * 0.35, y + c.h * 0.6); ctx.lineTo(x + c.w * 0.75, y + c.h * 0.9); ctx.stroke();
+    }
+  }
+
+  function rysuj() {
+    tlo();
+    ctx.fillStyle = 'rgba(255,255,255,.5)';
+    staryslad.forEach(function (p) { ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, 7); ctx.fill(); });
+    ctx.fillStyle = 'rgba(255,255,255,.95)';
+    slad.forEach(function (p, i) { ctx.beginPath(); ctx.arc(p.x, p.y, i % 3 === 0 ? 4 : 2.5, 0, 7); ctx.fill(); });
+    proca(false); gumy(false);
+    ciala.forEach(function (c) { if (c.usuniete || c.stat || c.ptak) return; if (c.swinia) rysujSwinie(c); else rysujBlok(c); });
+    if (ptak && !ptak.usuniete) rysujPtaka(ptak);
+    gumy(true); proca(true);
+    // czekające Niciki przy procy
+    for (var i = 0; i < ptakiZostalo; i++) rysujPtaka({ x: PROCA.x - 45 - i * 34, y: ZIEMIA - R_PTAKA, r: R_PTAKA - 4, naProcy: true });
+    czastki.forEach(function (c) { ctx.globalAlpha = Math.max(0, c.zycie); ctx.fillStyle = c.kolor; ctx.fillRect(c.x, c.y, c.rozm, c.rozm); });
+    ctx.globalAlpha = 1;
+    napisy.forEach(function (n) {
+      ctx.globalAlpha = Math.max(0, n.zycie);
+      ctx.font = (n.turbo ? 'bold 22px' : n.swinia ? 'bold 24px' : 'bold 16px') + ' Impact, "Arial Black", sans-serif';
+      ctx.textAlign = 'center'; ctx.lineWidth = 4; ctx.strokeStyle = '#000';
+      ctx.fillStyle = n.turbo ? '#ff3df2' : n.swinia ? '#ffe066' : '#fff';
+      ctx.strokeText(n.tekst, n.x, n.y); ctx.fillText(n.tekst, n.x, n.y);
+    });
+    ctx.globalAlpha = 1;
+    if (stan === 'gra' && ptak && ptak.naProcy && !celujemy) {
+      ctx.font = 'bold 13px Verdana, sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff';
+      ctx.strokeStyle = 'rgba(0,0,0,.6)'; ctx.lineWidth = 3;
+      ctx.strokeText('Złap Niecika i odciągnij!', PROCA.x, PROCA.y - 40); ctx.fillText('Złap Niecika i odciągnij!', PROCA.x, PROCA.y - 40);
+    }
+  }
+
+  /* ---------- HUD i przyciski ---------- */
+  function odswiezHud() {
+    $('an-poziom').textContent = (poziom + 1) + '/' + POZIOMY.length;
+    $('an-punkty').textContent = punkty;
+    $('an-ptaki').textContent = (ptakiZostalo + (ptak && ptak.naProcy ? 1 : 0));
+    $('an-swinie').textContent = zywychSwin();
+  }
+  function start(n) {
+    runda++;
+    poziom = n; punkty = 0;
+    clearTimeout(koniecZaplanowany); koniecZaplanowany = null;
+    $('an-menu').hidden = true; $('an-wynik').hidden = true;
+    zbudujPoziom(n);
+    stan = 'gra';
+  }
+  $('an-graj').addEventListener('click', function () { start(0); });
+  $('an-dalej').addEventListener('click', function () { start(poziom + 1); });
+  $('an-od-nowa').addEventListener('click', function () {
+    var bylaWygranaOstatniego = $('an-wynik').dataset.wygrana && poziom === POZIOMY.length - 1;
+    start(bylaWygranaOstatniego ? 0 : poziom);
+  });
+  $('an-restart').addEventListener('click', function () { if (stan !== 'menu') start(poziom); });
+
+  /* ---------- muzyka (ta sama co w Chlaśnij Niecika) ---------- */
+  var muzyka = new Audio('muzyka.mp3');
+  muzyka.loop = true; muzyka.preload = 'none'; muzyka.volume = 0.4;
+  var muzykaWl = true;
+  try { muzykaWl = localStorage.getItem('pzh-muzyka') !== 'wyl'; } catch (e) {}
+  function przyciskMuzyki() { $('an-muzyka').textContent = muzykaWl ? '♫ WŁ' : '♫ WYŁ'; }
+  przyciskMuzyki();
+  $('an').addEventListener('pointerdown', function () { if (muzykaWl && muzyka.paused) muzyka.play().catch(function () {}); });
+  $('an-muzyka').addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+  $('an-muzyka').addEventListener('click', function () {
+    muzykaWl = !muzykaWl;
+    try { localStorage.setItem('pzh-muzyka', muzykaWl ? 'wl' : 'wyl'); } catch (e) {}
+    if (muzykaWl) muzyka.play().catch(function () {}); else muzyka.pause();
+    przyciskMuzyki();
+  });
+
+  zbudujPoziom(0);
+  requestAnimationFrame(petla);
+
+  // do testów
+  window.__angry = { stan: function () { return { stan: stan, poziom: poziom, punkty: punkty, swinie: zywychSwin(), ptaki: ptakiZostalo, ptak: ptak && { x: ptak.x, y: ptak.y, naProcy: ptak.naProcy } }; },
+    proca: PROCA, W: W, H: H };
+})();
+</script>
+
+</body>
+</html>

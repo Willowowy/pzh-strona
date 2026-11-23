@@ -125,10 +125,10 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   border-bottom: 3px solid var(--zielony-ciemny);
 }
 #menu a {
-  padding: 9px 11px;
+  padding: 9px 8px;
   white-space: nowrap;
   font-family: "Trebuchet MS", Verdana, sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
   color: #fff;
   text-decoration: none;
@@ -376,14 +376,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   background: var(--tadzio-ciemny);
   border-radius: 3px;
 }
-.tadziotv .ekran {
-  margin: 10px;
-  padding: 6px;
-  background: #222;
-  border-radius: 10px;
-  box-shadow: inset 0 0 6px #000;
-}
-.tadziotv .ekran img { display: block; width: 100%; border-radius: 6px; background: var(--tadzio-jasny); }
 .tadziotv .tadziennik {
   margin: 0;
   padding: 6px;
@@ -399,17 +391,16 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 /* ---------- boczne ---------- */
 .spolecznosc {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 6px;
 }
 .spolecznosc a {
   display: block;
-  height: 60px;
-  border: 1px solid #ccc;
-  background: #f4f4f4;
-  overflow: hidden;
+  border-radius: 10px;
+  transition: transform .1s;
 }
-.spolecznosc img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.spolecznosc a:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.spolecznosc img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 3px rgba(0,0,0,.25); }
 
 #licznik { text-align: center; }
 #licznik .cyfry { display: inline-flex; gap: 2px; margin: 6px 0; }
@@ -460,6 +451,9 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 .p3 { background: linear-gradient(#4a8de0, #1a4ea0); color: #fff; }
 .p4 { background: linear-gradient(#a8e4ff, #33b4f5); color: #fff; text-shadow: 0 1px 1px #1a5f8a; }
 .p5 { background: linear-gradient(#a0f, #509); color: #fff; }
+.p6 { background: linear-gradient(#ffb347, #e06a00); color: #fff; text-shadow: 1px 1px 0 #7a3500; }
+.p6 big { font-size: 9px; }
+.p7 { background: linear-gradient(#e0302a 0 33%, #f5d000 33% 66%, #1f9e3a 66%); color: #fff; text-shadow: 1px 1px 0 #000, -1px -1px 0 #000; }
 
 /* ---------- telefon ---------- */
 @media (max-width: 1000px) {
@@ -1010,3 +1004,132 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   .cn-okazja { font-size: 26px; }
   .cn-dymek { right: 120px; transform: scale(.8); transform-origin: top right; }
 }
+
+/* ---------- GRA: Angry Niecik ---------- */
+.an { user-select: none; -webkit-user-select: none; border: 2px solid #3e220a; border-radius: 6px; overflow: hidden; }
+.an-hud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  padding: 6px 10px;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  color: #ffe066;
+  background: linear-gradient(#6b3d14, #4a2a0e);
+}
+.an-hud b { color: #fff; }
+.an-hud button {
+  padding: 2px 8px;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #ffe066;
+  background: #3e220a;
+  border: 1px solid #8a5a2b;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.an-hud button:first-of-type { margin-left: auto; }
+.an-hud button:hover { background: #5a3412; }
+.an-scena { position: relative; }
+.an-scena canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 5;
+  touch-action: none;
+  cursor: grab;
+}
+.an-ekran {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  background: rgba(20, 10, 0, .62);
+}
+.an-ekran[hidden] { display: none; }
+.an-ekran h3 {
+  margin: 0 0 10px;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 44px;
+  letter-spacing: 1px;
+  color: #ff3b3b;
+  -webkit-text-stroke: 2px #4a0000;
+  text-shadow: 4px 4px 0 #000;
+}
+.an-ekran p { margin: 0 0 12px; line-height: 1.6; }
+.an-gwiazdki { font-size: 48px; line-height: 1; color: #ffd400; text-shadow: 3px 3px 0 #7a4b00; margin-bottom: 8px; }
+.an-rekord { color: #ffe066; font-weight: bold; }
+.an-guzik {
+  margin: 4px;
+  padding: 8px 18px;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 2px 2px 0 #4a0000;
+  background: linear-gradient(#ff6a3d, #d6001c);
+  border: 2px solid #4a0000;
+  border-radius: 8px;
+  box-shadow: 0 3px 0 #4a0000;
+  cursor: pointer;
+}
+.an-guzik:hover { filter: brightness(1.1); }
+.an-guzik[hidden] { display: none; }
+@media (max-width: 1000px) {
+  .an-ekran h3 { font-size: 28px; }
+  .an-gwiazdki { font-size: 32px; }
+}
+
+/* ---------- MENU: rozwijane GRY ---------- */
+#menu { position: relative; z-index: 20; }
+.menu-gry { position: relative; display: flex; }
+.menu-gry-przycisk {
+  padding: 9px 8px;
+  white-space: nowrap;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.4);
+  background: none;
+  border: 0;
+  border-left: 1px solid rgba(255,255,255,.2);
+  border-right: 1px solid rgba(0,0,0,.2);
+  cursor: pointer;
+}
+.menu-gry-przycisk:hover, .menu-gry-przycisk.aktywny, .menu-gry:focus-within .menu-gry-przycisk {
+  background: linear-gradient(to bottom, #ffe066 0%, #ffc61a 50%, #f0a800 51%, #ffcc33 100%);
+  color: #3a2a00;
+  text-shadow: 0 1px 0 rgba(255,255,255,.6);
+}
+.menu-gry-lista {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 100%;
+  display: none;
+  flex-direction: column;
+  padding: 3px 0;
+  background: linear-gradient(#149045, #0b7a37);
+  border: 1px solid var(--zielony-ciemny);
+  border-top: 3px solid var(--zielony-ciemny);
+  box-shadow: 0 6px 12px rgba(0,0,0,.35);
+}
+.menu-gry:hover .menu-gry-lista, .menu-gry:focus-within .menu-gry-lista { display: flex; }
+#menu .menu-gry-lista a { border: 0; border-bottom: 1px solid rgba(0,0,0,.15); padding: 8px 12px; }
+#menu .menu-gry-lista a:last-child { border-bottom: 0; }
+
+/* ---------- GRA: Poprowadź Niecika ---------- */
+.pn { user-select: none; -webkit-user-select: none; border: 2px solid #0b0f2e; border-radius: 6px; overflow: hidden; }
+.pn-hud { background: linear-gradient(#2b2f6b, #161a44); }
+.pn-hud button { background: #0b0f2e; border-color: #4a4f9a; }
+.pn-hud button:first-of-type { margin-left: auto; }
+.pn-sterowanie { font-size: 12px; color: #ffe066; }
+#pn-canvas { cursor: pointer; }

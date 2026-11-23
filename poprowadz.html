@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>:: POLSKI ZWIĄZEK HYDRAULIKÓW :: Poprowadź Niecika ::</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="strona">
+
+  <div id="gorny-pasek"></div>
+
+  <header id="naglowek">
+    <a href="index.html"><img src="logo.png" alt="Polski Związek Hydraulików" class="logo"></a>
+    <div class="slogan">
+      Oficjalna strona kanału na YouTube<span class="wersja-beta">BETA</span><br>
+      <b>Polski Związek Hydraulików</b>
+    </div>
+    <div class="prawa">
+      <a class="subskrybuj" href="https://www.youtube.com/@polskizwiazekhydraulikow?sub_confirmation=1" target="_blank">SUBSKRYBUJ</a>
+      <form id="szukaj" role="search" action="index.html" method="get">
+        <input type="text" id="pole-szukaj" name="szukaj" placeholder="Szukaj w Tadzienniku..." aria-label="Szukaj w Tadzienniku">
+        <button type="submit" aria-label="Szukaj"><img src="lupka.png" alt=""></button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Przyciski z class="zablokowany" są tymczasowo wyłączone.
+       Żeby włączyć przycisk, usuń z niego: class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1" -->
+  <nav id="menu">
+    <a href="index.html">STRONA GŁÓWNA</a>
+    <a href="pracownicy.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PRACOWNICY</a>
+    <a href="instalki.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">INSTALKI</a>
+    <a href="tapety.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">TAPETY</a>
+    <a href="minecraft.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">MINECRAFT</a>
+    <a href="patroni.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PATRONI PROJEKTU</a>
+    <div class="menu-gry">
+      <button type="button" class="menu-gry-przycisk aktywny">GRY ▾<span class="nowosc">NOWOŚĆ!!!</span></button>
+      <div class="menu-gry-lista">
+        <a href="niecik.html">CHLAŚNIJ NIECIKA</a>
+        <!-- UKRYTE NA RAZIE – żeby przywrócić, usuń znaczniki komentarza wokół tych dwóch linijek
+        <a href="angry.html">ANGRY NIECIK</a>
+        <a href="poprowadz.html" class="aktywny">POPROWADŹ NIECIKA<span class="nowosc">NOWOŚĆ!!!</span></a>
+        -->
+      </div>
+    </div>
+  </nav>
+
+  <div id="tasma">
+    <div class="etykieta">TADZIENNIK</div>
+    <div class="pas"><span id="tasma-tekst"></span></div>
+  </div>
+
+  <div id="tresc">
+
+    <main id="glowna">
+
+      <div class="okruszki">Jesteś tutaj: <a href="index.html">Strona główna</a> » <b>Poprowadź Niecika</b></div>
+
+      <div class="ramka">
+        <h2>Gra: Poprowadź Niecika</h2>
+        <div class="srodek">
+
+          <!--
+            USTAWIENIA GRY (w skrypcie na dole strony):
+            - DOM_METRY: ile metrów do domu
+            - głowa Niecika: niecik-glowa.png, muzyka: muzyka.mp3
+          -->
+          <div class="pn" id="pn">
+            <div class="an-hud pn-hud">
+              <span>DYSTANS: <b id="pn-dystans">0.0 m</b></span>
+              <span>DO DOMU: <b id="pn-do-domu">250 m</b></span>
+              <span>REKORD: <b id="pn-rekord">0.0 m</b></span>
+              <button type="button" id="pn-muzyka" title="Muzyka w tle">♫ WŁ</button>
+            </div>
+
+            <div class="an-scena">
+              <canvas id="pn-canvas" width="900" height="500">Twoja przeglądarka nie obsługuje tej gry.</canvas>
+
+              <div class="an-ekran" id="pn-menu">
+                <h3>POPROWADŹ NIECIKA</h3>
+                <p>Niecik wraca z koncertu tak roztańczony, że kręci mu się w głowie.<br>
+                   Pilnuj, żeby się nie przewrócił, i doprowadź go do domu!</p>
+                <p class="pn-sterowanie">Sterowanie: <b>← →</b> albo <b>A / D</b> – na telefonie przytrzymaj <b>lewą</b> lub <b>prawą</b> połowę ekranu.<br>
+                   Przechyla się w prawo? Dociskaj w lewo – i odwrotnie.</p>
+                <button type="button" class="an-guzik" id="pn-graj">IDZIEMY!</button>
+              </div>
+
+              <div class="an-ekran" id="pn-wynik" hidden>
+                <h3 id="pn-wynik-tytul">NIECIK LEŻY!</h3>
+                <p id="pn-wynik-tekst"></p>
+                <p class="an-rekord" id="pn-wynik-rekord"></p>
+                <button type="button" class="an-guzik" id="pn-znowu">JESZCZE RAZ</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="ramka">
+        <h2>O grze</h2>
+        <div class="srodek wstep">
+          <p>Hołd dla klasycznej gry Flash, w której trzeba było utrzymać chwiejącego się gościa na nogach. Im dalej, tym mocniej się kiwa i tym szybciej idzie. Rekord zapisuje się w przeglądarce.</p>
+        </div>
+      </div>
+
+    </main>
+
+    <aside id="boczna">
+
+      <div class="ramka">
+        <h2>Znajdziesz nas na</h2>
+        <div class="srodek spolecznosc">
+          <!-- Kolejną ikonę dodasz, kopiując jedną linijkę <a ...> -->
+          <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank" rel="noopener" title="Twitch"><img src="ikona-twitch.png" alt="Twitch"></a>
+          <a href="https://x.com/papciosoft" target="_blank" rel="noopener" title="X (Twitter)"><img src="ikona-x.png" alt="X (Twitter)"></a>
+          <a href="https://www.tiktok.com/@papciosoft?lang=en-GB" target="_blank" rel="noopener" title="TikTok"><img src="ikona-tiktok.png" alt="TikTok"></a>
+          <a href="https://www.instagram.com/polskizwiazekhydraulikow/" target="_blank" rel="noopener" title="Instagram"><img src="ikona-instagram.png" alt="Instagram"></a>
+          <a href="https://www.facebook.com/profile.php?id=61579178634518&amp;locale=pl_PL" target="_blank" rel="noopener" title="Facebook"><img src="ikona-facebook.png" alt="Facebook"></a>
+        </div>
+      </div>
+
+      <div class="ramka" id="licznik">
+        <h2>Licznik odwiedzin</h2>
+        <div class="srodek">
+          Jesteś naszym<br>
+          <div class="cyfry" id="cyfry"></div><br>
+          gościem!<br>
+          <small>od 01.01.2008</small>
+        </div>
+      </div>
+
+      <div class="uwaga">
+        Strona najlepiej wygląda w rozdzielczości <b>1024x768</b><br>
+        w przeglądarce <b>Internet Explorer 6.0</b>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer id="stopka">
+    <div class="plakietki">
+      <div class="plakietka p1"><big>PZH</big>member</div>
+      <div class="plakietka p2"><big>HTML</big>valid (chyba)</div>
+      <div class="plakietka p3">zrobione w<big>Notatniku</big></div>
+      <div class="plakietka p4">oglądaj<big>TadzioTV</big></div>
+      <div class="plakietka p5">get<big>Flash</big>player</div>
+      <div class="plakietka p6">nie wspieramy<big>LORDA PALIWO</big></div>
+      <div class="plakietka p7"><big>GANJA TRIP</big>trwa</div>
+    </div>
+    &copy; 2008–<span id="rok">2026</span> Polski Związek Hydraulików. Wszelkie prawa zastrzeżone.<br>
+    Kopiowanie treści bez zgody Związku grozi zalaniem piwnicy.
+  </footer>
+
+</div>
+
+<script src="wspolne.js"></script>
+<script>
+/* =========================================================
+   POPROWADŹ NIECIKA – utrzymaj równowagę i doprowadź go do domu
+   ========================================================= */
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var canvas = $('pn-canvas'), ctx = canvas.getContext('2d');
+  var W = 900, H = 500, CHODNIK = 430, POSTAC_X = 300, PX_NA_METR = 60;
+
+  /* ---------- USTAWIENIA ---------- */
+  var DOM_METRY = 250;        // po tylu metrach Niecik jest w domu
+  var MAX_PRZECHYL = 1.05;    // ok. 60° – dalej już się przewraca
+
+  var glowa = new Image(); glowa.src = 'niecik-glowa.png';
+
+  var stan = 'menu', dystans = 0, kat = 0, predkoscKat = 0, czas = 0, faza = 0, wejscie = 0;
+  var klawisze = { lewo: false, prawo: false }, dotyk = 0, fazy = [];
+  var rekord = 0;
+  try { rekord = parseFloat(localStorage.getItem('pzh-poprowadz-rekord') || '0'); } catch (e) {}
+  $('pn-rekord').textContent = rekord.toFixed(1) + ' m';
+
+  function nowaGra() {
+    dystans = 0; kat = (Math.random() - 0.5) * 0.1; predkoscKat = 0; czas = 0; faza = 0;
+    fazy = [Math.random() * 6, Math.random() * 6, Math.random() * 6];
+    stan = 'gra';
+    $('pn-menu').hidden = true; $('pn-wynik').hidden = true;
+  }
+
+  /* ---------- sterowanie: strzałki / A,D / przytrzymanie lewej lub prawej połowy ekranu ---------- */
+  document.addEventListener('keydown', function (e) {
+    if (stan !== 'gra') return;
+    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') { klawisze.lewo = true; e.preventDefault(); }
+    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') { klawisze.prawo = true; e.preventDefault(); }
+  });
+  document.addEventListener('keyup', function (e) {
+    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') klawisze.lewo = false;
+    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') klawisze.prawo = false;
+  });
+  function strona(e) { var r = canvas.getBoundingClientRect(); return (e.clientX - r.left) < r.width / 2 ? -1 : 1; }
+  canvas.addEventListener('pointerdown', function (e) { dotyk = strona(e); canvas.setPointerCapture(e.pointerId); e.preventDefault(); });
+  canvas.addEventListener('pointermove', function (e) { if (dotyk) dotyk = strona(e); });
+  canvas.addEventListener('pointerup', function () { dotyk = 0; });
+  canvas.addEventListener('pointercancel', function () { dotyk = 0; });
+
+  /* ---------- fizyka: odwrócone wahadło z "zawrotami głowy" ---------- */
+  function krok(dt) {
+    czas += dt;
+    var trudnosc = 1 + dystans / 120;
+    var zawroty = (Math.sin(czas * 1.3 + fazy[0]) * 0.9 + Math.sin(czas * 2.7 + fazy[1]) * 0.6 + Math.sin(czas * 0.6 + fazy[2]) * 1.1) * 0.55 * trudnosc;
+    wejscie = (klawisze.prawo ? 1 : 0) - (klawisze.lewo ? 1 : 0) || dotyk;
+    var przysp = 3.4 * Math.sin(kat) + zawroty + wejscie * 5.2 - 0.9 * predkoscKat;
+    predkoscKat += przysp * dt;
+    kat += predkoscKat * dt;
+
+    var predkosc = 1.6 + dystans / 180;               // metry na sekundę
+    dystans += predkosc * dt * Math.max(0.3, 1 - Math.abs(kat));
+    faza += predkosc * dt * 5;
+
+    if (Math.abs(kat) > MAX_PRZECHYL) upadek();
+    else if (dystans >= DOM_METRY) wDomu();
+  }
+
+  function zapiszRekord() {
+    var nowy = dystans > rekord;
+    if (nowy) { rekord = dystans; try { localStorage.setItem('pzh-poprowadz-rekord', String(rekord)); } catch (e) {} }
+    $('pn-rekord').textContent = rekord.toFixed(1) + ' m';
+    return nowy;
+  }
+  function upadek() {
+    stan = 'upadek';
+    var nowy = zapiszRekord();
+    setTimeout(function () {
+      $('pn-wynik-tytul').textContent = 'NIECIK LEŻY!';
+      $('pn-wynik-tekst').textContent = 'Przeszedł ' + dystans.toFixed(1) + ' m. Do domu zabrakło ' + (DOM_METRY - dystans).toFixed(1) + ' m.';
+      $('pn-wynik-rekord').textContent = nowy ? '★ NOWY REKORD! ★' : 'Rekord: ' + rekord.toFixed(1) + ' m';
+      $('pn-wynik').hidden = false;
+      stan = 'wynik';
+    }, 1300);
+  }
+  function wDomu() {
+    stan = 'dom';
+    dystans = DOM_METRY;
+    zapiszRekord();
+    setTimeout(function () {
+      $('pn-wynik-tytul').textContent = 'NIECIK W DOMU!';
+      $('pn-wynik-tekst').textContent = 'Udało się! ' + DOM_METRY + ' m bez ani jednej gleby. Można iść spać.';
+      $('pn-wynik-rekord').textContent = '★ TRASA ZALICZONA ★';
+      $('pn-wynik').hidden = false;
+      stan = 'wynik';
+    }, 1500);
+  }
+
+  /* ---------- rysowanie ---------- */
+  function los(n) { var x = Math.sin(n * 127.1) * 43758.5453; return x - Math.floor(x); }
+
+  function tlo(przesun) {
+    var g = ctx.createLinearGradient(0, 0, 0, CHODNIK);
+    g.addColorStop(0, '#0b0f2e'); g.addColorStop(1, '#2b2f6b');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#fff';
+    for (var i = 0; i < 60; i++) ctx.fillRect(los(i) * W, los(i + 99) * 220, 2, 2);
+    ctx.fillStyle = '#fff6c4'; ctx.beginPath(); ctx.arc(760, 80, 34, 0, 7); ctx.fill();
+    ctx.fillStyle = '#0b0f2e'; ctx.beginPath(); ctx.arc(775, 70, 30, 0, 7); ctx.fill();
+
+    // bloki w tle (wolniejsze)
+    var p = przesun * 0.4, szer = 130, start = Math.floor(p / szer) - 1;
+    for (var b = start; b < start + W / szer + 3; b++) {
+      var x = b * szer - p, wys = 120 + los(b) * 170;
+      ctx.fillStyle = '#161a44'; ctx.fillRect(x, CHODNIK - wys, szer - 8, wys);
+      for (var ry = 0; ry < Math.floor(wys / 28); ry++) for (var rx = 0; rx < 4; rx++) {
+        if (los(b * 31 + ry * 7 + rx) > 0.55) { ctx.fillStyle = '#ffd86b'; ctx.fillRect(x + 10 + rx * 28, CHODNIK - wys + 12 + ry * 28, 14, 14); }
+      }
+    }
+    // latarnie
+    var odst = 260, s = Math.floor(przesun / odst) - 1;
+    for (var l = s; l < s + W / odst + 3; l++) {
+      var lx = l * odst - przesun + 60;
+      ctx.fillStyle = '#333'; ctx.fillRect(lx, CHODNIK - 190, 6, 190); ctx.fillRect(lx, CHODNIK - 190, 34, 5);
+      ctx.fillStyle = 'rgba(255,230,140,.18)';
+      ctx.beginPath(); ctx.moveTo(lx + 26, CHODNIK - 184); ctx.lineTo(lx - 30, CHODNIK); ctx.lineTo(lx + 90, CHODNIK); ctx.fill();
+      ctx.fillStyle = '#ffe58a'; ctx.beginPath(); ctx.arc(lx + 30, CHODNIK - 182, 7, 0, 7); ctx.fill();
+    }
+    // dom na mecie
+    var domX = DOM_METRY * PX_NA_METR - przesun + POSTAC_X + 40;
+    if (domX < W + 300 && domX > -300) {
+      ctx.fillStyle = '#8a3b2b'; ctx.fillRect(domX, CHODNIK - 170, 220, 170);
+      ctx.fillStyle = '#5a1f14'; ctx.beginPath(); ctx.moveTo(domX - 15, CHODNIK - 170); ctx.lineTo(domX + 110, CHODNIK - 250); ctx.lineTo(domX + 235, CHODNIK - 170); ctx.fill();
+      ctx.fillStyle = '#ffd86b'; ctx.fillRect(domX + 25, CHODNIK - 140, 40, 40); ctx.fillRect(domX + 155, CHODNIK - 140, 40, 40);
+      ctx.fillStyle = '#3b1a0a'; ctx.fillRect(domX + 90, CHODNIK - 95, 42, 95);
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 20px Impact, "Arial Black", sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('DOM', domX + 110, CHODNIK - 185);
+    }
+    // chodnik
+    ctx.fillStyle = '#6d6d78'; ctx.fillRect(0, CHODNIK, W, H - CHODNIK);
+    ctx.fillStyle = '#585862';
+    for (var k = -((przesun) % 50); k < W; k += 50) ctx.fillRect(k, CHODNIK, 3, H - CHODNIK);
+    ctx.fillStyle = '#8a8a96'; ctx.fillRect(0, CHODNIK, W, 5);
+  }
+
+  function postac() {
+    var ruchNog = (stan === 'gra') ? Math.sin(faza) : 0;
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.beginPath(); ctx.ellipse(POSTAC_X, CHODNIK + 4, 34, 7, 0, 0, 7); ctx.fill();
+    ctx.translate(POSTAC_X, CHODNIK); ctx.rotate(kat);
+    // nogi
+    ctx.lineCap = 'round'; ctx.strokeStyle = '#d9b45c'; ctx.lineWidth = 13;
+    ctx.beginPath(); ctx.moveTo(-7, -82); ctx.lineTo(-7 + ruchNog * 16, -4); ctx.moveTo(7, -82); ctx.lineTo(7 - ruchNog * 16, -4); ctx.stroke();
+    ctx.fillStyle = '#4a3a2a';
+    ctx.beginPath(); ctx.ellipse(-3 + ruchNog * 16, -3, 11, 5, 0, 0, 7); ctx.ellipse(11 - ruchNog * 16, -3, 11, 5, 0, 0, 7); ctx.fill();
+    // poły marynarki
+    ctx.fillStyle = '#caa24e'; ctx.beginPath(); ctx.moveTo(-22, -100); ctx.lineTo(-30, -62); ctx.lineTo(-10, -78); ctx.fill();
+    // tułów: biały podkoszulek + złota marynarka
+    ctx.fillStyle = '#fff'; ctx.fillRect(-14, -142, 28, 62);
+    ctx.fillStyle = '#e6c46a';
+    ctx.fillRect(-24, -146, 13, 68); ctx.fillRect(11, -146, 13, 68);
+    ctx.fillStyle = '#f3dc95'; ctx.fillRect(-24, -146, 4, 68);
+    // ręce – machają, gdy traci równowagę
+    var mach = Math.max(-1.4, Math.min(1.4, predkoscKat * 1.2));
+    ctx.strokeStyle = '#e6c46a'; ctx.lineWidth = 10;
+    ctx.beginPath();
+    ctx.moveTo(-20, -138); ctx.lineTo(-40 - Math.abs(mach) * 12, -105 + mach * 30);
+    ctx.moveTo(20, -138); ctx.lineTo(40 + Math.abs(mach) * 12, -105 - mach * 30);
+    ctx.stroke();
+    ctx.fillStyle = '#f0c8a8';
+    ctx.beginPath(); ctx.arc(-40 - Math.abs(mach) * 12, -105 + mach * 30, 6, 0, 7); ctx.arc(40 + Math.abs(mach) * 12, -105 - mach * 30, 6, 0, 7); ctx.fill();
+    // mikrofon w prawej ręce
+    ctx.fillStyle = '#111'; ctx.fillRect(40 + Math.abs(mach) * 12, -118 - mach * 30, 5, 14);
+    ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(42.5 + Math.abs(mach) * 12, -120 - mach * 30, 5, 0, 7); ctx.fill();
+    // głowa
+    ctx.fillStyle = '#f0c8a8'; ctx.beginPath(); ctx.arc(0, -168, 24, 0, 7); ctx.fill();
+    if (glowa.complete && glowa.naturalWidth) ctx.drawImage(glowa, -24, -192, 48, 48);
+    ctx.restore();
+
+    // gwiazdki zawrotów nad głową
+    var hx = POSTAC_X + Math.sin(kat) * 175, hy = CHODNIK - Math.cos(kat) * 175 - 30;
+    var ile = stan === 'upadek' || stan === 'wynik' ? 4 : Math.min(4, 1 + Math.floor(Math.abs(kat) * 4));
+    ctx.fillStyle = '#ffe066'; ctx.font = '16px sans-serif'; ctx.textAlign = 'center';
+    for (var i = 0; i < ile; i++) {
+      var a = czas * 3 + i * Math.PI * 2 / ile;
+      ctx.fillText('★', hx + Math.cos(a) * 26, hy + Math.sin(a) * 8);
+    }
+  }
+
+  function wskaznik() {
+    // pasek równowagi u góry
+    var x0 = W / 2 - 150, y0 = 18;
+    ctx.fillStyle = 'rgba(0,0,0,.5)'; ctx.fillRect(x0 - 4, y0 - 4, 308, 22);
+    var g = ctx.createLinearGradient(x0, 0, x0 + 300, 0);
+    g.addColorStop(0, '#f33'); g.addColorStop(0.3, '#fd0'); g.addColorStop(0.5, '#3d3'); g.addColorStop(0.7, '#fd0'); g.addColorStop(1, '#f33');
+    ctx.fillStyle = g; ctx.fillRect(x0, y0, 300, 14);
+    var poz = x0 + 150 + Math.max(-1, Math.min(1, kat / MAX_PRZECHYL)) * 150;
+    ctx.fillStyle = '#fff'; ctx.fillRect(poz - 3, y0 - 6, 6, 26);
+    // strzałki sterowania przy wciśnięciu
+    if (stan === 'gra' && wejscie) {
+      ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.font = 'bold 40px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(wejscie < 0 ? '◀' : '▶', wejscie < 0 ? 60 : W - 60, H / 2);
+    }
+  }
+
+  var poprzedni = performance.now();
+  function petla(t) {
+    var dt = Math.min((t - poprzedni) / 1000, 0.05); poprzedni = t;
+    if (stan === 'gra') krok(dt);
+    else if (stan === 'upadek') {                     // przewracanie się
+      czas += dt;
+      predkoscKat += Math.sign(kat) * 9 * dt; kat += predkoscKat * dt;
+      if (Math.abs(kat) > Math.PI / 2 - 0.05) { kat = Math.sign(kat) * (Math.PI / 2 - 0.05); predkoscKat = 0; }
+    } else czas += dt;
+    tlo(dystans * PX_NA_METR);
+    postac();
+    if (stan !== 'menu') wskaznik();
+    $('pn-dystans').textContent = dystans.toFixed(1) + ' m';
+    $('pn-do-domu').textContent = Math.max(0, DOM_METRY - dystans).toFixed(0) + ' m';
+    requestAnimationFrame(petla);
+  }
+
+  $('pn-graj').addEventListener('click', nowaGra);
+  $('pn-znowu').addEventListener('click', nowaGra);
+
+  /* ---------- muzyka (ta sama co w innych grach) ---------- */
+  var muzyka = new Audio('muzyka.mp3');
+  muzyka.loop = true; muzyka.preload = 'none'; muzyka.volume = 0.4;
+  var muzykaWl = true;
+  try { muzykaWl = localStorage.getItem('pzh-muzyka') !== 'wyl'; } catch (e) {}
+  function przyciskMuzyki() { $('pn-muzyka').textContent = muzykaWl ? '♫ WŁ' : '♫ WYŁ'; }
+  przyciskMuzyki();
+  $('pn').addEventListener('pointerdown', function () { if (muzykaWl && muzyka.paused) muzyka.play().catch(function () {}); });
+  $('pn-muzyka').addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+  $('pn-muzyka').addEventListener('click', function () {
+    muzykaWl = !muzykaWl;
+    try { localStorage.setItem('pzh-muzyka', muzykaWl ? 'wl' : 'wyl'); } catch (e) {}
+    if (muzykaWl) muzyka.play().catch(function () {}); else muzyka.pause();
+    przyciskMuzyki();
+  });
+
+  requestAnimationFrame(petla);
+  window.__poprowadz = { stan: function () { return { stan: stan, dystans: dystans, kat: kat }; } };
+})();
+</script>
+
+</body>
+</html>
