@@ -1225,3 +1225,170 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 body.materacci-trwa { overflow: hidden; }
 body.materacci-trwa #strona,
 body.materacci-trwa .ciap-baner { filter: blur(8px); pointer-events: none; user-select: none; }
+
+body.paliwo {
+  --link: #ffae42;
+  background: #0a0200 radial-gradient(ellipse at 50% 120%, #ff5a00 0%, #8a1a00 35%, #1a0300 70%) fixed;
+}
+body.paliwo #strona {
+  position: relative;
+  z-index: 1;
+  background: #141010;
+  border: 2px solid #ff6a00;
+  box-shadow: 0 0 40px rgba(255, 90, 0, .7);
+}
+body.paliwo #gorny-pasek { height: 10px; background: repeating-linear-gradient(45deg, #ff6a00 0 14px, #000 14px 28px); }
+body.paliwo #naglowek { background: linear-gradient(#262626, #070707); border-bottom: 2px solid #ff6a00; }
+body.paliwo #naglowek > a:not(.paliwo-logo) { display: none; }
+body.paliwo #naglowek .slogan { color: #ffb347; }
+body.paliwo #naglowek .slogan b { color: #fff; }
+body.paliwo .subskrybuj { background: linear-gradient(#ffd24a 0%, #ff8a00 50%, #e04a00 51%, #ff6a00 100%); border-color: #7a2000; color: #2a0800 !important; text-shadow: 0 1px 0 rgba(255,255,255,.4); }
+body.paliwo .subskrybuj::before { content: "▲ "; }
+body.paliwo #szukaj { border-color: #ff6a00; }
+body.paliwo #menu { background: linear-gradient(#3a3a3a 0%, #1c1c1c 50%, #0c0c0c 51%, #1a1a1a 100%); border-top-color: #555; border-bottom-color: #ff6a00; }
+body.paliwo #menu a:hover, body.paliwo #menu a.aktywny,
+body.paliwo .menu-gry-przycisk:hover, body.paliwo .menu-gry:focus-within .menu-gry-przycisk { background: linear-gradient(#fff36b 0%, #ffb000 50%, #ff6a00 51%, #ff3c00 100%); color: #2a0800; }
+body.paliwo .menu-gry-lista { background: #111; border-color: #ff6a00; }
+body.paliwo #tresc { background: linear-gradient(#2a0f04, #141010 300px); }
+body.paliwo .ramka { background: #1d1a19; border-color: #6a2a08; color: #f0d8c0; }
+body.paliwo .ramka > h2 { background: linear-gradient(#ffa030 0%, #ff6a00 50%, #d44000 51%, #ff5a00 100%); color: #fff; text-shadow: 1px 1px 0 #6a1a00; }
+body.paliwo .ramka > h2::before { content: "▲ "; color: #fff36b; }
+body.paliwo .tytul-odcinka { color: #ffb347; }
+body.paliwo .odcinek-glowny, body.paliwo .odcinki-male iframe { border-color: #6a2a08; }
+body.paliwo #licznik small { color: #a07050; }
+body.paliwo #licznik .cyfry span { color: #ff8a00; border-color: #6a2a08; }
+body.paliwo .uwaga { background: #2a1400; border-color: #ff6a00; color: #ffcf99; }
+body.paliwo #stopka { background: #000; color: #c9a080; border-top: 3px solid #ff6a00; }
+body.paliwo .p6 { background: linear-gradient(#fff36b, #ff3c00); color: #2a0800; text-shadow: none; }
+body.paliwo .spolecznosc img { filter: hue-rotate(-115deg) saturate(1.4); }
+body.paliwo .ciap-baner { filter: grayscale(1) sepia(1) hue-rotate(-20deg) saturate(2); }
+
+body.paliwo #baner > img, body.paliwo #baner .kropki { visibility: hidden; }
+.paliwo-baner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 75% 110%, #ffb000 0%, #ff3c00 30%, #4a0a00 65%, #000 100%);
+}
+#baner .paliwo-baner img { position: absolute; inset: auto 30px -4px auto; width: auto; height: 290px; opacity: 1; object-fit: contain; filter: drop-shadow(6px 6px 0 #000); }
+.paliwo-baner .tekst { position: relative; padding: 0 25px; max-width: 62%; }
+.paliwo-baner big {
+  display: block;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 46px;
+  line-height: 1;
+  color: #fff36b;
+  text-transform: uppercase;
+  -webkit-text-stroke: 2px #000;
+  text-shadow: 4px 4px 0 #000;
+}
+.paliwo-baner span { display: block; margin-top: 10px; font-size: 14px; font-weight: bold; color: #fff; text-shadow: 1px 1px 0 #000; }
+
+.paliwo-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.paliwo-ikona { width: 95px; height: 95px; display: block; transform: rotate(-4deg); filter: drop-shadow(0 0 8px rgba(255,106,0,.6)); }
+.paliwo-logo b {
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 34px;
+  line-height: .95;
+  color: #ff8a00;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px #000;
+  text-shadow: 3px 3px 0 #000, 0 0 12px rgba(255,120,0,.7);
+}
+
+#paliwo-tasma {
+  display: flex;
+  height: 24px;
+  line-height: 24px;
+  background: #000;
+  border-bottom: 1px solid #ff6a00;
+  overflow: hidden;
+  font-weight: bold;
+  color: #ffb347;
+}
+#paliwo-tasma .etykieta { flex-shrink: 0; padding: 0 10px; color: #000; background: #ff6a00; }
+#paliwo-tasma .pas { flex: 1; overflow: hidden; white-space: nowrap; }
+#paliwo-tasma .pas span { display: inline-block; padding-left: 100%; animation: przewijaj 35s linear infinite; }
+
+.paliwo-ogien {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 170px;
+  z-index: 0;
+  pointer-events: none;
+  background: url("lord-ogien.png") 0 100% / auto 170px repeat-x;
+  animation: plomien .35s steps(2) infinite;
+  transform-origin: bottom;
+}
+@keyframes plomien { 50% { transform: scaleY(.9) scaleX(1.02); background-position-x: 40px; } }
+.iskra {
+  position: fixed;
+  bottom: -10px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #ffcc33;
+  box-shadow: 0 0 6px #ff6a00;
+  pointer-events: none;
+  z-index: 0;
+  animation: iskra 4s linear infinite;
+}
+@keyframes iskra { to { transform: translate(40px, -100vh); opacity: 0; } }
+
+.paliwo-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  animation: intro-blysk .5s ease-out;
+}
+.paliwo-intro.znika { opacity: 0; transition: opacity .5s; }
+.paliwo-intro img { height: min(55vh, 420px); filter: drop-shadow(8px 8px 0 #ff3c00); animation: intro-lord 1s cubic-bezier(.2, 1.6, .4, 1) both; }
+.paliwo-intro big {
+  margin-top: 18px;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: clamp(28px, 6vw, 64px);
+  color: #ff8a00;
+  text-transform: uppercase;
+  -webkit-text-stroke: 2px #000;
+  text-shadow: 4px 4px 0 #6a1a00;
+  animation: intro-trzes .12s steps(2) infinite;
+}
+.paliwo-intro small { margin-top: 6px; font-size: 14px; letter-spacing: 3px; color: #ffb347; }
+@keyframes intro-blysk { from { background: #fff; } 30% { background: #ff6a00; } }
+@keyframes intro-lord { from { transform: translateY(60vh) scale(.6); } }
+@keyframes intro-trzes { 50% { transform: translate(3px, -2px) rotate(-1deg); } }
+body.paliwo-wstrzas #strona { animation: intro-trzes .1s steps(2) 6; }
+
+.paliwo-komunikat {
+  position: fixed;
+  left: 50%; top: 20px;
+  z-index: 10000;
+  transform: translateX(-50%);
+  padding: 10px 18px;
+  font-weight: bold;
+  color: #fff;
+  background: #138a43;
+  border: 2px solid #0b5a2b;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.4);
+  transition: opacity .6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paliwo-ogien, .iskra, .paliwo-intro, .paliwo-intro img, .paliwo-intro big, #paliwo-tasma .pas span, body.paliwo-wstrzas #strona { animation: none; }
+  .iskra { display: none; }
+  #paliwo-tasma .pas span { padding-left: 10px; }
+}
+@media (max-width: 1000px) {
+  #baner .paliwo-baner img { height: 200px; right: 10px; }
+  .paliwo-baner big { font-size: 28px; }
+}

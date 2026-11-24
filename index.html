@@ -403,6 +403,107 @@ function filtruj() {
   nakladka.addEventListener('contextmenu', function (e) { e.preventDefault(); });
   nakladka.addEventListener('click', function (e) { e.preventDefault(); });
 })();
+(function () {
+  var HASLO = 'PALIWO';
+  var wpisane = '';
+  var aktywny = false;
+  var zmiany = [];
+  var dodane = [];
+  var tytul = document.title;
+
+  function el(tag, klasa, html) {
+    var e = document.createElement(tag);
+    if (klasa) e.className = klasa;
+    if (html) e.innerHTML = html;
+    return e;
+  }
+  function podmien(cel, html) {
+    if (!cel) return;
+    zmiany.push([cel, cel.innerHTML]);
+    cel.innerHTML = html;
+  }
+  function dodaj(e, gdzie, przed) {
+    if (przed) gdzie.parentNode.insertBefore(e, gdzie);
+    else gdzie.appendChild(e);
+    dodane.push(e);
+    return e;
+  }
+
+  function przejmij() {
+    aktywny = true;
+    document.title = ':: STRONA PRZEJĘTA :: LORD PALIWO ::';
+    document.body.classList.add('paliwo', 'paliwo-wstrzas');
+    setTimeout(function () { document.body.classList.remove('paliwo-wstrzas'); }, 800);
+
+    var intro = el('div', 'paliwo-intro', '<img src="lord-paliwo.png" alt="Lord Paliwo"><big>Strona przejęta!</big><small>OD TERAZ RZĄDZI LORD PALIWO</small>');
+    document.body.appendChild(intro);
+    function zamknijIntro() {
+      if (!intro.parentNode) return;
+      intro.classList.add('znika');
+      setTimeout(function () { intro.remove(); }, 500);
+    }
+    intro.addEventListener('click', zamknijIntro);
+    setTimeout(zamknijIntro, 2600);
+
+    var naglowek = document.getElementById('naglowek');
+    dodaj(el('a', 'paliwo-logo', '<img class="paliwo-ikona" src="lord-ikona.png" alt=""><b>Lord<br>Paliwo</b>'), naglowek.querySelector('.slogan'), true).href = 'index.html';
+    podmien(naglowek.querySelector('.slogan'), 'Ta strona należy teraz do mnie<span class="wersja-beta">95</span><br><b>Lord Paliwo Industries</b>');
+    document.querySelectorAll('.subskrybuj').forEach(function (s) { podmien(s, 'ZATANKUJ SUBA'); });
+    podmien(document.querySelector('#menu a.aktywny'), 'MOJA STRONA');
+
+    var tasma = el('div', '', '<div class="etykieta">KOMUNIKAT LORDA</div><div class="pas"><span>Wszystkie rury należą teraz do mnie +++ Ceny na stacjach ustalam JA +++ Hydraulicy, odłóżcie klucze francuskie +++ Związek został znacjonalizowany +++ Kto wpisze PALIWO jeszcze raz, ten mnie przegoni... jeśli się odważy</span></div>');
+    tasma.id = 'paliwo-tasma';
+    dodaj(tasma, document.getElementById('tresc'), true);
+
+    var baner = el('div', 'paliwo-baner', '<div class="tekst"><big>Teraz ja tu rządzę</big><span>Hydraulicy zostali odcięci od dopływu. Każda kropla należy do Lorda.</span></div><img src="lord-paliwo.png" alt="Lord Paliwo">');
+    dodaj(baner, document.getElementById('baner'));
+
+    var powitanie = document.querySelector('.powitanie');
+    podmien(powitanie.closest('.ramka').querySelector('h2'), 'Witaj w MOIM Związku!');
+    podmien(powitanie.querySelector('.tekst'), '<p>Ta strona należała kiedyś do <b>Polskiego Związku Hydraulików</b>. Kiedyś.</p><p>Teraz wszystkie rury, zawory i odcinki są własnością <b>Lorda Paliwo</b>. Tylko TadzioTV jeszcze stawia opór. Na razie.</p>');
+    podmien(document.querySelector('#odcinek-glowny').closest('.ramka').querySelector('h2'), 'Skonfiskowany odcinek');
+    podmien(document.querySelector('.spolecznosc').closest('.ramka').querySelector('h2'), 'Przejęte konta');
+    podmien(document.querySelector('#licznik h2'), 'Licznik spalonych');
+    podmien(document.querySelector('#licznik small'), 'od przejęcia strony');
+    podmien(document.querySelector('.uwaga'), 'Strona najlepiej płonie w rozdzielczości <b>1024x768</b><br>na benzynie <b>95 bezołowiowej</b>');
+    podmien(document.querySelector('.p6'), 'wspieramy<big>LORDA PALIWO</big>');
+
+    dodaj(el('div', 'paliwo-ogien'), document.body);
+    for (var i = 0; i < 24; i++) {
+      var iskra = el('span', 'iskra');
+      iskra.style.left = Math.random() * 100 + 'vw';
+      iskra.style.animationDelay = (-Math.random() * 4) + 's';
+      iskra.style.animationDuration = (3 + Math.random() * 3) + 's';
+      dodaj(iskra, document.body);
+    }
+  }
+
+  function oddaj() {
+    aktywny = false;
+    document.title = tytul;
+    document.body.classList.remove('paliwo');
+    zmiany.reverse().forEach(function (z) { z[0].innerHTML = z[1]; });
+    zmiany = [];
+    dodane.forEach(function (e) { e.remove(); });
+    dodane = [];
+    var info = el('div', 'paliwo-komunikat', 'Lord Paliwo się wycofał... na razie.');
+    document.body.appendChild(info);
+    setTimeout(function () { info.style.opacity = '0'; }, 2200);
+    setTimeout(function () { info.remove(); }, 2900);
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (document.body.classList.contains('materacci-trwa')) return;
+    var t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (!e.key || e.key.length !== 1) return;
+    wpisane = (wpisane + e.key.toUpperCase()).slice(-HASLO.length);
+    if (wpisane === HASLO) {
+      wpisane = '';
+      if (aktywny) oddaj(); else przejmij();
+    }
+  });
+})();
 </script>
 
 </body>
