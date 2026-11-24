@@ -1,8 +1,4 @@
-/* Wspólne style wszystkich stron Polskiego Związku Hydraulików */
-/* =========================================================
-   POLSKI ZWIĄZEK HYDRAULIKÓW – oficjalna strona kanału
-   styl: "Web 2.0" ok. 2007. Kolory zmieniasz tutaj:
-   ========================================================= */
+
 :root {
   --zielony-ciemny: #0b5a2b;
   --zielony: #138a43;
@@ -12,11 +8,11 @@
   --tekst: #222;
   --link: #0a55a8;
   --czerwony: #d60000;
-  /* TadzioTV */
+
   --tadzio: #5cc8ff;
   --tadzio-jasny: #e6f7ff;
   --tadzio-ciemny: #1f8fd1;
-  /* Twitch */
+
   --twitch: #9146ff;
   --twitch-ciemny: #5c16c5;
 }
@@ -45,13 +41,11 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   overflow: hidden;
 }
 
-/* ---------- górny pasek ---------- */
 #gorny-pasek {
-  height: 6px;              /* sam ciemny pasek, bez tekstu */
+  height: 6px;
   background: #062f17;
 }
 
-/* ---------- nagłówek ---------- */
 #naglowek {
   display: flex;
   align-items: center;
@@ -83,7 +77,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 #naglowek .prawa { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
 
-/* szklany czerwony przycisk SUBSKRYBUJ */
 .subskrybuj {
   display: inline-block;
   padding: 8px 18px;
@@ -115,7 +108,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 #szukaj button { border: 0; padding: 0; background: none; cursor: pointer; }
 #szukaj img { width: 18px; height: 18px; display: block; }
 
-/* ---------- menu ---------- */
 #menu {
   display: flex;
   gap: 2px;
@@ -136,7 +128,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   border-left: 1px solid rgba(255,255,255,.2);
   border-right: 1px solid rgba(0,0,0,.2);
 }
-/* czerwona plakietka NOWOŚĆ!!! przy przycisku w menu */
+
 .nowosc {
   display: inline-block;
   margin-left: 5px;
@@ -154,14 +146,12 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 @media (prefers-reduced-motion: reduce) { .nowosc { animation: none; } }
 
-/* tymczasowo wyłączone przyciski */
 #menu a:hover, #menu a.aktywny {
   background: linear-gradient(to bottom, #ffe066 0%, #ffc61a 50%, #f0a800 51%, #ffcc33 100%);
   color: #3a2a00;
   text-shadow: 0 1px 0 rgba(255,255,255,.6);
 }
 
-/* tymczasowo wyłączone przyciski (klasa "zablokowany") */
 #menu a.zablokowany,
 #menu a.zablokowany:hover {
   cursor: not-allowed;
@@ -171,7 +161,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   text-shadow: 0 -1px 0 rgba(0,0,0,.4);
 }
 
-/* ---------- przewijany pasek ---------- */
 #tasma {
   display: flex;
   align-items: center;
@@ -197,7 +186,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 #tasma:hover .pas span { animation-play-state: paused; }
 @keyframes przewijaj { to { transform: translateX(-100%); } }
 
-/* ---------- kolumny ---------- */
 #tresc {
   display: flex;
   gap: 15px;
@@ -207,7 +195,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 #glowna { flex: 1; min-width: 0; }
 #boczna { width: 320px; flex-shrink: 0; }
 
-/* ---------- ramki ---------- */
 .ramka {
   margin-bottom: 15px;
   background: #fff;
@@ -229,7 +216,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 .ramka > h2::before { content: "» "; color: #ffe066; }
 .ramka .srodek { padding: 10px; }
 
-/* ---------- baner ---------- */
 #baner { position: relative; height: 290px; background: #000; }
 #baner img {
   position: absolute; inset: 0;
@@ -248,19 +234,16 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 #baner .kropki button.widoczny { background: #ffcc00; }
 
-/* ---------- powitanie ---------- */
 .powitanie { display: flex; gap: 15px; align-items: center; }
 .powitanie p { margin: 0 0 6px; line-height: 1.6; }
 .powitanie .tekst { flex: 1; }
 
-/* ---------- odcinki ---------- */
 .odcinek-glowny { aspect-ratio: 16 / 9; width: 100%; display: block; border: 1px solid #ccc; }
 .odcinki-male { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
 .odcinki-male:empty { display: none; }
 .odcinki-male iframe { width: 100%; aspect-ratio: 16 / 9; border: 1px solid #ccc; }
 .wiecej { margin-top: 8px; text-align: right; font-weight: bold; }
 
-/* ---------- Tadziennik Informacyjny (newsy) w przewijanym okienku ---------- */
 #tadziennik-newsy {
   max-height: 750px;
   overflow-y: auto;
@@ -281,7 +264,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 .news:last-child { border-bottom: 0; }
 .news:nth-of-type(even) { background: var(--tadzio-jasny); }
-/* zdjęcia pod tekstem, jak na Discordzie: 1 zdjęcie = pełna szerokość, 2 = obok siebie */
+
 .news .zdjecia {
   display: grid;
   grid-template-columns: 1fr;
@@ -296,8 +279,8 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   padding: 2px;
 }
 .news .zdjecia img { display: block; width: 100%; height: auto; }
-.news .zdjecia:not(.dwa) img { max-height: 400px; object-fit: contain; } /* bardzo wysokie zdjęcie nie rozciąga newsa */
-.news .zdjecia.dwa img { aspect-ratio: 1 / 1; object-fit: cover; } /* dwa równe kafelki */
+.news .zdjecia:not(.dwa) img { max-height: 400px; object-fit: contain; }
+.news .zdjecia.dwa img { aspect-ratio: 1 / 1; object-fit: cover; }
 .news h3 {
   margin: 0 0 3px;
   padding: 5px;
@@ -320,7 +303,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 .tytul-odcinka:empty { display: none; }
 
-/* ---------- Twitch – fioletowy panel transmisji ---------- */
 .ramka.twitch {
   border: 2px solid var(--twitch);
   box-shadow: 0 0 10px rgba(145,70,255,.5);
@@ -346,7 +328,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 @keyframes mrugaj-live { 50% { opacity: .4; } }
 .twitch-okno iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
 
-/* ---------- TadzioTV – osobny, jasnoniebieski boks ---------- */
 .tadziotv {
   margin-bottom: 15px;
   background: var(--tadzio-jasny);
@@ -388,7 +369,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 .tadziotv .tadziennik::before, .tadziotv .tadziennik::after { content: " ★ "; color: var(--tadzio); }
 
-/* ---------- boczne ---------- */
 .spolecznosc {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -425,7 +405,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   border: 1px dashed #e0c040;
 }
 
-/* ---------- stopka ---------- */
 #stopka {
   padding: 12px 15px;
   font-size: 10px;
@@ -455,7 +434,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 .p6 big { font-size: 9px; }
 .p7 { background: linear-gradient(#e0302a 0 33%, #f5d000 33% 66%, #1f9e3a 66%); color: #fff; text-shadow: 1px 1px 0 #000, -1px -1px 0 #000; }
 
-/* ---------- telefon ---------- */
 @media (max-width: 1000px) {
   #strona { width: auto; margin: 0 8px; }
   #tresc, .powitanie { flex-direction: column; }
@@ -471,11 +449,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   #tasma .pas span { padding-left: 10px; }
 }
 
-/* =========================================================
-   PODSTRONY
-   ========================================================= */
-
-/* "Jesteś tutaj: ..." */
 .okruszki {
   margin-bottom: 10px;
   padding: 5px 10px;
@@ -490,7 +463,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 .wstep p { margin: 0 0 6px; line-height: 1.6; }
 .wstep p:last-child { margin-bottom: 0; }
 
-/* szklany zielony przycisk (POBIERZ, ZOSTAŃ PATRONEM itd.) */
 .przycisk {
   display: inline-block;
   padding: 6px 14px;
@@ -508,7 +480,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 .przycisk:hover { filter: brightness(1.1); }
 
-/* ---------- PRACOWNICY: legitymacje ---------- */
 .legitymacje {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -572,7 +543,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   transform: rotate(-15deg);
 }
 
-/* ---------- INSTALKI: lista plików do pobrania ---------- */
 .plik {
   display: flex;
   align-items: center;
@@ -601,7 +571,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 .plik p { margin: 0 0 3px; line-height: 1.5; }
 .plik .meta { font-size: 10px; color: #888; }
 
-/* ---------- TAPETY: galeria ---------- */
 .galeria {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -629,7 +598,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 .tapeta .rozdzielczosci { font-size: 10px; }
 
-/* ---------- MINECRAFT ---------- */
 .mapa-obraz {
   display: block;
   padding: 4px;
@@ -648,7 +616,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   border-radius: 50%;
 }
 
-/* ---------- PATRONI ---------- */
 .ramka.zloci > h2 { background: linear-gradient(to bottom, #ffe680 0%, #f5c400 50%, #d9a800 51%, #f0bd00 100%); color: #4a3500; text-shadow: 0 1px 0 rgba(255,255,255,.5); }
 .ramka.srebrni > h2 { background: linear-gradient(to bottom, #f4f4f4 0%, #c9c9c9 50%, #a9a9a9 51%, #c4c4c4 100%); color: #333; text-shadow: 0 1px 0 rgba(255,255,255,.6); }
 .ramka.brazowi > h2 { background: linear-gradient(to bottom, #f0b98a 0%, #c9783a 50%, #a85e26 51%, #c27236 100%); }
@@ -700,7 +667,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 
 .brak-newsow { margin: 0; padding: 20px 10px; text-align: center; color: #6a9cbd; font-style: italic; }
 
-/* ---------- MINECRAFT: wpis serwera jak na liście serwerów w grze ---------- */
 .mc-serwer {
   display: flex;
   align-items: center;
@@ -728,7 +694,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 .mc-prawa { align-self: flex-start; display: flex; align-items: center; gap: 6px; }
 .mc-gracze { color: #aaa; font-size: 13px; text-shadow: 2px 2px 0 #2a2a2a; }
 
-/* kreski sygnału */
 .mc-sygnal { display: flex; align-items: flex-end; gap: 1px; height: 14px; }
 .mc-sygnal i { display: block; width: 2px; background: #555; }
 .mc-sygnal i:nth-child(1) { height: 3px; }
@@ -760,7 +725,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 .mc-postacie-zajawka { display: flex; align-items: center; gap: 15px; }
 .mc-postacie-zajawka p { flex: 1; margin: 0; }
 
-/* ---------- LORE (boczna kolumna) – stara księga ---------- */
 .ramka.lore { border-color: #b38b4d; }
 .ramka.lore > h2 { background: linear-gradient(to bottom, #c99a5b 0%, #a0713a 50%, #8a5d2c 51%, #9c6a35 100%); }
 .ramka.lore .srodek {
@@ -781,7 +745,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   color: #8a1c1c;
 }
 
-/* ---------- POSTACIE FABULARNE ---------- */
 .galeria-postaci { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .postac {
   display: flex;
@@ -811,7 +774,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   .mc-postacie-zajawka { flex-wrap: wrap; }
 }
 
-/* ---------- GRA: Chlaśnij Niecika (styl starej gry Flash) ---------- */
 .cn { user-select: none; -webkit-user-select: none; background: #121018; border-radius: 6px; overflow: hidden; }
 .cn-pasek { height: 34px; display: flex; align-items: center; justify-content: flex-end; padding: 0 10px; background: linear-gradient(#221c3a, #18142a); }
 .cn-muzyka {
@@ -916,7 +878,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 .cn-okazja.pokaz { animation: cn-okazja 2.6s ease-in-out forwards; }
 @keyframes cn-okazja { 0% { opacity: 0; } 25%, 75% { opacity: 1; } 100% { opacity: 0; } }
 
-/* pikselowy dymek */
 .cn-dymek {
   position: absolute;
   right: 150px;
@@ -994,7 +955,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   text-decoration: none;
 }
 .cn-podpis-lewy { left: 16px; }
-/* jak w oryginale: na wstępie tylko "Hosted by", potem tylko "więcej śmiesznych gier" */
+
 .cn-scena.na-wstepie .cn-podpis-prawy, .cn-scena:not(.na-wstepie) .cn-podpis-lewy { display: none; }
 .cn-podpis-prawy { right: 16px; }
 .cn-podpis-prawy:hover { text-decoration: underline; }
@@ -1005,7 +966,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   .cn-dymek { right: 120px; transform: scale(.8); transform-origin: top right; }
 }
 
-/* ---------- GRA: Angry Niecik ---------- */
 .an { user-select: none; -webkit-user-select: none; border: 2px solid #3e220a; border-radius: 6px; overflow: hidden; }
 .an-hud {
   display: flex;
@@ -1087,7 +1047,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   .an-gwiazdki { font-size: 32px; }
 }
 
-/* ---------- MENU: rozwijane GRY ---------- */
 #menu { position: relative; z-index: 20; }
 .menu-gry { position: relative; display: flex; }
 .menu-gry-przycisk {
@@ -1126,10 +1085,118 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 #menu .menu-gry-lista a { border: 0; border-bottom: 1px solid rgba(0,0,0,.15); padding: 8px 12px; }
 #menu .menu-gry-lista a:last-child { border-bottom: 0; }
 
-/* ---------- GRA: Poprowadź Niecika ---------- */
 .pn { user-select: none; -webkit-user-select: none; border: 2px solid #0b0f2e; border-radius: 6px; overflow: hidden; }
 .pn-hud { background: linear-gradient(#2b2f6b, #161a44); }
 .pn-hud button { background: #0b0f2e; border-color: #4a4f9a; }
 .pn-hud button:first-of-type { margin-left: auto; }
 .pn-sterowanie { font-size: 12px; color: #ffe066; }
 #pn-canvas { cursor: pointer; }
+
+.ciap-baner {
+  --ciap-zloto: #f5c400;
+  --ciap-oliwka: #3c4f1c;
+  position: fixed;
+  top: 120px;
+  left: calc(50% + 505px);
+  z-index: 15;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 12px;
+  font-family: Verdana, Tahoma, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  color: #d8e2c0;
+  background: linear-gradient(#1f2a12, #0f150a);
+  border: 2px solid #4d6224;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px #000, 0 0 18px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08);
+  transition: transform .15s, box-shadow .15s;
+}
+.ciap-baner:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 1px #000, 0 0 22px rgba(245,196,0,.35), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.ciap-naglowek {
+  align-self: stretch;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: left;
+  color: #f5c400;
+  background: linear-gradient(#55702a, #2f3f15);
+  border-bottom: 1px solid #000;
+}
+.ciap-logo {
+  margin-top: 4px;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 34px;
+  line-height: .95;
+  letter-spacing: 1px;
+  color: #f5c400;
+  background: linear-gradient(#fff1a0, #f5c400 45%, #b07a00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(2px 2px 0 #3a2800) drop-shadow(0 0 1px #000);
+}
+.ciap-opis { padding: 0 10px; font-size: 10px; line-height: 1.4; color: #b9c79a; }
+.ciap-lista {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 10px;
+}
+.ciap-lista span {
+  padding: 4px 0;
+  font-size: 11px;
+  font-weight: bold;
+  color: #e8efd2;
+  background: linear-gradient(#55702a, #34461a);
+  border: 1px solid #1a240c;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
+}
+.ciap-przycisk {
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #2a1d00;
+  background: linear-gradient(#ffe36a, #e0a800);
+  border: 1px solid #6b4a00;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+}
+.ciap-baner:hover .ciap-przycisk { filter: brightness(1.1); }
+.ciap-adres { font-size: 9px; color: #8fa06a; }
+
+/* wersja w bocznej kolumnie, gdy z boku strony nie ma miejsca */
+.ciap-box {
+  display: none;
+  margin-top: 15px;
+  text-decoration: none;
+  background: linear-gradient(#1f2a12, #0f150a);
+  border: 2px solid #4d6224;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.ciap-box .ciap-naglowek { display: block; }
+.ciap-box-srodek { display: flex; flex-direction: column; gap: 2px; padding: 10px; text-align: center; }
+.ciap-box-srodek b {
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 26px;
+  letter-spacing: 1px;
+  color: #f5c400;
+  text-shadow: 2px 2px 0 #3a2800;
+}
+.ciap-box-srodek span { font-size: 11px; color: #d8e2c0; }
+.ciap-box:hover b { color: #ffe36a; }
+
+@media (max-width: 1340px) {
+  .ciap-baner { display: none; }
+  .ciap-box { display: block; }
+}

@@ -30,8 +30,6 @@
     </div>
   </header>
 
-  <!-- Przyciski z class="zablokowany" są tymczasowo wyłączone.
-       Żeby włączyć przycisk, usuń z niego: class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1" -->
   <nav id="menu">
     <a href="index.html">STRONA GŁÓWNA</a>
     <a href="pracownicy.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PRACOWNICY</a>
@@ -43,10 +41,6 @@
       <button type="button" class="menu-gry-przycisk">GRY ▾<span class="nowosc">NOWOŚĆ!!!</span></button>
       <div class="menu-gry-lista">
         <a href="niecik.html">CHLAŚNIJ NIECIKA</a>
-        <!-- UKRYTE NA RAZIE – żeby przywrócić, usuń znaczniki komentarza wokół tych dwóch linijek
-        <a href="angry.html">ANGRY NIECIK</a>
-        <a href="poprowadz.html">POPROWADŹ NIECIKA<span class="nowosc">NOWOŚĆ!!!</span></a>
-        -->
       </div>
     </div>
   </nav>
@@ -72,12 +66,6 @@
       <div class="ramka">
         <h2>Pliki</h2>
         <div>
-          <!--
-            TEMPLATE INSTALKI – skopiuj cały blok <div class="plik"> ... </div>.
-            Plik do pobrania wrzuć do repozytorium (np. do folderu "pliki")
-            i wpisz jego ścieżkę w href, np. href="pliki/program.zip".
-            Duże pliki (ponad ~25 MB) lepiej trzymać np. na Google Drive i wkleić link.
-          -->
 
           <div class="plik">
             <img class="ikona" src="placeholder.png" alt="">
@@ -121,7 +109,6 @@
       <div class="ramka">
         <h2>Znajdziesz nas na</h2>
         <div class="srodek spolecznosc">
-          <!-- Kolejną ikonę dodasz, kopiując jedną linijkę <a ...> -->
           <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank" rel="noopener" title="Twitch"><img src="ikona-twitch.png" alt="Twitch"></a>
           <a href="https://x.com/papciosoft" target="_blank" rel="noopener" title="X (Twitter)"><img src="ikona-x.png" alt="X (Twitter)"></a>
           <a href="https://www.tiktok.com/@papciosoft?lang=en-GB" target="_blank" rel="noopener" title="TikTok"><img src="ikona-tiktok.png" alt="TikTok"></a>
@@ -145,6 +132,11 @@
         w przeglądarce <b>Internet Explorer 6.0</b>
       </div>
 
+      <a class="ciap-box" href="https://www.ciapsquad.pl" target="_blank" rel="noopener">
+        <span class="ciap-naglowek">» PARTNER</span>
+        <span class="ciap-box-srodek"><b>CIAPSQUAD</b><span>Oficjalna strona ekipy – wbijaj »</span></span>
+      </a>
+
     </aside>
   </div>
 
@@ -163,6 +155,20 @@
   </footer>
 
 </div>
+
+<a class="ciap-baner" href="https://www.ciapsquad.pl" target="_blank" rel="noopener" title="CIAPSQUAD – strona partnerska">
+  <span class="ciap-naglowek">» PARTNER</span>
+  <span class="ciap-logo">CIAP<br>SQUAD</span>
+  <span class="ciap-opis">Oficjalna strona ekipy CIAPSQUAD</span>
+  <span class="ciap-lista">
+    <span>forum</span>
+    <span>galeria</span>
+    <span>memy</span>
+    <span>gry</span>
+  </span>
+  <span class="ciap-przycisk">wbijaj »</span>
+  <span class="ciap-adres">www.ciapsquad.pl</span>
+</a>
 
 <script src="wspolne.js"></script>
 

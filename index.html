@@ -30,8 +30,6 @@
     </div>
   </header>
 
-  <!-- Przyciski z class="zablokowany" są tymczasowo wyłączone.
-       Żeby włączyć przycisk, usuń z niego: class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1" -->
   <nav id="menu">
     <a href="index.html" class="aktywny">STRONA GŁÓWNA</a>
     <a href="pracownicy.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PRACOWNICY</a>
@@ -43,10 +41,6 @@
       <button type="button" class="menu-gry-przycisk">GRY ▾<span class="nowosc">NOWOŚĆ!!!</span></button>
       <div class="menu-gry-lista">
         <a href="niecik.html">CHLAŚNIJ NIECIKA</a>
-        <!-- UKRYTE NA RAZIE – żeby przywrócić, usuń znaczniki komentarza wokół tych dwóch linijek
-        <a href="angry.html">ANGRY NIECIK</a>
-        <a href="poprowadz.html">POPROWADŹ NIECIKA<span class="nowosc">NOWOŚĆ!!!</span></a>
-        -->
       </div>
     </div>
   </nav>
@@ -58,7 +52,6 @@
 
   <div id="tresc">
 
-    <!-- ================= GŁÓWNA KOLUMNA ================= -->
     <main id="glowna">
 
       <div class="ramka">
@@ -70,7 +63,6 @@
         </div>
       </div>
 
-      <!-- Panel Twitcha – pokazuje się sam, tylko gdy trwa transmisja -->
       <div class="ramka twitch" id="twitch-panel" hidden>
         <h2>Na żywo na Twitchu <span class="na-zywo">● LIVE</span></h2>
         <div class="srodek">
@@ -83,7 +75,6 @@
         <h2>Witaj w Związku!</h2>
         <div class="srodek powitanie">
           <div class="tekst">
-            <!-- TU NAPISZ KILKA ZDAŃ O KANALE -->
             <p>Witaj na oficjalnej stronie <b>Polskiego Związku Hydraulików</b> – kanału na YouTube.</p>
             <p>Tu znajdziesz nasze najnowsze odcinki, linki do wszystkich naszych miejsc w sieci oraz najświeższe wydanie Tadziennika Informacyjnego na TadzioTV.</p>
           </div>
@@ -94,8 +85,6 @@
       <div class="ramka">
         <h2>Najnowszy odcinek</h2>
         <div class="srodek">
-          <!-- Najnowszy film wstawia się sam: z filmy.json (automat), a jeśli go nie ma –
-               z playlisty "filmy z kanału" YouTube, która zawsze zaczyna się od najnowszego. -->
           <iframe class="odcinek-glowny" id="odcinek-glowny" loading="lazy" src="https://www.youtube.com/embed/videoseries?list=UULFUktYQ_61Mw5TWSnmMdpUmA" title="Najnowszy odcinek" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           <div class="tytul-odcinka" id="tytul-odcinka"></div>
           <div class="odcinki-male" id="odcinki-male"></div>
@@ -105,7 +94,6 @@
 
     </main>
 
-    <!-- ================= BOCZNA KOLUMNA ================= -->
     <aside id="boczna">
 
       <div class="tadziotv">
@@ -113,11 +101,6 @@
         <h3 class="tadziennik">TADZIENNIK INFORMACYJNY</h3>
         <div id="tadziennik-newsy">
 
-          <!--
-            Newsy wczytują się same z pliku newsy.json (robi go automat z Discorda).
-            Ten przykładowy news widać tylko wtedy, gdy newsy.json się nie wczyta
-            (np. przy otwieraniu strony dwuklikiem z dysku).
-          -->
           <article class="news">
             <h3>PRZYKŁADOWY NEWS</h3>
             <div class="info">dodał: Redakcja</div>
@@ -133,7 +116,6 @@
       <div class="ramka">
         <h2>Znajdziesz nas na</h2>
         <div class="srodek spolecznosc">
-          <!-- Kolejną ikonę dodasz, kopiując jedną linijkę <a ...> -->
           <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank" rel="noopener" title="Twitch"><img src="ikona-twitch.png" alt="Twitch"></a>
           <a href="https://x.com/papciosoft" target="_blank" rel="noopener" title="X (Twitter)"><img src="ikona-x.png" alt="X (Twitter)"></a>
           <a href="https://www.tiktok.com/@papciosoft?lang=en-GB" target="_blank" rel="noopener" title="TikTok"><img src="ikona-tiktok.png" alt="TikTok"></a>
@@ -157,6 +139,11 @@
         w przeglądarce <b>Internet Explorer 6.0</b>
       </div>
 
+      <a class="ciap-box" href="https://www.ciapsquad.pl" target="_blank" rel="noopener">
+        <span class="ciap-naglowek">» PARTNER</span>
+        <span class="ciap-box-srodek"><b>CIAPSQUAD</b><span>Oficjalna strona ekipy – wbijaj »</span></span>
+      </a>
+
     </aside>
   </div>
 
@@ -176,23 +163,35 @@
 
 </div>
 
+<a class="ciap-baner" href="https://www.ciapsquad.pl" target="_blank" rel="noopener" title="CIAPSQUAD – strona partnerska">
+  <span class="ciap-naglowek">» PARTNER</span>
+  <span class="ciap-logo">CIAP<br>SQUAD</span>
+  <span class="ciap-opis">Oficjalna strona ekipy CIAPSQUAD</span>
+  <span class="ciap-lista">
+    <span>forum</span>
+    <span>galeria</span>
+    <span>memy</span>
+    <span>gry</span>
+  </span>
+  <span class="ciap-przycisk">wbijaj »</span>
+  <span class="ciap-adres">www.ciapsquad.pl</span>
+</a>
+
 <script src="wspolne.js"></script>
 <script>
-/* ---------- Tadziennik: wczytanie newsów z newsy.json ---------- */
 (function () {
   var kontener = document.getElementById('tadziennik-newsy');
 
   function element(tag, klasa, tekst) {
     var el = document.createElement(tag);
     if (klasa) el.className = klasa;
-    if (tekst) el.textContent = tekst; // textContent = bezpiecznie, bez wstrzykiwania HTML
+    if (tekst) el.textContent = tekst;
     return el;
   }
 
   function zbudujNews(n) {
     var art = element('article', 'news');
 
-    // najpierw tytuł, autor i tekst...
     art.appendChild(element('h3', '', n.tytul));
     var data = new Date(n.data).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
     art.appendChild(element('div', 'info', 'dodał: ' + n.autor + ' • ' + data + (n.edytowane ? ' (edytowane)' : '')));
@@ -201,7 +200,6 @@
       if (akapit) art.appendChild(element('p', '', akapit));
     });
 
-    // ...a pod nim zdjęcia: 0 = brak, 1 = jedno na całą szerokość, 2 = obok siebie
     var obrazki = (n.obrazki || []).slice(0, 2);
     if (obrazki.length) {
       var zdjecia = element('div', obrazki.length === 2 ? 'zdjecia dwa' : 'zdjecia');
@@ -226,18 +224,17 @@
     .then(function (newsy) {
       if (!Array.isArray(newsy)) return;
       kontener.querySelectorAll('.news').forEach(function (stary) { stary.remove(); });
-      if (!newsy.length) { // newsy.json jest pusty – zamiast lorem ipsum pokaż komunikat
+      if (!newsy.length) {
         var pusto = element('p', 'brak-newsow', 'Na razie brak wiadomości. Zajrzyj później!');
         kontener.appendChild(pusto);
         return;
       }
       newsy.forEach(function (n) { kontener.appendChild(zbudujNews(n)); });
-      filtruj(); // jeśli przyszliśmy z wyszukiwarki na podstronie
+      filtruj();
     })
-    .catch(function () { /* nie udało się wczytać – zostaje przykładowy news */ });
+    .catch(function () {  });
 })();
 
-/* ---------- Twitch: panel pokazuje się tylko w trakcie transmisji ---------- */
 (function () {
   var KANAL = 'zwiazekhydraulikow';
   var panel = document.getElementById('twitch-panel');
@@ -246,7 +243,7 @@
   function pokaz() {
     if (!panel.hidden) return;
     var iframe = document.createElement('iframe');
-    // Twitch wymaga podania domeny strony w parametrze "parent"
+
     iframe.src = 'https://player.twitch.tv/?channel=' + KANAL +
       '&parent=' + encodeURIComponent(location.hostname || 'localhost') + '&muted=true';
     iframe.title = 'Transmisja na żywo – Twitch';
@@ -256,28 +253,27 @@
   }
   function ukryj() {
     panel.hidden = true;
-    okno.textContent = ''; // usuwa odtwarzacz, żeby nie grał w tle
+    okno.textContent = '';
   }
   function sprawdz() {
-    // decapi.me odpowiada "... is offline" albo czasem trwania transmisji, np. "1 hour, 5 minutes"
+
     fetch('https://decapi.me/twitch/uptime/' + KANAL, { cache: 'no-store' })
       .then(function (odp) { return odp.text(); })
       .then(function (tekst) {
         var naZywo = /\d+\s+(second|minute|hour|day)/i.test(tekst) && !/offline|error/i.test(tekst);
         if (naZywo) pokaz(); else ukryj();
       })
-      .catch(function () { /* brak odpowiedzi – zostawiamy jak jest */ });
+      .catch(function () {  });
   }
   sprawdz();
-  setInterval(sprawdz, 2 * 60 * 1000); // sprawdza ponownie co 2 minuty
+  setInterval(sprawdz, 2 * 60 * 1000);
 })();
 
-/* ---------- Najnowszy odcinek: wczytanie z filmy.json (robi go automat) ---------- */
 (function () {
   fetch('filmy.json', { cache: 'no-cache' })
     .then(function (odp) { if (!odp.ok) throw new Error(odp.status); return odp.json(); })
     .then(function (filmy) {
-      if (!Array.isArray(filmy) || !filmy.length) return; // zostają filmy wpisane w HTML
+      if (!Array.isArray(filmy) || !filmy.length) return;
       var glowny = document.getElementById('odcinek-glowny');
       glowny.src = 'https://www.youtube.com/embed/' + encodeURIComponent(filmy[0].id);
       glowny.title = filmy[0].tytul;
@@ -296,10 +292,9 @@
         male.appendChild(iframe);
       });
     })
-    .catch(function () { /* brak filmy.json – zostają filmy wpisane w HTML */ });
+    .catch(function () {  });
 })();
 
-/* ---------- rotacja banera ---------- */
 (function () {
   var obrazki = document.querySelectorAll('#baner img');
   var kropki = document.querySelector('#baner .kropki');
@@ -320,11 +315,10 @@
   }
   pokaz(0);
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    setInterval(function () { pokaz((obecny + 1) % obrazki.length); }, 10000); // 10 sekund
+    setInterval(function () { pokaz((obecny + 1) % obrazki.length); }, 10000);
   }
 })();
 
-/* ---------- wyszukiwarka w Tadzienniku ---------- */
 function filtruj() {
   var pole = document.getElementById('pole-szukaj');
   var brak = document.getElementById('brak-wynikow');
@@ -345,7 +339,7 @@ function filtruj() {
     filtruj();
     document.getElementById('tadziennik-newsy').scrollIntoView({ behavior: 'smooth' });
   });
-  // wyszukiwanie wysłane z podstrony (index.html?szukaj=...)
+
   var zAdresu = new URLSearchParams(location.search).get('szukaj');
   if (zAdresu) {
     pole.value = zAdresu;

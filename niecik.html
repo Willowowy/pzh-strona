@@ -30,8 +30,6 @@
     </div>
   </header>
 
-  <!-- Przyciski z class="zablokowany" są tymczasowo wyłączone.
-       Żeby włączyć przycisk, usuń z niego: class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1" -->
   <nav id="menu">
     <a href="index.html">STRONA GŁÓWNA</a>
     <a href="pracownicy.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PRACOWNICY</a>
@@ -43,10 +41,6 @@
       <button type="button" class="menu-gry-przycisk aktywny">GRY ▾<span class="nowosc">NOWOŚĆ!!!</span></button>
       <div class="menu-gry-lista">
         <a href="niecik.html" class="aktywny">CHLAŚNIJ NIECIKA</a>
-        <!-- UKRYTE NA RAZIE – żeby przywrócić, usuń znaczniki komentarza wokół tych dwóch linijek
-        <a href="angry.html">ANGRY NIECIK</a>
-        <a href="poprowadz.html">POPROWADŹ NIECIKA<span class="nowosc">NOWOŚĆ!!!</span></a>
-        -->
       </div>
     </div>
   </nav>
@@ -66,14 +60,6 @@
         <h2>Gra: Chlaśnij Niecika!</h2>
         <div class="srodek">
 
-          <!--
-            USTAWIENIA GRY:
-            - obrazek Niecika: src w <img id="cn-niecik"> (niecik.jpg)
-            - obrazek ręki:    src w <img id="cn-reka">   (reka.png)
-              Najlepiej PNG z przezroczystym tłem.
-            - teksty: w skrypcie na dole strony, sekcja TEKSTY
-            - muzyka w tle: plik muzyka.mp3 (podmień na inny .mp3 o tej samej nazwie)
-          -->
           <div class="cn" id="cn">
             <div class="cn-pasek"><button type="button" class="cn-muzyka" id="cn-muzyka" title="Muzyka w tle">♫ MUZYKA: WŁ</button></div>
 
@@ -82,19 +68,15 @@
               <img class="cn-niecik" id="cn-niecik" src="niecik.jpg" alt="Niecik" draggable="false">
               <img class="cn-reka" id="cn-reka" src="reka.png" alt="Ręka – złap ją!" draggable="false" hidden>
 
-              <!-- EKRAN 1: wstęp -->
               <div class="cn-ekran" id="cn-wstep">
                 <div class="cn-maszyna" id="cn-maszyna"></div>
                 <button type="button" class="cn-guzik" id="cn-start">W MORDE GO</button>
               </div>
 
-              <!-- EKRAN 2: "masz okazję" -->
               <div class="cn-okazja" id="cn-okazja" hidden>MASZ OKAZJE<br>CHLAŚNIJ GO W RYJ</div>
 
-              <!-- dymek przy ręce -->
               <div class="cn-dymek" id="cn-dymek" hidden><span>ZUAP MIE I<br>CHLAŚNIJ GO</span></div>
 
-              <!-- EKRAN 3: wynik -->
               <div class="cn-ekran cn-wynik" id="cn-wynik" hidden>
                 <div class="cn-wynik-tytul">NIECIK POLECIAŁ</div>
                 <div class="cn-metry" id="cn-metry">0,0 m</div>
@@ -127,7 +109,6 @@
       <div class="ramka">
         <h2>Znajdziesz nas na</h2>
         <div class="srodek spolecznosc">
-          <!-- Kolejną ikonę dodasz, kopiując jedną linijkę <a ...> -->
           <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank" rel="noopener" title="Twitch"><img src="ikona-twitch.png" alt="Twitch"></a>
           <a href="https://x.com/papciosoft" target="_blank" rel="noopener" title="X (Twitter)"><img src="ikona-x.png" alt="X (Twitter)"></a>
           <a href="https://www.tiktok.com/@papciosoft?lang=en-GB" target="_blank" rel="noopener" title="TikTok"><img src="ikona-tiktok.png" alt="TikTok"></a>
@@ -151,6 +132,11 @@
         w przeglądarce <b>Internet Explorer 6.0</b>
       </div>
 
+      <a class="ciap-box" href="https://www.ciapsquad.pl" target="_blank" rel="noopener">
+        <span class="ciap-naglowek">» PARTNER</span>
+        <span class="ciap-box-srodek"><b>CIAPSQUAD</b><span>Oficjalna strona ekipy – wbijaj »</span></span>
+      </a>
+
     </aside>
   </div>
 
@@ -170,15 +156,26 @@
 
 </div>
 
+<a class="ciap-baner" href="https://www.ciapsquad.pl" target="_blank" rel="noopener" title="CIAPSQUAD – strona partnerska">
+  <span class="ciap-naglowek">» PARTNER</span>
+  <span class="ciap-logo">CIAP<br>SQUAD</span>
+  <span class="ciap-opis">Oficjalna strona ekipy CIAPSQUAD</span>
+  <span class="ciap-lista">
+    <span>forum</span>
+    <span>galeria</span>
+    <span>memy</span>
+    <span>gry</span>
+  </span>
+  <span class="ciap-przycisk">wbijaj »</span>
+  <span class="ciap-adres">www.ciapsquad.pl</span>
+</a>
+
 <script src="wspolne.js"></script>
 <script>
-/* =========================================================
-   GRA: CHLAŚNIJ NIECIKA – czysty HTML/CSS/JS
-   ========================================================= */
 (function () {
-  /* ---------- TEKSTY ---------- */
+
   var WSTEP = 'Pewnego dnia na twojej drodze stanął NIECIK...';
-  var MIN_PREDKOSC = 0.9; // poniżej tego chlaśnięcie jest za słabe
+  var MIN_PREDKOSC = 0.9;
 
   var $ = function (id) { return document.getElementById(id); };
   var scena = $('cn-scena'), niecik = $('cn-niecik'), reka = $('cn-reka'), dymek = $('cn-dymek');
@@ -191,13 +188,11 @@
   function pozniej(f, ms) { timery.push(setTimeout(f, ms)); }
   function wyczyscTimery() { timery.forEach(clearTimeout); timery = []; }
 
-  /* ---------- pozycje (w pikselach sceny) ---------- */
-  var N = {}, R = {};          // Niecik i ręka: x, y, obrót
+  var N = {}, R = {};
   function ustawNiecika() { niecik.style.transform = 'translate(' + N.x + 'px,' + N.y + 'px) rotate(' + N.r + 'deg)'; }
   function ustawReke() { reka.style.transform = 'translate(' + R.x + 'px,' + R.y + 'px) rotate(' + R.r + 'deg)'; }
   function wymiary() { return { w: scena.clientWidth, h: scena.clientHeight }; }
 
-  /* ---------- EKRAN 1: wstęp ---------- */
   function wstep() {
     wyczyscTimery();
     stan = 'wstep';
@@ -211,7 +206,6 @@
     $('cn-start').classList.add('widac');
   }
 
-  /* ---------- EKRAN 2: "masz okazję" ---------- */
   function okazja() {
     wyczyscTimery();
     stan = 'okazja';
@@ -226,7 +220,6 @@
     pozniej(function () { napis.hidden = true; gra(); }, 2600);
   }
 
-  /* ---------- EKRAN 3: chlaśnięcie ---------- */
   var startReki = {};
   function gra() {
     stan = 'gra';
@@ -237,7 +230,6 @@
     dymek.hidden = false;
   }
 
-  /* przeciąganie ręki */
   var trzyma = false, chwyt = {}, historia = [];
   reka.addEventListener('pointerdown', function (e) {
     if (stan !== 'gra') return;
@@ -261,12 +253,11 @@
     historia.push({ x: R.x, t: t });
     historia = historia.filter(function (h) { return t - h.t < 80; });
 
-    // trafienie: lewa krawędź ręki dotyka Niecika
     var nPrawa = N.x + niecik.offsetWidth * 0.85;
     var nachodzi = R.y + reka.offsetHeight > N.y + 20 && R.y < N.y + niecik.offsetHeight;
     if (R.x < nPrawa && nachodzi) {
       var pierwszy = historia[0];
-      var v = pierwszy ? (pierwszy.x - R.x) / Math.max(t - pierwszy.t, 1) : 0; // prędkość w lewo (px/ms)
+      var v = pierwszy ? (pierwszy.x - R.x) / Math.max(t - pierwszy.t, 1) : 0;
       chlast(v);
     }
   });
@@ -299,7 +290,7 @@
     reka.classList.remove('trzymana');
     var x = N.x + niecik.offsetWidth * 0.6, y = N.y + 60;
 
-    if (v < MIN_PREDKOSC) {             // za słabo – Niecik tylko się chwieje
+    if (v < MIN_PREDKOSC) {
       napis('ZA SŁABO!', x, y);
       niecik.classList.remove('chwieje'); void niecik.offsetWidth; niecik.classList.add('chwieje');
       plask(0.3);
@@ -312,16 +303,14 @@
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       scena.classList.remove('trzesie'); void scena.offsetWidth; scena.classList.add('trzesie');
     }
-    // ręka przelatuje dalej w lewo i wraca
+
     R.x -= 60; R.r = -20; ustawReke();
     pozniej(wrocReka, 250);
 
-    // odległość: zależy od prędkości machnięcia
     var odleglosc = Math.round((v * 55 + Math.random() * 8) * 10) / 10;
     lot(v, odleglosc);
   }
 
-  /* lot Niecika poza ekran */
   function lot(v, odleglosc) {
     var vx = -Math.min(v, 8) * 0.9, vy = -Math.min(v, 8) * 0.35, g = 0.0025, obrot = -Math.min(v, 8) * 0.6;
     var poprzedni = performance.now();
@@ -336,7 +325,6 @@
     })(poprzedni);
   }
 
-  /* ---------- EKRAN 4: czarny ekran i wynik ---------- */
   function koniec(odleglosc) {
     stan = 'wynik';
     niecik.hidden = true; reka.hidden = true; dymek.hidden = true;
@@ -350,7 +338,6 @@
       $('cn-rekord-info').textContent = '';
       $('cn-wynik').hidden = false;
 
-      // licznik metrów nabija się jak w starych grach
       var start = performance.now(), czas = 1200;
       (function licz(t) {
         var p = Math.min(1, (t - start) / czas);
@@ -358,10 +345,9 @@
         if (p < 1) { requestAnimationFrame(licz); return; }
         $('cn-rekord-info').textContent = nowy ? '★ NOWY REKORD! ★' : 'Rekord: ' + metry(rekord);
       })(start);
-    }, 1200); // chwila czarnego ekranu
+    }, 1200);
   }
 
-  /* ---------- dźwięk plaśnięcia (generowany, bez plików) ---------- */
   var audio = null;
   function plask(moc) {
     try {
@@ -376,12 +362,10 @@
     } catch (e) {}
   }
 
-  /* ---------- muzyka w tle (MP3, w pętli) ---------- */
-  // przeglądarki pozwalają włączyć dźwięk dopiero po kliknięciu – muzyka rusza przy pierwszym kliknięciu w grę
   var muzyka = new Audio('muzyka.mp3');
   muzyka.loop = true;
-  muzyka.preload = 'none';   // plik pobiera się dopiero, gdy muzyka ma zagrać
-  muzyka.volume = 0.5;       // głośność od 0 do 1
+  muzyka.preload = 'none';
+  muzyka.volume = 0.5;
   muzyka.graj = function () { if (muzyka.paused) muzyka.play().catch(function () {}); };
   muzyka.stop = function () { muzyka.pause(); };
   var muzykaWl = true;

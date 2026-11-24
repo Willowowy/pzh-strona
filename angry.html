@@ -30,8 +30,6 @@
     </div>
   </header>
 
-  <!-- Przyciski z class="zablokowany" są tymczasowo wyłączone.
-       Żeby włączyć przycisk, usuń z niego: class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1" -->
   <nav id="menu">
     <a href="index.html">STRONA GŁÓWNA</a>
     <a href="pracownicy.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PRACOWNICY</a>
@@ -43,10 +41,6 @@
       <button type="button" class="menu-gry-przycisk aktywny">GRY ▾<span class="nowosc">NOWOŚĆ!!!</span></button>
       <div class="menu-gry-lista">
         <a href="niecik.html">CHLAŚNIJ NIECIKA</a>
-        <!-- UKRYTE NA RAZIE – żeby przywrócić, usuń znaczniki komentarza wokół tych dwóch linijek
-        <a href="angry.html" class="aktywny">ANGRY NIECIK</a>
-        <a href="poprowadz.html">POPROWADŹ NIECIKA<span class="nowosc">NOWOŚĆ!!!</span></a>
-        -->
       </div>
     </div>
   </nav>
@@ -66,13 +60,6 @@
         <h2>Gra: Angry Niecik</h2>
         <div class="srodek">
 
-          <!--
-            USTAWIENIA GRY (w skrypcie na dole strony):
-            - POZIOMY: układ bloków i świnek każdego poziomu
-            - MAT: wytrzymałość i punkty za drewno, szkło, kamień i świnki
-            - obrazek Niecika-ptaka: niecik-glowa.png
-            - muzyka: muzyka.mp3 (ta sama co w Chlaśnij Niecika)
-          -->
           <div class="an" id="an">
             <div class="an-hud">
               <span>POZIOM: <b id="an-poziom">1/3</b></span>
@@ -123,7 +110,6 @@
       <div class="ramka">
         <h2>Znajdziesz nas na</h2>
         <div class="srodek spolecznosc">
-          <!-- Kolejną ikonę dodasz, kopiując jedną linijkę <a ...> -->
           <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank" rel="noopener" title="Twitch"><img src="ikona-twitch.png" alt="Twitch"></a>
           <a href="https://x.com/papciosoft" target="_blank" rel="noopener" title="X (Twitter)"><img src="ikona-x.png" alt="X (Twitter)"></a>
           <a href="https://www.tiktok.com/@papciosoft?lang=en-GB" target="_blank" rel="noopener" title="TikTok"><img src="ikona-tiktok.png" alt="TikTok"></a>
@@ -147,6 +133,11 @@
         w przeglądarce <b>Internet Explorer 6.0</b>
       </div>
 
+      <a class="ciap-box" href="https://www.ciapsquad.pl" target="_blank" rel="noopener">
+        <span class="ciap-naglowek">» PARTNER</span>
+        <span class="ciap-box-srodek"><b>CIAPSQUAD</b><span>Oficjalna strona ekipy – wbijaj »</span></span>
+      </a>
+
     </aside>
   </div>
 
@@ -166,11 +157,22 @@
 
 </div>
 
+<a class="ciap-baner" href="https://www.ciapsquad.pl" target="_blank" rel="noopener" title="CIAPSQUAD – strona partnerska">
+  <span class="ciap-naglowek">» PARTNER</span>
+  <span class="ciap-logo">CIAP<br>SQUAD</span>
+  <span class="ciap-opis">Oficjalna strona ekipy CIAPSQUAD</span>
+  <span class="ciap-lista">
+    <span>forum</span>
+    <span>galeria</span>
+    <span>memy</span>
+    <span>gry</span>
+  </span>
+  <span class="ciap-przycisk">wbijaj »</span>
+  <span class="ciap-adres">www.ciapsquad.pl</span>
+</a>
+
 <script src="wspolne.js"></script>
 <script>
-/* =========================================================
-   ANGRY NIECIK – proca, fizyka i poziomy w czystym JS (canvas)
-   ========================================================= */
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   var canvas = $('an-canvas'), ctx = canvas.getContext('2d');
@@ -179,7 +181,6 @@
 
   var glowa = new Image(); glowa.src = 'niecik-glowa.png';
 
-  /* ---------- MATERIAŁY ---------- */
   var MAT = {
     drewno: { gestosc: 1.0, hp: 90,  kruchosc: 0.35, punkty: 500 },
     szklo:  { gestosc: 0.6, hp: 40,  kruchosc: 0.7,  punkty: 300 },
@@ -187,10 +188,6 @@
     swinia: { gestosc: 0.8, hp: 45,  kruchosc: 0.6,  punkty: 5000 }
   };
 
-  /* ---------- POZIOMY ----------
-     blok(x, y, szer, wys, materiał) – x od lewej, y = wysokość nad ziemią (dół bloku)
-     swinia(x, y, promień)           – x środka, y = wysokość nad ziemią (dół świnki)
-     ptaki: ile Niecików dostaje gracz                                         */
   var POZIOMY = [
     { nazwa: 'Rozgrzewka', ptaki: 3, budowa: function (b, s) {
       b(600, 0, 20, 100, 'drewno'); b(700, 0, 20, 100, 'drewno'); b(590, 100, 140, 20, 'drewno');
@@ -213,7 +210,6 @@
     }}
   ];
 
-  /* ---------- stan gry ---------- */
   var ciala = [], czastki = [], napisy = [], slad = [], staryslad = [];
   var poziom = 0, punkty = 0, ptakiZostalo = 0, ptak = null, stan = 'menu';
   var celujemy = false, celPozycja = null, turboUzyte = false, czasLotu = 0, wolno = 0;
@@ -242,7 +238,7 @@
     );
     ptakiZostalo = POZIOMY[n].ptaki;
     ptak = null;
-    stabilizacja = 90;                       // przez chwilę budowle osiadają bez obrażeń
+    stabilizacja = 90;
     for (var i = 0; i < 60; i++) krok(1 / 60, true);
     zaladujPtaka();
     odswiezHud();
@@ -256,7 +252,6 @@
     odswiezHud();
   }
 
-  /* ---------- KOLIZJE ---------- */
   function kolizja(a, b) {
     if (a.r && b.r) {
       var dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy), suma = a.r + b.r;
@@ -273,7 +268,7 @@
     var cy = Math.max(pud.y - pud.h / 2, Math.min(kolo.y, pud.y + pud.h / 2));
     var ex = cx - kolo.x, ey = cy - kolo.y, dl = Math.hypot(ex, ey);
     var n;
-    if (dl === 0) {                         // środek koła w środku pudełka
+    if (dl === 0) {
       var px = pud.w / 2 + kolo.r - Math.abs(kolo.x - pud.x), py = pud.h / 2 + kolo.r - Math.abs(kolo.y - pud.y);
       n = px < py ? { nx: Math.sign(pud.x - kolo.x) || 1, ny: 0, gl: px } : { nx: 0, ny: Math.sign(pud.y - kolo.y) || 1, gl: py };
     } else {
@@ -308,7 +303,6 @@
     odswiezHud();
   }
 
-  /* ---------- KROK FIZYKI ---------- */
   function krok(dt, cicho) {
     var lista = ciala.filter(function (c) { return !c.usuniete; });
     if (ptak && !ptak.naProcy && !ptak.wcielony) {
@@ -342,7 +336,7 @@
           var jn = -(1 + e) * vn / suma;
           a.vx -= jn * k.nx * a.odw; a.vy -= jn * k.ny * a.odw;
           b.vx += jn * k.nx * b.odw; b.vy += jn * k.ny * b.odw;
-          // tarcie
+
           rvx = b.vx - a.vx; rvy = b.vy - a.vy;
           var tx = rvx - (rvx * k.nx + rvy * k.ny) * k.nx, ty = rvy - (rvx * k.nx + rvy * k.ny) * k.ny, tl = Math.hypot(tx, ty);
           if (tl > 0.0001) {
@@ -363,15 +357,14 @@
     lista.forEach(function (c) {
       if (c.stat) return;
       var v = Math.hypot(c.vx, c.vy);
-      if (v < 6) { c.vx *= 0.5; c.vy *= 0.5; }            // uspokajanie, żeby wieże nie drgały
-      if (c.x < -150 || c.x > W + 250 || c.y > H + 150) {  // wypadło za planszę
+      if (v < 6) { c.vx *= 0.5; c.vy *= 0.5; }
+      if (c.x < -150 || c.x > W + 250 || c.y > H + 150) {
         if (c.ptak) c.poza = true; else zniszcz(c);
       }
     });
     if (stabilizacja > 0) stabilizacja--;
   }
 
-  /* ---------- PROCA: celowanie myszką / palcem ---------- */
   function punkt(e) {
     var r = canvas.getBoundingClientRect();
     return { x: (e.clientX - r.left) * W / r.width, y: (e.clientY - r.top) * H / r.height };
@@ -382,7 +375,7 @@
     if (ptak && ptak.naProcy && Math.hypot(p.x - ptak.x, p.y - ptak.y) < 45) {
       celujemy = true; canvas.setPointerCapture(e.pointerId); e.preventDefault();
     } else if (ptak && !ptak.naProcy && !turboUzyte && !ptak.koniec) {
-      turboUzyte = true;                     // kliknięcie w locie = TURBO
+      turboUzyte = true;
       ptak.vx *= 1.6; ptak.vy *= 1.2;
       napisy.push({ x: ptak.x, y: ptak.y - 30, tekst: 'TURBO DISCO!', zycie: 1, turbo: true });
     }
@@ -397,7 +390,7 @@
     if (!celujemy) return;
     celujemy = false;
     var dx = PROCA.x - ptak.x, dy = PROCA.y - ptak.y;
-    if (Math.hypot(dx, dy) < 15) { ptak.x = PROCA.x; ptak.y = PROCA.y; return; }   // za słabo – zostaje na procy
+    if (Math.hypot(dx, dy) < 15) { ptak.x = PROCA.x; ptak.y = PROCA.y; return; }
     ptak.naProcy = false;
     ptak.vx0 = dx * SILA; ptak.vy0 = dy * SILA;
     staryslad = slad; slad = [];
@@ -405,7 +398,6 @@
   canvas.addEventListener('pointerup', pusc);
   canvas.addEventListener('pointercancel', pusc);
 
-  /* ---------- PĘTLA GRY ---------- */
   var poprzedni = performance.now(), akumulator = 0, licznikSladu = 0;
   function petla(t) {
     var dt = Math.min((t - poprzedni) / 1000, 0.05); poprzedni = t;
@@ -434,7 +426,7 @@
         ptak.koniec = true;
         var mojaRunda = runda;
         setTimeout(function () {
-          if (mojaRunda !== runda) return;      // w międzyczasie ktoś zrestartował poziom
+          if (mojaRunda !== runda) return;
           if (ptak) ptak.usuniete = true;
           if (zywychSwin() > 0 && ptakiZostalo > 0) zaladujPtaka();
           else if (zywychSwin() > 0) zaplanujKoniec(false);
@@ -449,7 +441,7 @@
     stan = 'koniec-czeka';
     koniecZaplanowany = setTimeout(function () {
       koniecZaplanowany = null;
-      wygrana = zywychSwin() === 0;          // świnka mogła jeszcze spaść w międzyczasie
+      wygrana = zywychSwin() === 0;
       if (wygrana) {
         var bonus = (ptakiZostalo + (ptak && ptak.naProcy ? 1 : 0)) * 10000;
         punkty += bonus;
@@ -477,7 +469,6 @@
     }, 1500);
   }
 
-  /* ---------- RYSOWANIE ---------- */
   var chmury = [{ x: 120, y: 70, s: 1 }, { x: 420, y: 110, s: 0.7 }, { x: 720, y: 60, s: 1.2 }];
   function tlo() {
     var g = ctx.createLinearGradient(0, 0, 0, ZIEMIA);
@@ -521,7 +512,7 @@
     ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.naProcy ? 0 : p.kat * 0.4);
     ctx.fillStyle = '#d6001c'; ctx.beginPath(); ctx.arc(0, 0, p.r + 3, 0, 7); ctx.fill();
     if (glowa.complete && glowa.naturalWidth) ctx.drawImage(glowa, -p.r, -p.r, p.r * 2, p.r * 2);
-    ctx.strokeStyle = '#000'; ctx.lineWidth = 3;            // gniewne brwi
+    ctx.strokeStyle = '#000'; ctx.lineWidth = 3;
     ctx.beginPath(); ctx.moveTo(-12, -9); ctx.lineTo(-3, -5); ctx.moveTo(12, -9); ctx.lineTo(3, -5); ctx.stroke();
     ctx.restore();
   }
@@ -562,7 +553,7 @@
       ctx.strokeStyle = '#555';
     }
     ctx.lineWidth = 2; ctx.strokeRect(x, y, c.w, c.h);
-    if (c.hp < c.hpMax * 0.6) {               // pęknięcia
+    if (c.hp < c.hpMax * 0.6) {
       ctx.strokeStyle = 'rgba(0,0,0,.55)'; ctx.lineWidth = 1.5; ctx.beginPath();
       ctx.moveTo(x + c.w * 0.2, y + c.h * 0.1); ctx.lineTo(x + c.w * 0.5, y + c.h * 0.45);
       ctx.lineTo(x + c.w * 0.35, y + c.h * 0.6); ctx.lineTo(x + c.w * 0.75, y + c.h * 0.9); ctx.stroke();
@@ -579,7 +570,7 @@
     ciala.forEach(function (c) { if (c.usuniete || c.stat || c.ptak) return; if (c.swinia) rysujSwinie(c); else rysujBlok(c); });
     if (ptak && !ptak.usuniete) rysujPtaka(ptak);
     gumy(true); proca(true);
-    // czekające Niciki przy procy
+
     for (var i = 0; i < ptakiZostalo; i++) rysujPtaka({ x: PROCA.x - 45 - i * 34, y: ZIEMIA - R_PTAKA, r: R_PTAKA - 4, naProcy: true });
     czastki.forEach(function (c) { ctx.globalAlpha = Math.max(0, c.zycie); ctx.fillStyle = c.kolor; ctx.fillRect(c.x, c.y, c.rozm, c.rozm); });
     ctx.globalAlpha = 1;
@@ -598,7 +589,6 @@
     }
   }
 
-  /* ---------- HUD i przyciski ---------- */
   function odswiezHud() {
     $('an-poziom').textContent = (poziom + 1) + '/' + POZIOMY.length;
     $('an-punkty').textContent = punkty;
@@ -621,7 +611,6 @@
   });
   $('an-restart').addEventListener('click', function () { if (stan !== 'menu') start(poziom); });
 
-  /* ---------- muzyka (ta sama co w Chlaśnij Niecika) ---------- */
   var muzyka = new Audio('muzyka.mp3');
   muzyka.loop = true; muzyka.preload = 'none'; muzyka.volume = 0.4;
   var muzykaWl = true;
@@ -640,7 +629,6 @@
   zbudujPoziom(0);
   requestAnimationFrame(petla);
 
-  // do testów
   window.__angry = { stan: function () { return { stan: stan, poziom: poziom, punkty: punkty, swinie: zywychSwin(), ptaki: ptakiZostalo, ptak: ptak && { x: ptak.x, y: ptak.y, naProcy: ptak.naProcy } }; },
     proca: PROCA, W: W, H: H };
 })();

@@ -30,8 +30,6 @@
     </div>
   </header>
 
-  <!-- Przyciski z class="zablokowany" są tymczasowo wyłączone.
-       Żeby włączyć przycisk, usuń z niego: class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1" -->
   <nav id="menu">
     <a href="index.html">STRONA GŁÓWNA</a>
     <a href="pracownicy.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PRACOWNICY</a>
@@ -43,10 +41,6 @@
       <button type="button" class="menu-gry-przycisk">GRY ▾<span class="nowosc">NOWOŚĆ!!!</span></button>
       <div class="menu-gry-lista">
         <a href="niecik.html">CHLAŚNIJ NIECIKA</a>
-        <!-- UKRYTE NA RAZIE – żeby przywrócić, usuń znaczniki komentarza wokół tych dwóch linijek
-        <a href="angry.html">ANGRY NIECIK</a>
-        <a href="poprowadz.html">POPROWADŹ NIECIKA<span class="nowosc">NOWOŚĆ!!!</span></a>
-        -->
       </div>
     </div>
   </nav>
@@ -66,16 +60,6 @@
         <h2>Serwer Minecraft</h2>
         <div class="srodek">
 
-          <!--
-            USTAWIENIA SERWERA:
-            - data-ip: adres serwera. Strona sama sprawdzi, czy serwer działa,
-              i pobierze z niego MOTD, ikonkę i liczbę graczy.
-            - data-motd: MOTD pokazywane, gdy serwer jest wyłączony.
-              Kody kolorów jak w grze: &a zielony, &e żółty, &c czerwony, &6 złoty, &b błękitny,
-              &f biały, &7 szary, &l pogrubienie, &o kursywa, &n podkreślenie, &k "szum", &r reset.
-              Druga linijka po \n
-            - src ikonki: obrazek 64x64 (np. server-icon.png z serwera).
-          -->
           <div class="mc-serwer" id="mc-serwer"
                data-ip="TWOJSERWER.aternos.me"
                data-motd="&a&lPolski Związek Hydraulików&r &7- &eserwer&r\n&bTu wpisz drugą linijkę MOTD &k!!">
@@ -104,15 +88,6 @@
       <div class="ramka">
         <h2>Mapa świata</h2>
         <div class="srodek">
-          <!--
-            WERSJA 1 (prosta): obrazek mapy. Podmień placeholder.png w obu miejscach.
-
-            WERSJA 2 (interaktywna, z przybliżaniem): pobierz świat z Aternosa (Świat → Pobierz),
-            wyrenderuj go programem uNmINeD jako mapę web, wrzuć wynik do folderu "mapa"
-            w repozytorium i zamień poniższy <a> na:
-            <iframe class="mc-mapa-iframe" src="mapa/unmined.index.html" title="Mapa świata"></iframe>
-            (nazwę pliku sprawdź w folderze, który wygeneruje uNmINeD)
-          -->
           <a class="mapa-obraz" href="placeholder.png" target="_blank"><img src="placeholder.png" alt="Mapa świata"></a>
           <p class="mc-podpis">Kliknij mapę, żeby zobaczyć ją w pełnym rozmiarze.</p>
         </div>
@@ -133,18 +108,15 @@
       <div class="ramka lore">
         <h2>Lore serwera</h2>
         <div class="srodek">
-          <!-- TU WPISZ LORE SERWERA. Kolejne akapity w osobnych <p>. -->
           <p class="lore-inicjal">Dawno, dawno temu, gdy rury jeszcze nie przeciekały...</p>
           <p>TU WPISZ LORE SERWERA. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
       </div>
 
-
       <div class="ramka">
         <h2>Znajdziesz nas na</h2>
         <div class="srodek spolecznosc">
-          <!-- Kolejną ikonę dodasz, kopiując jedną linijkę <a ...> -->
           <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank" rel="noopener" title="Twitch"><img src="ikona-twitch.png" alt="Twitch"></a>
           <a href="https://x.com/papciosoft" target="_blank" rel="noopener" title="X (Twitter)"><img src="ikona-x.png" alt="X (Twitter)"></a>
           <a href="https://www.tiktok.com/@papciosoft?lang=en-GB" target="_blank" rel="noopener" title="TikTok"><img src="ikona-tiktok.png" alt="TikTok"></a>
@@ -168,6 +140,11 @@
         w przeglądarce <b>Internet Explorer 6.0</b>
       </div>
 
+      <a class="ciap-box" href="https://www.ciapsquad.pl" target="_blank" rel="noopener">
+        <span class="ciap-naglowek">» PARTNER</span>
+        <span class="ciap-box-srodek"><b>CIAPSQUAD</b><span>Oficjalna strona ekipy – wbijaj »</span></span>
+      </a>
+
     </aside>
   </div>
 
@@ -187,16 +164,29 @@
 
 </div>
 
+<a class="ciap-baner" href="https://www.ciapsquad.pl" target="_blank" rel="noopener" title="CIAPSQUAD – strona partnerska">
+  <span class="ciap-naglowek">» PARTNER</span>
+  <span class="ciap-logo">CIAP<br>SQUAD</span>
+  <span class="ciap-opis">Oficjalna strona ekipy CIAPSQUAD</span>
+  <span class="ciap-lista">
+    <span>forum</span>
+    <span>galeria</span>
+    <span>memy</span>
+    <span>gry</span>
+  </span>
+  <span class="ciap-przycisk">wbijaj »</span>
+  <span class="ciap-adres">www.ciapsquad.pl</span>
+</a>
+
 <script src="wspolne.js"></script>
 <script>
-/* ---------- Minecraft: MOTD z kodami kolorów jak w grze ---------- */
 var MC_KOLORY = {
   '0':'#000000','1':'#0000AA','2':'#00AA00','3':'#00AAAA','4':'#AA0000','5':'#AA00AA','6':'#FFAA00','7':'#AAAAAA',
   '8':'#555555','9':'#5555FF','a':'#55FF55','b':'#55FFFF','c':'#FF5555','d':'#FF55FF','e':'#FFFF55','f':'#FFFFFF'
 };
 
 function mcLinia(tekst) {
-  // zamienia "&aZielony &lgruby" (albo z §) na kolorowe <span>
+
   var linia = document.createElement('div');
   var styl = { kolor: '#AAAAAA', l: false, o: false, n: false, m: false, k: false };
   var czesci = tekst.split(/[&§]([0-9a-fk-or])/i);
@@ -230,7 +220,6 @@ function mcPokazMotd(tekst) {
   tekst.split(/\\n|\n/).slice(0, 2).forEach(function (l) { motd.appendChild(mcLinia(l)); });
 }
 
-// &k – losowo zmieniające się znaki
 setInterval(function () {
   var znaki = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?#$%';
   document.querySelectorAll('.mc-szum').forEach(function (s) {
@@ -248,7 +237,6 @@ setInterval(function () {
   mcPokazMotd(box.getAttribute('data-motd'));
   document.getElementById('mc-ip').textContent = ip;
 
-  // kopiowanie IP
   document.getElementById('mc-kopiuj').addEventListener('click', function () {
     var przycisk = this;
     function gotowe() { przycisk.textContent = 'SKOPIOWANO!'; setTimeout(function () { przycisk.textContent = 'KOPIUJ IP'; }, 1500); }
@@ -268,13 +256,12 @@ setInterval(function () {
     return;
   }
 
-  // status na żywo z mcsrvstat.us (odświeża się u nich co ok. 5 minut)
   fetch('https://api.mcsrvstat.us/3/' + encodeURIComponent(ip))
     .then(function (odp) { return odp.json(); })
     .then(function (d) {
       var wersja = String(d.version || '');
       var motdTekst = d.motd && d.motd.clean ? d.motd.clean.join(' ') : '';
-      // serwer Aternosa, który śpi, odpowiada swoim komunikatem "offline"
+
       if (!d.online || /offline/i.test(wersja) || /offline/i.test(motdTekst)) {
         offline('Serwer jest teraz wyłączony. Na Aternosie trzeba go najpierw uruchomić.');
         return;
