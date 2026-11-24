@@ -1209,9 +1209,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(0, 0, 0, .35);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, .45);
   cursor: not-allowed;
 }
 .materacci[hidden] { display: none; }
@@ -1226,4 +1224,4 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 body.materacci-trwa { overflow: hidden; }
 body.materacci-trwa #strona,
-body.materacci-trwa .ciap-baner { filter: blur(6px); pointer-events: none; user-select: none; }
+body.materacci-trwa .ciap-baner { filter: blur(8px); pointer-events: none; user-select: none; }
