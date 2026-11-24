@@ -1200,3 +1200,30 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   .ciap-baner { display: none; }
   .ciap-box { display: block; }
 }
+
+.materacci {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, .35);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  cursor: not-allowed;
+}
+.materacci[hidden] { display: none; }
+.materacci-film {
+  width: min(92vw, 960px);
+  max-height: 88vh;
+  background: #000;
+  border: 3px solid #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 0 3px #000, 0 0 60px rgba(0, 0, 0, .8);
+  pointer-events: none;
+}
+body.materacci-trwa { overflow: hidden; }
+body.materacci-trwa #strona,
+body.materacci-trwa .ciap-baner { filter: blur(6px); pointer-events: none; user-select: none; }

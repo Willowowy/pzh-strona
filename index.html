@@ -177,6 +177,11 @@
   <span class="ciap-adres">www.ciapsquad.pl</span>
 </a>
 
+
+<div class="materacci" id="materacci" hidden>
+  <video class="materacci-film" id="materacci-film" src="materacci.mp4" playsinline preload="none" disablepictureinpicture controlslist="nodownload noplaybackrate noremoteplayback"></video>
+</div>
+
 <script src="wspolne.js"></script>
 <script>
 (function () {
@@ -346,6 +351,57 @@ function filtruj() {
     filtruj();
     document.getElementById('tadziennik-newsy').scrollIntoView();
   }
+})();
+
+(function () {
+  var HASLO = 'MATERACCI';
+  var wpisane = '';
+  var nakladka = document.getElementById('materacci');
+  var film = document.getElementById('materacci-film');
+  var trwa = false;
+
+  function start() {
+    if (trwa) return;
+    trwa = true;
+    nakladka.hidden = false;
+    document.body.classList.add('materacci-trwa');
+    if (document.activeElement) document.activeElement.blur();
+    film.currentTime = 0;
+    film.play().catch(function () {
+      film.muted = true;
+      film.play().catch(koniec);
+    });
+  }
+
+  function koniec() {
+    trwa = false;
+    film.pause();
+    film.muted = false;
+    nakladka.hidden = true;
+    document.body.classList.remove('materacci-trwa');
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (trwa) {
+      if (e.key !== 'F5' && !(e.ctrlKey && e.key.toLowerCase() === 'r')) e.preventDefault();
+      return;
+    }
+    if (!e.key || e.key.length !== 1) return;
+    wpisane = (wpisane + e.key.toUpperCase()).slice(-HASLO.length);
+    if (wpisane === HASLO) { wpisane = ''; start(); }
+  }, true);
+
+  film.addEventListener('ended', koniec);
+  film.addEventListener('error', koniec);
+  film.addEventListener('pause', function () {
+    setTimeout(function () {
+      var prawieKoniec = film.duration && film.currentTime >= film.duration - 0.5;
+      if (trwa && !film.ended && !prawieKoniec) film.play().catch(function () {});
+      else if (trwa && prawieKoniec) koniec();
+    }, 100);
+  });
+  nakladka.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  nakladka.addEventListener('click', function (e) { e.preventDefault(); });
 })();
 </script>
 
