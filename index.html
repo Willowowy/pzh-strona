@@ -43,6 +43,8 @@
         <a href="niecik.html">CHLAŚNIJ NIECIKA</a>
       </div>
     </div>
+    <a href="brodman.html" id="menu-brodman" hidden>BRODMAN BLOG</a>
+    <a href="#" class="menu-strike" id="menu-strike" hidden>Dowiedz się więcej<br>o Strike Teamie</a>
   </nav>
 
   <div id="tasma">
@@ -54,7 +56,11 @@
 
     <main id="glowna">
 
-      <div class="ramka">
+      <div class="ramka ramka-baner" id="ramka-baner">
+        <div class="klawiatura" id="klawiatura" aria-hidden="true">
+          <div class="klawiatura-ekran"><span id="klawiatura-tekst"></span><span class="klawiatura-kursor">_</span></div>
+          <div class="klawiatura-klawisze" id="klawiatura-klawisze"></div>
+        </div>
         <div id="baner">
           <img src="baner.png" alt="Baner" class="widoczny">
           <img src="Screenshot_928.png" alt="Baner 2">
@@ -113,38 +119,64 @@
         <div id="brak-wynikow">Brak wiadomości pasujących do wyszukiwania :(</div>
       </div>
 
-      <div class="ramka">
-        <h2>Znajdziesz nas na</h2>
-        <div class="srodek spolecznosc">
-          <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank" rel="noopener" title="Twitch"><img src="ikona-twitch.png" alt="Twitch"></a>
-          <a href="https://x.com/papciosoft" target="_blank" rel="noopener" title="X (Twitter)"><img src="ikona-x.png" alt="X (Twitter)"></a>
-          <a href="https://www.tiktok.com/@papciosoft?lang=en-GB" target="_blank" rel="noopener" title="TikTok"><img src="ikona-tiktok.png" alt="TikTok"></a>
-          <a href="https://www.instagram.com/polskizwiazekhydraulikow/" target="_blank" rel="noopener" title="Instagram"><img src="ikona-instagram.png" alt="Instagram"></a>
-          <a href="https://www.facebook.com/profile.php?id=61579178634518&amp;locale=pl_PL" target="_blank" rel="noopener" title="Facebook"><img src="ikona-facebook.png" alt="Facebook"></a>
+      <div class="info-box">
+        <h2>Tablica Związku <small>INFO</small></h2>
+        <div class="info-przewijane" id="info-przewijane">
+          <section class="info-sekcja">
+            <h3>Znajdziesz nas na</h3>
+            <div class="srodek spolecznosc">
+              <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank" rel="noopener" title="Twitch"><img src="ikona-twitch.png" alt="Twitch"></a>
+              <a href="https://x.com/papciosoft" target="_blank" rel="noopener" title="X (Twitter)"><img src="ikona-x.png" alt="X (Twitter)"></a>
+              <a href="https://www.tiktok.com/@papciosoft?lang=en-GB" target="_blank" rel="noopener" title="TikTok"><img src="ikona-tiktok.png" alt="TikTok"></a>
+              <a href="https://www.instagram.com/polskizwiazekhydraulikow/" target="_blank" rel="noopener" title="Instagram"><img src="ikona-instagram.png" alt="Instagram"></a>
+              <a href="https://www.facebook.com/profile.php?id=61579178634518&amp;locale=pl_PL" target="_blank" rel="noopener" title="Facebook"><img src="ikona-facebook.png" alt="Facebook"></a>
+            </div>
+          </section>
+
+          <section class="info-sekcja" id="licznik">
+            <h3>Licznik odwiedzin</h3>
+            <div class="srodek">
+              Jesteś naszym<br>
+              <div class="cyfry" id="cyfry"></div><br>
+              gościem!<br>
+              <small>od 01.01.2008</small>
+            </div>
+          </section>
+
+          <section class="info-sekcja ceo">
+            <h3>Ś.P. CEO</h3>
+            <div class="srodek">
+              <div class="ceo-zdjecie"><img src="ciap-ceo.jpg" alt="Ś.P. Ciap Sweeney" loading="lazy"></div>
+              <div class="ceo-imie">Ś.P. Ciap Sweeney</div>
+              <div class="ceo-funkcja">CEO CIAPSQUADU</div>
+              <p class="ceo-cytat">„Na zawsze w naszych sercach i na naszym serwerze”</p>
+            </div>
+          </section>
+
+          <div class="uwaga">
+            Strona najlepiej wygląda w rozdzielczości <b>1024x768</b><br>
+            w przeglądarce <b>Internet Explorer 6.0</b>
+          </div>
+
+          <a class="ciap-box" href="https://www.ciapsquad.pl" target="_blank" rel="noopener">
+            <span class="ciap-naglowek">» PARTNER</span>
+            <span class="ciap-box-srodek"><b>CIAPSQUAD</b><span>Oficjalna strona ekipy – wbijaj »</span></span>
+          </a>
+
         </div>
       </div>
-
-      <div class="ramka" id="licznik">
-        <h2>Licznik odwiedzin</h2>
-        <div class="srodek">
-          Jesteś naszym<br>
-          <div class="cyfry" id="cyfry"></div><br>
-          gościem!<br>
-          <small>od 01.01.2008</small>
-        </div>
-      </div>
-
-      <div class="uwaga">
-        Strona najlepiej wygląda w rozdzielczości <b>1024x768</b><br>
-        w przeglądarce <b>Internet Explorer 6.0</b>
-      </div>
-
-      <a class="ciap-box" href="https://www.ciapsquad.pl" target="_blank" rel="noopener">
-        <span class="ciap-naglowek">» PARTNER</span>
-        <span class="ciap-box-srodek"><b>CIAPSQUAD</b><span>Oficjalna strona ekipy – wbijaj »</span></span>
-      </a>
-
     </aside>
+  </div>
+
+  <div id="szacunek" hidden>
+    <div class="kalkulator" id="kalkulator">
+      <p class="kalkulator-ekran" id="kalkulator-ekran">WYNIK</p>
+      <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button><button type="button">6</button><button type="button">7</button><button type="button">8</button><button type="button">9</button><button type="button">0</button><button type="button">+</button><button type="button">-</button><button type="button">*</button><button type="button">/</button><button type="button" class="kalkulator-kajti"><img height="40" width="40" src="kajti.png" alt=""></button>
+      <button type="button" class="kalkulator-rowna">=</button><button type="button" class="kalkulator-c">C</button>
+    </div>
+    <img id="szacunek-przycisk" src="przycisk-on.png" alt="RESPECT BUTTON" draggable="false">
+    <div class="szacunek-licznik">Naciśnięć: <span id="szacunek-ile">0</span></div>
+    <audio id="szacunek-dzwiek" src="szczerze.mp3" preload="none"></audio>
   </div>
 
   <footer id="stopka">
@@ -154,8 +186,8 @@
       <div class="plakietka p3">zrobione w<big>Notatniku</big></div>
       <div class="plakietka p4">oglądaj<big>TadzioTV</big></div>
       <div class="plakietka p5">get<big>Flash</big>player</div>
-      <div class="plakietka p6">nie wspieramy<big>LORDA PALIWO</big></div>
-      <div class="plakietka p7"><big>GANJA TRIP</big>trwa</div>
+      <div class="plakietka p6"><span class="pk">nie </span>wspieramy<big>LORDA PALIWO</big></div>
+      <div class="plakietka p7" id="p7"><big>GANJA TRIP</big>trwa</div>
     </div>
     &copy; 2008–<span id="rok">2026</span> Polski Związek Hydraulików. Wszelkie prawa zastrzeżone.<br>
     Kopiowanie treści bez zgody Związku grozi zalaniem piwnicy.
@@ -167,16 +199,61 @@
   <span class="ciap-naglowek">» PARTNER</span>
   <span class="ciap-logo">CIAP<br>SQUAD</span>
   <span class="ciap-opis">Oficjalna strona ekipy CIAPSQUAD</span>
-  <span class="ciap-lista">
-    <span>forum</span>
-    <span>galeria</span>
-    <span>memy</span>
-    <span>gry</span>
-  </span>
   <span class="ciap-przycisk">wbijaj »</span>
   <span class="ciap-adres">www.ciapsquad.pl</span>
 </a>
 
+
+<div class="domofon" id="domofon" aria-hidden="true">
+  <div class="domofon-wneka"></div>
+  <div class="domofon-panel" id="domofon-panel">
+    <div class="domofon-szyld">PZH · DOMOFON</div>
+    <div class="domofon-ekran"><span id="domofon-tekst"></span></div>
+    <div class="domofon-klawisze"><button type="button" data-k="1">1</button><button type="button" data-k="2">2</button><button type="button" data-k="3">3</button><button type="button" data-k="4">4</button><button type="button" data-k="5">5</button><button type="button" data-k="6">6</button><button type="button" data-k="7">7</button><button type="button" data-k="8">8</button><button type="button" data-k="9">9</button><button type="button" data-k="*">*</button><button type="button" data-k="0">0</button><button type="button" data-k="#">#</button></div>
+    <div class="domofon-stopka"><span class="domofon-dioda" id="domofon-dioda"></span>mod. ZH-2008</div>
+  </div>
+  <div class="domofon-cien"></div>
+  <div class="domofon-oslona" id="domofon-oslona">
+    <svg class="domofon-rysy" viewBox="0 0 150 250" preserveAspectRatio="none">
+      <path class="r1" d="M118 0 L112 22 L120 38 L106 61"/>
+      <path class="r2" d="M106 61 L84 70 L78 96 L60 104 M84 70 L98 88"/>
+      <path class="r3" d="M60 104 L34 118 L40 142 L18 160 M40 142 L62 150 L66 176"/>
+      <path class="r4" d="M66 176 L52 198 L58 222 L44 250 M18 160 L0 168 M58 222 L80 236"/>
+    </svg>
+  </div>
+</div>
+
+<div class="schowek" id="schowek" aria-hidden="true">
+  <div class="domofon-wneka"></div>
+  <div class="schowek-korek">
+    <button type="button" class="schowek-kartka" id="schowek-kartka" tabindex="-1" aria-label="Karteczka – kliknij, żeby przeczytać">
+      <span class="pinezka"></span>
+      <span class="schowek-bazgroly">zapytaj o…</span>
+    </button>
+  </div>
+  <div class="domofon-cien"></div>
+  <div class="domofon-oslona" id="schowek-oslona">
+    <svg class="domofon-rysy" viewBox="0 0 150 250" preserveAspectRatio="none">
+      <path class="r1" d="M30 0 L38 24 L28 40 L44 62"/>
+      <path class="r2" d="M44 62 L68 72 L72 98 L92 106 M68 72 L54 90"/>
+      <path class="r3" d="M92 106 L116 120 L110 144 L132 162 M110 144 L88 152 L84 178"/>
+      <path class="r4" d="M84 178 L98 200 L92 224 L106 250 M132 162 L150 170 M92 224 L70 238"/>
+    </svg>
+  </div>
+</div>
+
+<div class="kartka-pelna" id="kartka-pelna" hidden>
+  <div class="kartka-duza">
+    <span class="pinezka"></span>
+    <p>zapytaj o<br><b>Strike Team Dr.&nbsp;Oetkera</b></p>
+    <img class="stdro-logo" src="stdro-logo.png" alt="Logo STDRO">  </div>
+</div>
+
+<div class="gula" id="gula" hidden>
+  <div class="gula-napis">SALUT GULA</div>
+  <img class="gula-gif" id="gula-gif" src="salut-1.gif" alt="Salut" title="Kliknij, żeby zmienić" draggable="false">
+  <button type="button" class="gula-wroc" id="gula-wroc">▲ podnieś stronę</button>
+</div>
 
 <div class="materacci" id="materacci" hidden>
   <video class="materacci-film" id="materacci-film" src="materacci.mp4" playsinline preload="none" disablepictureinpicture controlslist="nodownload noplaybackrate noremoteplayback"></video>
@@ -184,6 +261,13 @@
 
 <script src="wspolne.js"></script>
 <script>
+function _z(s) {
+  s = 'pzh:' + s;
+  var a = 0x811c9dc5;
+  for (var i = 0; i < s.length; i++) { a ^= s.charCodeAt(i); a = Math.imul(a, 16777619) >>> 0; }
+  return a.toString(36);
+}
+function _zk(bufor, dl, cel) { return bufor.length >= dl && _z(bufor.slice(-dl)) === cel; }
 (function () {
   var kontener = document.getElementById('tadziennik-newsy');
 
@@ -354,7 +438,6 @@ function filtruj() {
 })();
 
 (function () {
-  var HASLO = 'MATERACCI';
   var wpisane = '';
   var nakladka = document.getElementById('materacci');
   var film = document.getElementById('materacci-film');
@@ -387,10 +470,11 @@ function filtruj() {
       return;
     }
     if (!e.key || e.key.length !== 1) return;
-    wpisane = (wpisane + e.key.toUpperCase()).slice(-HASLO.length);
-    if (wpisane === HASLO) { wpisane = ''; start(); }
+    wpisane = (wpisane + e.key.toUpperCase()).slice(-12);
+    if (_zk(wpisane, 9, '1hddo32')) { wpisane = ''; start(); }
   }, true);
 
+  window.pzhMateracci = start;
   film.addEventListener('ended', koniec);
   film.addEventListener('error', koniec);
   film.addEventListener('pause', function () {
@@ -404,9 +488,18 @@ function filtruj() {
   nakladka.addEventListener('click', function (e) { e.preventDefault(); });
 })();
 (function () {
-  var HASLO = 'PALIWO';
   var wpisane = '';
   var aktywny = false;
+  var zgoda = false;
+  var pk = document.querySelector('.p6 .pk');
+  var pkn = 0;
+  if (pk) pk.addEventListener('click', function () {
+    pkn++;
+    pk.setAttribute('data-n', pkn);
+    if (pkn < 5) return;
+    pk.remove();
+    zgoda = true;
+  });
   var zmiany = [];
   var dodane = [];
   var tytul = document.title;
@@ -451,7 +544,7 @@ function filtruj() {
     document.querySelectorAll('.subskrybuj').forEach(function (s) { podmien(s, 'ZATANKUJ SUBA'); });
     podmien(document.querySelector('#menu a.aktywny'), 'MOJA STRONA');
 
-    var tasma = el('div', '', '<div class="etykieta">KOMUNIKAT LORDA</div><div class="pas"><span>Wszystkie rury należą teraz do mnie +++ Ceny na stacjach ustalam JA +++ Hydraulicy, odłóżcie klucze francuskie +++ Związek został znacjonalizowany +++ Kto wpisze PALIWO jeszcze raz, ten mnie przegoni... jeśli się odważy</span></div>');
+    var tasma = el('div', '', '<div class="etykieta">KOMUNIKAT LORDA</div><div class="pas"><span>Wszystkie rury należą teraz do mnie +++ Ceny na stacjach ustalam JA +++ Hydraulicy, odłóżcie klucze francuskie +++ Związek został znacjonalizowany +++ Kto zna sposób, ten mnie przegoni... jeśli się odważy</span></div>');
     tasma.id = 'paliwo-tasma';
     dodaj(tasma, document.getElementById('tresc'), true);
 
@@ -462,8 +555,8 @@ function filtruj() {
     podmien(powitanie.closest('.ramka').querySelector('h2'), 'Witaj w MOIM Związku!');
     podmien(powitanie.querySelector('.tekst'), '<p>Ta strona należała kiedyś do <b>Polskiego Związku Hydraulików</b>. Kiedyś.</p><p>Teraz wszystkie rury, zawory i odcinki są własnością <b>Lorda Paliwo</b>. Tylko TadzioTV jeszcze stawia opór. Na razie.</p>');
     podmien(document.querySelector('#odcinek-glowny').closest('.ramka').querySelector('h2'), 'Skonfiskowany odcinek');
-    podmien(document.querySelector('.spolecznosc').closest('.ramka').querySelector('h2'), 'Przejęte konta');
-    podmien(document.querySelector('#licznik h2'), 'Licznik spalonych');
+    podmien(document.querySelector('.spolecznosc').closest('.info-sekcja').querySelector('h3'), 'Przejęte konta');
+    podmien(document.querySelector('#licznik h3'), 'Licznik spalonych');
     podmien(document.querySelector('#licznik small'), 'od przejęcia strony');
     podmien(document.querySelector('.uwaga'), 'Strona najlepiej płonie w rozdzielczości <b>1024x768</b><br>na benzynie <b>95 bezołowiowej</b>');
     podmien(document.querySelector('.p6'), 'wspieramy<big>LORDA PALIWO</big>');
@@ -492,16 +585,493 @@ function filtruj() {
     setTimeout(function () { info.remove(); }, 2900);
   }
 
+  window.pzhPaliwo = function () { if (aktywny) oddaj(); else przejmij(); };
+
   document.addEventListener('keydown', function (e) {
     if (document.body.classList.contains('materacci-trwa')) return;
     var t = e.target;
     if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
     if (!e.key || e.key.length !== 1) return;
-    wpisane = (wpisane + e.key.toUpperCase()).slice(-HASLO.length);
-    if (wpisane === HASLO) {
+    wpisane = (wpisane + e.key.toUpperCase()).slice(-12);
+    if ((zgoda || aktywny) && _zk(wpisane, 6, 'bsf2jz')) {
       wpisane = '';
       if (aktywny) oddaj(); else przejmij();
     }
+  });
+})();
+(function () {
+  var p7 = document.getElementById('p7');
+  if (!p7) return;
+  var muzyka = new Audio('ganja.mp3');
+  muzyka.preload = 'none';
+  muzyka.addEventListener('ended', function () { p7.classList.remove('gra'); });
+  p7.addEventListener('click', function () {
+    if (muzyka.paused) {
+      muzyka.currentTime = 0;
+      muzyka.play().then(function () { p7.classList.add('gra'); }).catch(function () {});
+    } else {
+      muzyka.pause();
+      p7.classList.remove('gra');
+    }
+  });
+})();
+(function () {
+  var DUZY = 'perfect-order.webp', MALY = 'perfect-order-srodek.png';
+  var wlaczone = false, obs;
+  function nasze(s) { return s === DUZY || s === MALY; }
+  function podmien(img) {
+    var s = img.getAttribute('src') || '';
+    if (img.dataset.po !== undefined && nasze(s)) return;
+    img.dataset.po = s;
+    if (img.getAttribute('srcset')) { img.dataset.pos = img.getAttribute('srcset'); img.removeAttribute('srcset'); }
+    if (!img.dataset.pom) {
+      var r = img.getBoundingClientRect();
+      img.dataset.pom = (r.width < 300 || r.height < 200) ? 'm' : 'd';
+    }
+    img.classList.add('po-zdjecie');
+    img.setAttribute('src', img.dataset.pom === 'm' ? MALY : DUZY);
+  }
+  function przywroc(img) {
+    img.setAttribute('src', img.dataset.po);
+    if (img.dataset.pos) img.setAttribute('srcset', img.dataset.pos);
+    delete img.dataset.po; delete img.dataset.pos; delete img.dataset.pom;
+    img.classList.remove('po-zdjecie');
+  }
+  window.pzhPO = function () {
+    wlaczone = !wlaczone;
+    if (wlaczone) {
+      document.querySelectorAll('img').forEach(podmien);
+      obs = new MutationObserver(function (lista) {
+        lista.forEach(function (m) {
+          if (m.type === 'attributes') {
+            if (m.target.tagName === 'IMG' && !nasze(m.target.getAttribute('src') || '')) podmien(m.target);
+            return;
+          }
+          m.addedNodes.forEach(function (n) {
+            if (n.nodeType !== 1) return;
+            if (n.tagName === 'IMG') podmien(n);
+            else n.querySelectorAll('img').forEach(podmien);
+          });
+        });
+      });
+      obs.observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
+    } else {
+      obs.disconnect();
+      document.querySelectorAll('img[data-po]').forEach(przywroc);
+    }
+  };
+})();
+function pzhOslona(kontener, oslona, poOderwaniu) {
+  var tlo = new Image();
+  var tloUrl = (getComputedStyle(document.body).backgroundImage.match(/url\(["']?([^"')]+)["']?\)/) || [])[1];
+  /* normalnie osłona ma tło "fixed" z CSS (zgrywa się z tłem przy przewijaniu);
+     na czas animacji przypinamy je na sztywno do aktualnej pozycji */
+  function puszczaj() {
+    if (!oslona.isConnected || oslona.classList.contains('spada')) return;
+    oslona.style.backgroundImage = oslona.style.backgroundAttachment = oslona.style.backgroundSize = oslona.style.backgroundPosition = '';
+  }
+  function dopasuj() {
+    if (!oslona.isConnected || !tlo.naturalWidth || oslona.classList.contains('spada')) return;
+    var vw = document.documentElement.clientWidth, vh = window.innerHeight;
+    var skala = Math.max(vw / tlo.naturalWidth, vh / tlo.naturalHeight);
+    var w = tlo.naturalWidth * skala, h = tlo.naturalHeight * skala;
+    var r = kontener.getBoundingClientRect();
+    oslona.style.backgroundImage = 'url("' + tloUrl + '")';
+    oslona.style.backgroundAttachment = 'scroll';
+    oslona.style.backgroundSize = w + 'px ' + h + 'px';
+    oslona.style.backgroundPosition = ((vw - w) / 2 - r.left) + 'px ' + ((vh - h) / 2 - r.top) + 'px';
+  }
+  if (tloUrl) tlo.src = tloUrl;
+  document.addEventListener('pzh-zamroz', dopasuj);
+  document.addEventListener('pzh-odmroz', puszczaj);
+
+  var stukniecia = 0, reset;
+  oslona.addEventListener('click', function () {
+    if (oslona.classList.contains('spada')) return;
+    stukniecia++;
+    oslona.setAttribute('data-rysy', stukniecia);
+    clearTimeout(reset);
+    if (stukniecia >= 5) { oderwij(); return; }
+    reset = setTimeout(function () { stukniecia = 0; oslona.removeAttribute('data-rysy'); }, 1800);
+  });
+
+  function oderwij() {
+    dopasuj();
+    oslona.classList.add('spada');
+    oslona.addEventListener('animationend', function () {
+      oslona.remove();
+      poOderwaniu();
+      setTimeout(function () { kontener.classList.add('gotowy'); }, 900);
+    }, { once: true });
+  }
+}
+(function () {
+  var domofon = document.getElementById('domofon');
+  if (!domofon) return;
+  var oslona = document.getElementById('domofon-oslona');
+  var panel = document.getElementById('domofon-panel');
+  var tekst = document.getElementById('domofon-tekst');
+  var dioda = document.getElementById('domofon-dioda');
+  var KODY = {
+    '1exbb1v': function () { if (window.pzhMateracci) window.pzhMateracci(); },
+    '16q88zq': function () { if (window.pzhPaliwo) window.pzhPaliwo(); },
+    '17hhkyl': function () { if (window.pzhSzacunek) window.pzhSzacunek(); },
+    'liqpx4': function () { if (window.pzhGula) window.pzhGula(); },
+    't9o6b1': function () { if (window.pzhKlawiatura) window.pzhKlawiatura(); }
+  };
+  var NISKO = ['1ij3rd4', '1hz4jz6', '1ct8386', 'nq5kd9'];
+  var MAKS = 10;
+
+  pzhOslona(domofon, oslona, function () {
+    domofon.setAttribute('aria-hidden', 'false');
+    panel.classList.add('wlaczony');
+    pokaz('WPISZ KOD');
+  });
+
+  var wpis = '', blokada = false, czyszczenie;
+  var ekran = tekst.parentNode;
+  /* pokazuje tekst na wyświetlaczu; za długi przewija się jak na pasku – zwraca czas jednego przejazdu (ms) */
+  function pokaz(t, klasa) {
+    tekst.textContent = t;
+    tekst.className = klasa || '';
+    ekran.classList.remove('przewija');
+    var szer = ekran.clientWidth - 12, dl = tekst.offsetWidth;
+    if (dl <= szer) return 0;
+    var czas = (szer + dl) / 70 * 1000;
+    tekst.style.setProperty('--od', szer + 'px');
+    tekst.style.setProperty('--do', -dl + 'px');
+    tekst.style.animationDuration = czas + 'ms';
+    ekran.classList.add('przewija');
+    return czas;
+  }
+
+  var audio;
+  var DTMF = { '1': [697, 1209], '2': [697, 1336], '3': [697, 1477], '4': [770, 1209], '5': [770, 1336], '6': [770, 1477], '7': [852, 1209], '8': [852, 1336], '9': [852, 1477], '*': [941, 1209], '0': [941, 1336], '#': [941, 1477] };
+  function pisk(czestotliwosci, czas) {
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      var g = audio.createGain();
+      g.gain.value = 0.06;
+      g.connect(audio.destination);
+      czestotliwosci.forEach(function (f) {
+        var o = audio.createOscillator();
+        o.frequency.value = f;
+        o.connect(g);
+        o.start();
+        o.stop(audio.currentTime + czas);
+      });
+    } catch (e) {}
+  }
+
+  function wynik(rodzaj) {
+    blokada = true;
+    var czas;
+    if (rodzaj === 'ok') {
+      dioda.className = 'domofon-dioda zielona';
+      czas = Math.max(1200, pokaz('GINTAMA SIEMA!', 'ok'));
+      pisk([880, 1320], 0.35);
+    } else if (rodzaj === 'nisko') {
+      dioda.className = 'domofon-dioda zolta';
+      czas = Math.max(1800, pokaz('NAPRAWDĘ? TAK NISKO?', 'nisko'));
+      pisk([300, 240], 0.6);
+    } else {
+      dioda.className = 'domofon-dioda czerwona';
+      czas = Math.max(1400, pokaz('BŁĘDNY KOD', 'zle'));
+      pisk([180], 0.5);
+    }
+    var kod = wpis;
+    wpis = '';
+    setTimeout(function () {
+      blokada = false;
+      dioda.className = 'domofon-dioda';
+      pokaz('WPISZ KOD');
+      if (rodzaj === 'ok') KODY[_z(kod)]();
+    }, czas);
+  }
+
+  panel.querySelector('.domofon-klawisze').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b || blokada || !panel.classList.contains('wlaczony')) return;
+    var k = b.dataset.k;
+    pisk(DTMF[k], 0.12);
+    clearTimeout(czyszczenie);
+    if (k === '*') { wpis = ''; pokaz('WPISZ KOD'); return; }
+    if (k === '#') {
+      if (wpis) wynik(Object.prototype.hasOwnProperty.call(KODY, _z(wpis)) ? 'ok' : NISKO.indexOf(_z(wpis)) !== -1 ? 'nisko' : 'zle');
+      return;
+    }
+    if (wpis.length >= MAKS) return;
+    wpis += k;
+    pokaz(wpis);
+    czyszczenie = setTimeout(function () { wpis = ''; pokaz('WPISZ KOD'); }, 20000);
+  });
+})();
+(function () {
+  var sekcja = document.getElementById('szacunek');
+  var tresc = document.getElementById('tresc');
+  var przycisk = document.getElementById('szacunek-przycisk');
+  var dzwiek = document.getElementById('szacunek-dzwiek');
+  var ile = document.getElementById('szacunek-ile');
+  var KLUCZ = 'pzh-szacunek';
+  var licznik = 0;
+  try { licznik = parseInt(localStorage.getItem(KLUCZ), 10) || 0; } catch (e) {}
+  ile.textContent = licznik;
+  new Image().src = 'przycisk-off.png';
+
+  window.pzhSzacunek = function () {
+    var wlacz = sekcja.hidden;
+    sekcja.hidden = !wlacz;
+    tresc.hidden = wlacz;
+    if (wlacz) dzwiek.load();
+    window.scrollTo(0, 0);
+  };
+
+  var czeka = false;
+  przycisk.addEventListener('click', function () {
+    if (czeka) return;
+    czeka = true;
+    przycisk.src = 'przycisk-off.png';
+    licznik++;
+    ile.textContent = licznik;
+    try { localStorage.setItem(KLUCZ, licznik); } catch (e) {}
+    dzwiek.currentTime = 0;
+    dzwiek.play().catch(function () {});
+    setTimeout(function () {
+      przycisk.src = 'przycisk-on.png';
+      czeka = false;
+    }, 3000);
+  });
+})();
+(function () {
+  var schowek = document.getElementById('schowek');
+  if (!schowek) return;
+  var kartka = document.getElementById('schowek-kartka');
+  var pelna = document.getElementById('kartka-pelna');
+  pzhOslona(schowek, document.getElementById('schowek-oslona'), function () {
+    schowek.setAttribute('aria-hidden', 'false');
+    kartka.tabIndex = 0;
+  });
+  function zamknij() { pelna.hidden = true; }
+  window.pzhKartka = function () { pelna.hidden = false; };
+  kartka.addEventListener('click', function () {
+    if (schowek.classList.contains('gotowy')) window.pzhKartka();
+  });
+  pelna.addEventListener('click', zamknij);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pelna.hidden) zamknij(); });
+})();
+/* ---------- baner / klawiatura ---------- */
+(function () {
+  var ramka = document.getElementById('ramka-baner');
+  var baner = document.getElementById('baner');
+  var klawiatura = document.getElementById('klawiatura');
+  var tekst = document.getElementById('klawiatura-tekst');
+  var klawisze = document.getElementById('klawiatura-klawisze');
+  var MAKS = 24;
+  var wpis = '';
+
+  [['Q','W','E','R','T','Y','U','I','O','P'],
+   ['A','S','D','F','G','H','J','K','L'],
+   ['Z','X','C','V','B','N','M','⌫'],
+   ['SPACJA','ENTER']].forEach(function (rzad) {
+    var r = document.createElement('div');
+    r.className = 'klawiatura-rzad';
+    rzad.forEach(function (k) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = k;
+      b.dataset.k = k;
+      if (k.length > 1) b.className = 'szeroki ' + (k === '⌫' ? 'wstecz' : k.toLowerCase());
+      r.appendChild(b);
+    });
+    klawisze.appendChild(r);
+  });
+
+  function pokaz() { tekst.textContent = wpis; tekst.className = ''; }
+  var komunikat;
+  function wyswietl(t, klasa, czas) {
+    clearTimeout(komunikat);
+    tekst.textContent = t;
+    tekst.className = klasa;
+    komunikat = setTimeout(pokaz, czas);
+  }
+
+  var ctx;
+  function klik() {
+    try {
+      ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+      var t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'square';
+      o.frequency.value = 1900;
+      g.gain.setValueAtTime(0.08, t);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.05);
+      o.connect(g); g.connect(ctx.destination);
+      o.start(t); o.stop(t + 0.06);
+    } catch (e) {}
+  }
+
+  var HASLA = {
+    'mvazrn': function () {
+      var wlacz = !document.documentElement.classList.contains('limonka');
+      document.documentElement.classList.toggle('limonka', wlacz);
+      wyswietl('NIE GADAMY O TYM, OKEJ', 'ok', 2500);
+    },
+    '1hddo32': function () {
+      pokaz();
+      if (window.pzhMateracci) window.pzhMateracci();
+    },
+    '18mdabu': function () {
+      pokaz();
+      brodman.hidden = false;
+    },
+    'mdobr0': function () {
+      pokaz();
+      if (window.pzhStrike) window.pzhStrike();
+    }
+  };
+  HASLA['1cktupz'] = HASLA['mdobr0'];
+  HASLA['pe0jjy'] = function () {
+    pokaz();
+    if (window.pzhPO) window.pzhPO();
+  };
+
+  var brodman = document.getElementById('menu-brodman');
+  try { localStorage.removeItem('pzh-brodman'); } catch (e) {}
+
+  window.pzhKlawiatura = function () {
+    if (baner.classList.contains('spada') || baner.classList.contains('zniknal')) return;
+    ramka.classList.add('odslonieta');
+    baner.classList.add('spada');
+    baner.addEventListener('animationend', function () {
+      baner.classList.remove('spada');
+      baner.classList.add('zniknal');
+      klawiatura.setAttribute('aria-hidden', 'false');
+      ramka.classList.add('gotowa');
+    }, { once: true });
+  };
+
+  klawisze.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b || !ramka.classList.contains('gotowa')) return;
+    klik();
+    clearTimeout(komunikat);
+    var k = b.dataset.k;
+    if (k === '⌫') wpis = wpis.slice(0, -1);
+    else if (k === 'SPACJA') { if (wpis.length < MAKS) wpis += ' '; }
+    else if (k === 'ENTER') {
+      var haslo = wpis.trim().replace(/\s+/g, ' ').toUpperCase();
+      wpis = '';
+      if (Object.prototype.hasOwnProperty.call(HASLA, _z(haslo))) HASLA[_z(haslo)]();
+      else if (haslo) wyswietl('NIE TO HASŁO', 'zle', 1200);
+      else pokaz();
+      return;
+    }
+    else if (wpis.length < MAKS) wpis += k;
+    pokaz();
+  });
+})();
+
+(function () {
+  var przycisk = document.getElementById('menu-strike');
+  window.pzhStrike = function () {
+    if (!przycisk.hidden) return;
+    przycisk.hidden = false;
+  };
+  przycisk.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (window.pzhKartka) window.pzhKartka();
+  });
+})();
+(function () {
+  var nakladka = document.getElementById('gula');
+  var gif = document.getElementById('gula-gif');
+  var wroc = document.getElementById('gula-wroc');
+  var GIFY = ['salut-1.gif', 'salut-2.gif', 'salut-3.gif', 'salut-4.gif', 'salut-5.gif'];
+  var obecny = 0, trwa = false, timer;
+  var body = document.body;
+
+  function ustaw(i) { obecny = i; gif.src = GIFY[i]; }
+
+  document.documentElement.appendChild(nakladka);
+
+  window.pzhGula = function () {
+    if (trwa) return;
+    trwa = true;
+    if (document.activeElement) document.activeElement.blur();
+    ustaw(Math.floor(Math.random() * GIFY.length));
+    window.scrollTo(0, 0);
+    document.dispatchEvent(new Event('pzh-zamroz'));
+    document.documentElement.classList.add('gula-tryb');
+    body.classList.remove('gula-wraca');
+    body.classList.add('gula-spada');
+    timer = setTimeout(function () { nakladka.hidden = false; }, 1100);
+  };
+
+  gif.addEventListener('click', function () {
+    var nowy = Math.floor(Math.random() * (GIFY.length - 1));
+    ustaw(nowy >= obecny ? nowy + 1 : nowy);
+  });
+
+  wroc.addEventListener('click', function () {
+    clearTimeout(timer);
+    nakladka.hidden = true;
+    body.classList.remove('gula-spada');
+    body.classList.add('gula-wraca');
+    setTimeout(function () {
+      body.classList.remove('gula-wraca');
+      document.documentElement.classList.remove('gula-tryb');
+      document.dispatchEvent(new Event('pzh-odmroz'));
+      trwa = false;
+    }, 900);
+  });
+})();
+(function () {
+  var kalk = document.getElementById('kalkulator');
+  var ekran = document.getElementById('kalkulator-ekran');
+  var wpis = [];
+
+  function rysuj() {
+    ekran.textContent = '';
+    if (!wpis.length) { ekran.textContent = 'WYNIK'; return; }
+    wpis.forEach(function (w) {
+      if (w === 'KAJTI') {
+        var img = document.createElement('img');
+        img.src = 'kajti.png';
+        img.alt = '';
+        img.width = 20;
+        img.height = 20;
+        ekran.appendChild(document.createTextNode(' '));
+        ekran.appendChild(img);
+        ekran.appendChild(document.createTextNode(' '));
+      } else {
+        ekran.appendChild(document.createTextNode(/^[+\-*/]$/.test(w) ? ' ' + w + ' ' : w));
+      }
+    });
+  }
+
+  kalk.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.classList.contains('kalkulator-c')) { wpis = []; rysuj(); return; }
+    if (b.classList.contains('kalkulator-rowna')) {
+      if (!wpis.length) return;
+      if (wpis.indexOf('KAJTI') !== -1) {
+        wpis = [];
+        ekran.textContent = '';
+        var a = document.createElement('a');
+        a.href = 'https://perla.pl/produkty/perla-bezalkoholowa/';
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = 'TWÓJ WYNIK JEST TUTAJ';
+        ekran.appendChild(a);
+      } else {
+        wpis = [String(Math.floor(Math.random() * 1000) - 500)];
+        rysuj();
+      }
+      return;
+    }
+    if (b.classList.contains('kalkulator-kajti')) wpis.push('KAJTI');
+    else wpis.push(b.textContent.trim());
+    rysuj();
   });
 })();
 </script>

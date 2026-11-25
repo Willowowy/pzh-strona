@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>~*~ BRODMAN BLOG ~*~ wszystko o NAJLEPSZYM superbohaterze &lt;3</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 0 40px;
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    font-size: 13px;
+    color: #222;
+    background-color: #0b1033;
+    background-image:
+      radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+      radial-gradient(1px 1px at 90px 120px, #ffe96b, transparent),
+      radial-gradient(1.5px 1.5px at 160px 60px, #fff, transparent),
+      radial-gradient(1px 1px at 230px 170px, #ff9fd8, transparent),
+      radial-gradient(1px 1px at 60px 200px, #fff, transparent);
+    background-size: 260px 230px;
+  }
+  a { color: #c2185b; }
+  a:hover { color: #ff5a00; }
+
+  #blog { width: 900px; max-width: 100%; margin: 0 auto; }
+
+  /* ---------- pasek Bloggera na górze ---------- */
+  .pasek-bloggera {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    align-items: center;
+    padding: 5px 10px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #333;
+    background: linear-gradient(#f8f8f8, #dcdcdc);
+    border-bottom: 1px solid #aaa;
+  }
+  .pasek-bloggera b { color: #f60; font-size: 13px; }
+  .pasek-bloggera input { font-size: 11px; width: 130px; }
+  .pasek-bloggera span:last-child { margin-left: auto; }
+
+  /* ---------- nagłówek ---------- */
+  #naglowek {
+    position: relative;
+    margin-top: 16px;
+    padding: 28px 24px 24px;
+    color: #fff;
+    background:
+      repeating-conic-gradient(from 0deg at 85% 50%, rgba(255,255,255,.08) 0 10deg, transparent 10deg 20deg),
+      linear-gradient(135deg, #8a8f98, #d9dde3 45%, #f5c400 100%);
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0 #000;
+    overflow: hidden;
+  }
+  #naglowek h1 {
+    margin: 0;
+    font-family: Impact, "Arial Black", sans-serif;
+    font-size: clamp(36px, 7vw, 64px);
+    letter-spacing: 2px;
+    line-height: 1;
+    color: #fff;
+    -webkit-text-stroke: 2px #000;
+    text-shadow: 5px 5px 0 #000, 0 0 0 #f5c400;
+    transform: rotate(-2deg);
+  }
+  #naglowek h1 .serce { color: #ff2a8a; }
+  #naglowek p { margin: 10px 0 0; font-size: 15px; font-style: italic; color: #000; text-shadow: 1px 1px 0 #fff; }
+  .bum {
+    position: absolute;
+    right: 18px;
+    top: 14px;
+    padding: 12px 16px;
+    font-family: Impact, sans-serif;
+    font-size: 26px;
+    color: #000;
+    background: #f5c400;
+    border: 3px solid #000;
+    clip-path: polygon(50% 0, 61% 30%, 98% 20%, 72% 48%, 100% 75%, 62% 68%, 52% 100%, 40% 70%, 4% 84%, 28% 52%, 0 22%, 38% 30%);
+    transform: rotate(12deg);
+  }
+
+  .pasek-przewijany {
+    margin: 14px 0;
+    padding: 4px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: "Comic Sans MS", cursive;
+    font-weight: bold;
+    color: #ff9fd8;
+    background: #000;
+    border: 2px dashed #ff9fd8;
+  }
+  .pasek-przewijany span { display: inline-block; padding-left: 100%; animation: przewin 22s linear infinite; }
+  @keyframes przewin { to { transform: translateX(-100%); } }
+
+  /* ---------- układ ---------- */
+  #srodek { display: flex; gap: 16px; align-items: flex-start; }
+  #wpisy { flex: 1; min-width: 0; }
+  #boczny { width: 260px; flex-shrink: 0; }
+
+  .data {
+    margin: 0 0 6px;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffe96b;
+  }
+  .wpis {
+    margin-bottom: 22px;
+    padding: 16px 18px 12px;
+    background: #fffdf6;
+    border: 3px solid #000;
+    box-shadow: 6px 6px 0 #c2185b;
+  }
+  .wpis h2 {
+    margin: 0 0 10px;
+    font-family: Impact, "Arial Black", sans-serif;
+    font-size: 26px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: #c2185b;
+  }
+  .wpis p { margin: 0 0 10px; line-height: 1.6; }
+  .wpis ul { margin: 0 0 10px; padding-left: 20px; line-height: 1.6; }
+  .wpis .dymek {
+    position: relative;
+    margin: 12px 0 18px;
+    padding: 10px 14px;
+    font-family: "Comic Sans MS", cursive;
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 18px;
+  }
+  .wpis .dymek::after {
+    content: "";
+    position: absolute;
+    left: 30px;
+    bottom: -12px;
+    border: 10px solid transparent;
+    border-top-color: #000;
+    border-bottom: 0;
+  }
+  .wpis .uwaga {
+    margin: 12px 0;
+    padding: 10px 12px;
+    font-weight: bold;
+    color: #7a0000;
+    background: #ffe3e3;
+    border: 2px dashed #d40000;
+  }
+  .stopka-wpisu {
+    margin-top: 12px;
+    padding-top: 8px;
+    font-size: 11px;
+    color: #666;
+    border-top: 1px dotted #999;
+  }
+  .nastroj { margin: 6px 0 0; font-size: 11px; color: #555; }
+
+  .komentarze { margin-top: 12px; padding: 10px; background: #f7eef2; border: 1px solid #e2c6d3; }
+  .komentarze h3 { margin: 0 0 8px; font-size: 13px; }
+  .komentarz { margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px dashed #ccc; }
+  .komentarz:last-child { margin-bottom: 0; border-bottom: 0; }
+  .komentarz b { color: #1a4ea0; }
+  .komentarz small { display: block; color: #999; }
+
+  .nawigacja-wpisow { display: flex; justify-content: space-between; font-weight: bold; }
+  .nawigacja-wpisow a { color: #ffe96b; }
+
+  /* ---------- panel boczny ---------- */
+  .widget {
+    margin-bottom: 16px;
+    padding: 10px 12px;
+    background: #fffdf6;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0 #8a8f98;
+  }
+  .widget h3 {
+    margin: -10px -12px 10px;
+    padding: 5px 10px;
+    font-family: Impact, sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: #f5c400;
+    background: #3a3d42;
+    text-shadow: 1px 1px 0 #000;
+  }
+  .widget ul { margin: 0; padding-left: 16px; }
+  .widget li { margin: 3px 0; }
+  .widget p { margin: 0; font-size: 12px; line-height: 1.5; }
+  .zloczyncy li { margin-bottom: 6px; }
+  .zloczyncy b { color: #7a0000; }
+  .chmura a { display: inline-block; margin: 2px 3px; text-decoration: none; }
+  .ankieta label { display: block; margin: 4px 0; }
+  .wynik { height: 10px; margin: 2px 0 6px; background: #ddd; border: 1px solid #999; }
+  .wynik i { display: block; height: 100%; background: linear-gradient(#ff7ac0, #c2185b); }
+  .licznik { text-align: center; }
+  .licznik span {
+    display: inline-block;
+    width: 18px;
+    margin: 0 1px;
+    padding: 2px 0;
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff2a8a;
+    background: #000;
+  }
+  .obserwatorzy { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; }
+  .obserwatorzy span { aspect-ratio: 1; border: 1px solid #999; background: linear-gradient(135deg, #ccc, #888); }
+  .obserwatorzy span:nth-child(3n) { background: linear-gradient(135deg, #ffd27a, #c2185b); }
+  .obserwatorzy span:nth-child(4n) { background: linear-gradient(135deg, #9fd8ff, #1a4ea0); }
+  .shoutbox { max-height: 160px; overflow-y: auto; font-size: 11px; background: #fff; border: 1px inset #aaa; padding: 4px; }
+  .shoutbox p { margin: 0 0 4px; }
+  .blink { animation: miga 1s steps(1) infinite; }
+  @keyframes miga { 50% { visibility: hidden; } }
+
+  #stopka { margin-top: 20px; text-align: center; font-size: 11px; color: #9fb0e0; }
+  #stopka a { color: #ffe96b; }
+  .plakietki { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 10px; }
+  .plakietki span {
+    width: 88px;
+    padding: 4px 0;
+    font-family: Verdana, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #000;
+  }
+
+  @media (max-width: 760px) {
+    #blog { padding: 0 12px; }
+    #srodek { flex-direction: column; }
+    #boczny { width: auto; align-self: stretch; }
+    #naglowek { padding-top: 64px; }
+    .bum { font-size: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pasek-przewijany span, .blink { animation: none; }
+    .pasek-przewijany span { padding-left: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="pasek-bloggera">
+  <b>B</b> Blog <input type="text" value="Szukaj w blogu" aria-label="Szukaj w blogu" readonly>
+  <a href="#">Oznacz bloga</a>
+  <a href="#">Następny blog»</a>
+  <span><a href="index.html">« Wróć do Polskiego Związku Hydraulików</a></span>
+</div>
+
+<div id="blog">
+
+  <header id="naglowek">
+    <h1>BRODMAN BLOG <span class="serce">&lt;3</span></h1>
+    <p>Wszystko o NAJLEPSZYM superbohaterze na świecie!!! Prowadzone przez jego fankę nr 1 ♥</p>
+    <div class="bum">BUM!</div>
+  </header>
+
+  <div class="pasek-przewijany"><span>♥ WITAJCIE NA MOIM BLOGU O BRODMANIE!!! ♥ Dodajcie do ulubionych (CTRL+D) ♥ Brodman jeśli to czytasz POZDRÓW MNIE w następnej akcji ♥ NIE BIERZCIE LINIJEK OD OBCYCH W AUTOBUSIE ♥ Komentujcie, nie bądźcie anonimowi!!! ♥</span></div>
+
+  <div id="srodek">
+
+    <main id="wpisy">
+
+      <p class="data">piątek, 14 listopada 2008</p>
+      <article class="wpis">
+        <h2>KAZIŁAZ ZNOWU W MIEŚCIE!!! (relacja)</h2>
+        <p>OMG dziewczyny i chłopaki, nie uwierzycie. Wczoraj wieczorem pod starym magazynem przy porcie Brodman przyłapał KAZIŁAZA na rozładunku jego „wódki”. Wszyscy wiemy, co ten człowiek do niej dosypuje. Nie pijcie NICZEGO bez etykiety, serio.</p>
+        <p>Kaziłaz jak zwykle stał na skrzyni, wielki jak szafa, z tym swoim ogromnym uśmiechem od ucha do ucha i blond grzywką, która sterczy mu spod uszanki jak dwa rogi. A obok oczywiście <b>Czeski Niedźwiedź</b>, który podawał mu piwo. Przez CAŁĄ walkę. Kaziłaz nawet nie musiał się schylać, niedźwiedź ma refleks.</p>
+        <div class="dymek">„Brodman! Ty nigdy nie zatrzymasz mojego importu!” – „Zatrzymam. W imię sprawiedliwości!” (cytuję z pamięci, stałam za śmietnikiem)</div>
+        <p>Brodman w pewnym momencie potknął się o skrzynię i wpadł do kontenera, ALE to na pewno była taktyka, bo zaraz potem z tego kontenera wyskoczył i przyłożył Kaziłazowi. Potem dołączył <b>Superjonasz</b> i przybili sobie piątkę. Brodman się tak cieszył, że aż zacisnął zęby z radości. Uwielbiam tę ich przyjaźń ♥</p>
+        <p>Kaziłaz niestety uciekł motorówką. Niedźwiedź został i dopił piwo.</p>
+        <p class="nastroj"><b>Nastrój:</b> zakochana &nbsp;|&nbsp; <b>Słucham:</b> Bonnie Tyler – Holding Out for a Hero</p>
+        <div class="stopka-wpisu">
+          Opublikowała: <b>brodmanowa_fanka</b> o 23:17 &nbsp;|&nbsp; <a href="#kom1">Komentarze (5)</a><br>
+          Etykiety: <a href="#">Kaziłaz</a>, <a href="#">Czeski Niedźwiedź</a>, <a href="#">Superjonasz</a>, <a href="#">relacja</a>
+        </div>
+        <div class="komentarze" id="kom1">
+          <h3>5 komentarzy:</h3>
+          <div class="komentarz"><b>Anonimowy</b> powiedział(a)... <small>14 listopada 2008 23:41</small>pierwszy!!!!</div>
+          <div class="komentarz"><b>pan_mietek</b> powiedział(a)... <small>15 listopada 2008 08:02</small>ten kontener był mój. kto mi za niego zapłaci</div>
+          <div class="komentarz"><b>Anonimowy</b> powiedział(a)... <small>15 listopada 2008 11:19</small>brodman to fajtłapa, wywalił się jak dziecko</div>
+          <div class="komentarz"><b>brodmanowa_fanka</b> powiedział(a)... <small>15 listopada 2008 11:20</small>@Anonimowy TO BYŁA TAKTYKA!!!! nie znasz się</div>
+          <div class="komentarz"><b>kasia_xD</b> powiedział(a)... <small>15 listopada 2008 12:05</small>a jak wygląda ten niedźwiedź z bliska? słodki??</div>
+        </div>
+      </article>
+
+      <p class="data">czwartek, 13 listopada 2008</p>
+      <article class="wpis">
+        <h2>UWAGA!!! LINIJKARZ – PRZECZYTAJCIE TO</h2>
+        <p>Muszę to napisać, bo moja koleżanka z klasy prawie dała się nabrać. Po mieście znowu krąży <b>LINIJKARZ</b>.</p>
+        <p>Jak go rozpoznać: wysoki, spokojny facet w długim płaszczu, a w środku tego płaszcza ma przyczepione dziesiątki linijek. Jest bardzo uprzejmy, mówi cicho, zawsze ładnie ubrany. Podobno opowiada, że chce tylko żyć spokojnym, cichym życiem i nie lubi się wyróżniać. BRRR.</p>
+        <p>Jak działa: jeździ autobusami i daje kobietom linijki „w prezencie”. Jak się taką linijkę podniesie pod światło, widać na niej wypisany numer telefonu. Jak ktoś zadzwoni na ten numer, przychodzi jego wspólnik… i nie piszę, co dalej, bo to za straszne. W każdym razie potem Linijkarz dostaje od niego jej poroże.</p>
+        <div class="uwaga">⚠ NIE BIERZCIE LINIJEK OD OBCYCH W AUTOBUSIE. NIE PODNOŚCIE ICH POD ŚWIATŁO. NIE DZWOŃCIE NA ŻADNE NUMERY. ⚠</div>
+        <p>Brodman na pewno go złapie. Ja w niego wierzę.</p>
+        <div class="stopka-wpisu">
+          Opublikowała: <b>brodmanowa_fanka</b> o 21:40 &nbsp;|&nbsp; <a href="#">Komentarze (23)</a><br>
+          Etykiety: <a href="#">Linijkarz</a>, <a href="#">ważne</a>, <a href="#">autobus</a>
+        </div>
+      </article>
+
+      <p class="data">wtorek, 11 listopada 2008</p>
+      <article class="wpis">
+        <h2>DRUŻYNA MARZEŃ ♥ ranking kumpli Brodmana</h2>
+        <p>Dużo osób pyta mnie w shoutboxie, z kim Brodman współpracuje. Więc proszę, mój osobisty ranking:</p>
+        <ul>
+          <li><b>1. Superjonasz</b> – najlepszy przyjaciel Brodmana. Zawsze uśmiechnięty, zawsze pozytywny, zawsze mówi „dasz radę, stary!”. Brodman na pewno go uwielbia, widać po tym, jak głęboko wzdycha, kiedy Superjonasz się pojawia.</li>
+          <li><b>2. Kapitan Kazachstan</b> – twardziel. Mało mówi, dużo robi. Ma najlepszy płaszcz.</li>
+          <li><b>3. Malezyjski Ninja</b> – nikt go nigdy nie widział, ale podobno był przy każdej akcji. Brodman mówi, że to dobry kolega. Wierzę.</li>
+        </ul>
+        <p>Zagłosujcie w ankiecie po prawej, kto jest WASZYM ulubionym!!!</p>
+        <div class="stopka-wpisu">
+          Opublikowała: <b>brodmanowa_fanka</b> o 19:03 &nbsp;|&nbsp; <a href="#">Komentarze (17)</a><br>
+          Etykiety: <a href="#">Superjonasz</a>, <a href="#">Kapitan Kazachstan</a>, <a href="#">Malezyjski Ninja</a>, <a href="#">ranking</a>
+        </div>
+      </article>
+
+      <p class="data">niedziela, 9 listopada 2008</p>
+      <article class="wpis">
+        <h2>Kim jest Brodman pod maską??? MOJE TEORIE</h2>
+        <p>Najpierw jedno: <b>BRODMAN NIE MA BRODY.</b> Nazwa nie ma NIC wspólnego z brodą. Ile razy mam to pisać w komentarzach.</p>
+        <p>Dla nowych: Brodman nosi biały kostium z kapturem i maską, złote zdobienia na głowie, żółty pas, wielkie „B” na piersi i białą pelerynę. Najpiękniejszy kostium w mieście, koniec dyskusji.</p>
+        <p>A teraz moje teorie, kim jest w prawdziwym życiu:</p>
+        <ul>
+          <li>milioner z willą i tajną jaskinią (najbardziej prawdopodobne)</li>
+          <li>astronauta na urlopie</li>
+          <li>zaginiony książę</li>
+          <li>na pewno NIE jakiś zwykły gość z pracą biurową, LOL</li>
+        </ul>
+        <p>Na pewno jest też bardzo mądry i ma idealne życie rodzinne. Czuję to.</p>
+        <div class="stopka-wpisu">
+          Opublikowała: <b>brodmanowa_fanka</b> o 02:44 &nbsp;|&nbsp; <a href="#">Komentarze (41)</a><br>
+          Etykiety: <a href="#">teorie</a>, <a href="#">kostium</a>, <a href="#">tożsamość</a>
+        </div>
+      </article>
+
+      <div class="nawigacja-wpisow">
+        <a href="#">« Nowsze posty</a>
+        <a href="#">Strona główna</a>
+        <a href="#">Starsze posty »</a>
+      </div>
+
+    </main>
+
+    <aside id="boczny">
+
+      <div class="widget">
+        <h3>O MNIE</h3>
+        <p><b>brodmanowa_fanka</b><br>Fanka Brodmana nr 1 od jego pierwszej akcji. Prowadzę tego bloga, żeby każdy wiedział, jaki on jest WSPANIAŁY. Kiedyś zrobię sobie z nim zdjęcie. ♥<br><a href="#">Wyświetl mój pełny profil</a></p>
+      </div>
+
+      <div class="widget zloczyncy">
+        <h3>GALERIA ZŁOCZYŃCÓW</h3>
+        <ul>
+          <li><b>Kaziłaz</b> – arcywróg nr 1. Rosyjski przemytnik lewego alkoholu z „dodatkami”. Wielki jak szafa, ciągle się szczerzy.</li>
+          <li><b>Czeski Niedźwiedź</b> – czeski niedźwiedź. Podaje Kaziłazowi piwo.</li>
+          <li><b>Linijkarz</b> – płaszcz pełen linijek, autobusy. <a href="#">Przeczytaj ostrzeżenie!</a></li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h3>ANKIETA</h3>
+        <div class="ankieta">
+          <b>Kto jest najlepszym kumplem Brodmana?</b>
+          <label>Superjonasz (52%)</label><div class="wynik"><i style="width:52%"></i></div>
+          <label>Kapitan Kazachstan (30%)</label><div class="wynik"><i style="width:30%"></i></div>
+          <label>Malezyjski Ninja (18%)</label><div class="wynik"><i style="width:18%"></i></div>
+          <small>Głosów: 213 &nbsp;·&nbsp; Ankieta zamknięta</small>
+        </div>
+      </div>
+
+      <div class="widget">
+        <h3>ARCHIWUM BLOGA</h3>
+        <ul>
+          <li>▼ <b>2008</b> (24)
+            <ul>
+              <li>► <a href="#">listopad</a> (4)</li>
+              <li>► <a href="#">sierpień</a> (2)</li>
+              <li>► <a href="#">lipiec</a> (6)</li>
+              <li>► <a href="#">czerwiec</a> (12)</li>
+            </ul>
+          </li>
+          <li>► <a href="#">2007</a> (41)</li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h3>ETYKIETY</h3>
+        <div class="chmura">
+          <a href="#" style="font-size:20px">Brodman</a>
+          <a href="#" style="font-size:17px">Kaziłaz</a>
+          <a href="#" style="font-size:14px">Superjonasz</a>
+          <a href="#" style="font-size:13px">Linijkarz</a>
+          <a href="#" style="font-size:11px">Czeski Niedźwiedź</a>
+          <a href="#" style="font-size:11px">Kapitan Kazachstan</a>
+          <a href="#" style="font-size:10px">Malezyjski Ninja</a>
+          <a href="#" style="font-size:12px">teorie</a>
+          <a href="#" style="font-size:10px">kostium</a>
+        </div>
+      </div>
+
+      <div class="widget">
+        <h3>OBSERWATORZY (18)</h3>
+        <div class="obserwatorzy">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="widget">
+        <h3>SHOUTBOX</h3>
+        <div class="shoutbox">
+          <p><b>kasia_xD:</b> brodman jest boski &lt;3</p>
+          <p><b>Anonimowy:</b> ma brodę czy nie bo nie kumam</p>
+          <p><b>brodmanowa_fanka:</b> NIE MA BRODY</p>
+          <p><b>pan_mietek:</b> kto mi odda za kontener</p>
+          <p><b>superjonasz_fanclub:</b> pozdrawiamy brodmanowców!!! :D :D :D</p>
+          <p><b>Anonimowy:</b> brodman to fajtłapa</p>
+          <p><b>brodmanowa_fanka:</b> @Anonimowy wypraszam sobie</p>
+        </div>
+      </div>
+
+      <div class="widget">
+        <h3>MOJE ULUBIONE BLOGI</h3>
+        <ul>
+          <li><a href="index.html">Polski Związek Hydraulików</a> <span class="blink" style="color:#d40000;font-weight:bold">NEW!</span></li>
+          <li><a href="#">Superjonasz Fan Club</a></li>
+          <li><a href="#">Kapitan Kazachstan – oficjalnie</a></li>
+          <li><a href="#">Czy ktoś widział Malezyjskiego Ninję?</a></li>
+        </ul>
+      </div>
+
+      <div class="widget licznik">
+        <h3>ODWIEDZINY</h3>
+        <span>0</span><span>0</span><span>4</span><span>8</span><span>3</span><span>0</span><span>2</span>
+        <p style="margin:6px 0 0;font-size:11px">od 01.03.2007</p>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <footer id="stopka">
+    <div class="plakietki">
+      <span style="background:#f60">BLOGGER</span>
+      <span style="background:#1a4ea0">RSS 2.0</span>
+      <span style="background:#000;color:#3f6">FIREFOX 3</span>
+      <span style="background:#c2185b">BRODMAN FAN</span>
+    </div>
+    Subskrybuj: <a href="#">Posty (Atom)</a><br>
+    &copy; 2007–2008 brodmanowa_fanka. Blog fanowski, nie jestem Brodmanem (niestety) &nbsp;|&nbsp; <a href="index.html">« powrót do PZH</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
