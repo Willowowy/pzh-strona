@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>:: POLSKI ZWIĄZEK HYDRAULIKÓW :: Skrzynka ::</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="strona">
+
+  <div id="gorny-pasek"></div>
+
+  <header id="naglowek">
+    <a href="index.html"><img src="logo.png" alt="Polski Związek Hydraulików" class="logo"></a>
+    <div class="slogan">
+      Oficjalna strona kanału na YouTube<span class="wersja-beta">BETA</span><br>
+      <b>Polski Związek Hydraulików</b>
+    </div>
+    <div class="prawa">
+      <a class="subskrybuj" href="https://www.youtube.com/@polskizwiazekhydraulikow?sub_confirmation=1" target="_blank">SUBSKRYBUJ</a>
+      <form id="szukaj" role="search" action="index.html" method="get">
+        <input type="text" id="pole-szukaj" name="szukaj" placeholder="Szukaj w Tadzienniku..." aria-label="Szukaj w Tadzienniku">
+        <button type="submit" aria-label="Szukaj"><img src="lupka.png" alt=""></button>
+      </form>
+    </div>
+  </header>
+
+  <nav id="menu">
+    <a href="index.html">STRONA GŁÓWNA</a>
+    <a href="pracownicy.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PRACOWNICY</a>
+    <a href="instalki.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">INSTALKI</a>
+    <a href="tapety.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">TAPETY</a>
+    <a href="minecraft.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">MINECRAFT</a>
+    <a href="patroni.html" class="zablokowany" title="Wkrótce!" aria-disabled="true" tabindex="-1">PATRONI PROJEKTU</a>
+    <div class="menu-gry">
+      <button type="button" class="menu-gry-przycisk aktywny">GRY ▾<span class="nowosc">NOWOŚĆ!!!</span></button>
+      <div class="menu-gry-lista">
+        <a href="niecik.html">CHLAŚNIJ NIECIKA</a>
+        <a href="skrzynka.html" class="aktywny">SKRZYNKA</a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="tasma">
+    <div class="etykieta">TADZIENNIK</div>
+    <div class="pas"><span id="tasma-tekst"></span></div>
+  </div>
+
+  <div id="tresc">
+
+    <main id="glowna">
+
+      <div class="okruszki">Jesteś tutaj: <a href="index.html">Strona główna</a> » <b>Skrzynka</b></div>
+
+      <div class="ramka">
+        <h2>Gra: Skrzynka</h2>
+        <div class="srodek">
+          <div class="sk-scena" id="sk-scena">
+            <div class="sk-promienie"></div>
+            <button type="button" class="sk-skrzynia" id="sk-skrzynia" aria-label="Otwórz skrzynkę">
+              <span class="sk-wieko"><span class="sk-wieko-okucie"></span></span>
+              <span class="sk-korpus">
+                <span class="sk-pas l"></span><span class="sk-pas p"></span>
+                <span class="sk-zamek"><span class="sk-czaszka">☠</span></span>
+              </span>
+              <span class="sk-blask"></span>
+            </button>
+            <div class="sk-pusto" id="sk-pusto" hidden>PUSTO…</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <aside id="boczna">
+
+      <div class="info-box">
+        <h2>Tablica Związku <small>INFO</small></h2>
+        <div class="info-przewijane" id="info-przewijane">
+          <section class="info-sekcja">
+            <h3>Znajdziesz nas na</h3>
+            <div class="srodek spolecznosc">
+              <a href="https://www.twitch.tv/zwiazekhydraulikow" target="_blank" rel="noopener" title="Twitch"><img src="ikona-twitch.png" alt="Twitch"></a>
+              <a href="https://x.com/papciosoft" target="_blank" rel="noopener" title="X (Twitter)"><img src="ikona-x.png" alt="X (Twitter)"></a>
+              <a href="https://www.tiktok.com/@papciosoft?lang=en-GB" target="_blank" rel="noopener" title="TikTok"><img src="ikona-tiktok.png" alt="TikTok"></a>
+              <a href="https://www.instagram.com/polskizwiazekhydraulikow/" target="_blank" rel="noopener" title="Instagram"><img src="ikona-instagram.png" alt="Instagram"></a>
+              <a href="https://www.facebook.com/profile.php?id=61579178634518&amp;locale=pl_PL" target="_blank" rel="noopener" title="Facebook"><img src="ikona-facebook.png" alt="Facebook"></a>
+            </div>
+          </section>
+
+          <section class="info-sekcja" id="licznik">
+            <h3>Licznik odwiedzin</h3>
+            <div class="srodek">
+              Jesteś naszym<br>
+              <div class="cyfry" id="cyfry"></div><br>
+              gościem!<br>
+              <small>od 01.01.2008</small>
+            </div>
+          </section>
+
+          <div class="uwaga">
+            Strona najlepiej wygląda w rozdzielczości <b>1024x768</b><br>
+            w przeglądarce <b>Internet Explorer 6.0</b>
+          </div>
+
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer id="stopka">
+    <div class="plakietki">
+      <div class="plakietka p1"><big>PZH</big>member</div>
+      <div class="plakietka p2"><big>HTML</big>valid (chyba)</div>
+      <div class="plakietka p3">zrobione w<big>Notatniku</big></div>
+      <div class="plakietka p4">oglądaj<big>TadzioTV</big></div>
+      <div class="plakietka p5">get<big>Flash</big>player</div>
+      <div class="plakietka p6">nie wspieramy<big>LORDA PALIWO</big></div>
+      <div class="plakietka p7"><big>GANJA TRIP</big>trwa</div>
+    </div>
+    &copy; 2008–<span id="rok">2026</span> Polski Związek Hydraulików. Wszelkie prawa zastrzeżone.<br>
+    Kopiowanie treści bez zgody Związku grozi zalaniem piwnicy.
+  </footer>
+
+</div>
+
+<script src="wspolne.js"></script>
+<script>
+function _z(s) {
+  s = 'pzh:' + s;
+  var a = 0x811c9dc5;
+  for (var i = 0; i < s.length; i++) { a ^= s.charCodeAt(i); a = Math.imul(a, 16777619) >>> 0; }
+  return a.toString(36);
+}
+(function () {
+  var skrzynia = document.getElementById('sk-skrzynia');
+  var pusto = document.getElementById('sk-pusto');
+
+  /* nagrody (nazwy tymczasowe) – szansa 1 na N */
+  var NAGRODY = [
+    { nazwa: 'Solid Gold Miku', typ: 'Strój', ikona: '👑', n: 1562500 },
+    { nazwa: 'Golden Llama Crew', typ: 'Pojazd', ikona: '🚗', n: 7813 },
+    { nazwa: 'Miku\'s Takarabako', typ: 'Plecak', ikona: '🎒', n: 568 },
+    { nazwa: 'PPPP', typ: 'Utwór', ikona: '🎵', n: 391 },
+    { nazwa: 'May Fortune Find You', typ: 'Ekran ładowania', ikona: '🖼', n: 272 },
+    { nazwa: 'Piracki Token', typ: 'Żeton sklepu ×2', ikona: '☠', n: 137500, piracki: true }
+  ];
+
+  var oszustwo = false, kolejny = 0;
+  function losuj() {
+    if (oszustwo) { var n = NAGRODY[kolejny]; kolejny = (kolejny + 1) % NAGRODY.length; return n; }
+    var r = Math.random(), suma = 0;
+    for (var i = 0; i < NAGRODY.length; i++) {
+      suma += 1 / NAGRODY[i].n;
+      if (r < suma) return NAGRODY[i];
+    }
+    return null;
+  }
+
+  /* ---------- dźwięki ---------- */
+  var ctx;
+  function audio() { try { ctx = ctx || new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} return ctx; }
+  function ton(f, od, czas, typ, gl) {
+    var a = audio(); if (!a) return;
+    var t = a.currentTime + od, o = a.createOscillator(), g = a.createGain();
+    o.type = typ || 'triangle';
+    o.frequency.value = f;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(gl || 0.12, t + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + czas);
+    o.connect(g); g.connect(a.destination);
+    o.start(t); o.stop(t + czas + 0.02);
+  }
+  function skrzyp() { ton(180, 0, 0.25, 'sawtooth', 0.05); ton(140, 0.08, 0.25, 'sawtooth', 0.04); }
+  function fanfara(duza) {
+    var nuty = duza ? [523, 659, 784, 1047, 1319] : [659, 784, 1047];
+    nuty.forEach(function (f, i) { ton(f, i * 0.11, duza ? 0.9 : 0.5, 'triangle', 0.13); });
+    if (duza) [1047, 1319, 1568].forEach(function (f) { ton(f, 0.6, 1.4, 'sine', 0.08); });
+  }
+  function puf() { ton(110, 0, 0.3, 'sine', 0.1); }
+
+  /* ---------- ogłoszenie na górze ekranu ---------- */
+  var ogloszenie;
+  function oglos(nagroda) {
+    if (ogloszenie) ogloszenie.remove();
+    var o = document.createElement('div');
+    o.className = 'sk-ogloszenie' + (nagroda.piracki ? ' piracki' : '');
+    var skrzydlo = function (strona) {
+      return '<svg class="sk-o-skrzydlo ' + strona + '" viewBox="0 0 100 100" aria-hidden="true">' +
+        '<defs><linearGradient id="skg-' + strona + '" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0" stop-color="#fff3a6"/><stop offset=".5" stop-color="#ffb21a"/><stop offset="1" stop-color="#e06a00"/></linearGradient></defs>' +
+        '<path d="M100 20 L46 20 L58 2 L6 34 L34 31 L18 50 L34 69 L6 66 L58 98 L46 80 L100 80" fill="none" stroke="url(#skg-' + strona + ')" stroke-width="7" stroke-linejoin="miter"/>' +
+        '</svg>';
+    };
+    var emblemat = '<div class="sk-o-emblemat"><span>' + nagroda.ikona + '</span></div>';
+    o.innerHTML =
+      (nagroda.piracki ? '<div class="sk-o-tytul"><span>PIRACKI</span>' + emblemat + '<span>TOKEN</span></div>' : emblemat) +
+      '<div class="sk-o-pas">' +
+        (nagroda.piracki ? '<span class="sk-o-smuga l"></span>' : '') +
+        skrzydlo('l') +
+        '<div class="sk-o-srodek">' +
+          '<small>ZNALAZŁEŚ</small>' +
+          '<b>' + nagroda.nazwa.toUpperCase() + '</b>' +
+        '</div>' +
+        skrzydlo('p') +
+        (nagroda.piracki ? '<span class="sk-o-smuga p"></span>' : '') +
+      '</div>';
+    document.documentElement.appendChild(o);
+    ogloszenie = o;
+    setTimeout(function () { o.classList.add('znika'); }, nagroda.piracki ? 5500 : 3500);
+    setTimeout(function () { o.remove(); if (ogloszenie === o) ogloszenie = null; }, nagroda.piracki ? 6200 : 4200);
+  }
+
+  /* ---------- otwieranie ---------- */
+  var zajeta = false;
+  function zamknij() {
+    skrzynia.classList.remove('otwarta', 'zlota', 'trzesie');
+    pusto.hidden = true;
+    zajeta = false;
+  }
+  function otworz(nagroda) {
+    skrzynia.classList.remove('trzesie');
+    skrzynia.classList.add('otwarta');
+    skrzyp();
+    if (nagroda) {
+      fanfara(nagroda.piracki);
+      oglos(nagroda);
+    } else {
+      puf();
+      pusto.hidden = false;
+    }
+    setTimeout(zamknij, nagroda && nagroda.piracki ? 6000 : 2600);
+  }
+  skrzynia.addEventListener('click', function () {
+    if (zajeta) return;
+    zajeta = true;
+    var nagroda = losuj();
+    if (nagroda && nagroda.piracki) {
+      skrzynia.classList.add('zlota', 'trzesie');
+      [0, 0.4, 0.8, 1.2].forEach(function (t, i) { ton(400 + i * 120, t, 0.35, 'sine', 0.06); });
+      setTimeout(function () { otworz(nagroda); }, 2200);
+    } else {
+      skrzynia.classList.add('trzesie');
+      setTimeout(function () { otworz(nagroda); }, 450);
+    }
+  });
+
+  var wpisane = '';
+  document.addEventListener('keydown', function (e) {
+    var t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if (!e.key || e.key.length !== 1) return;
+    wpisane = (wpisane + e.key.toUpperCase()).slice(-12);
+    if (wpisane.length >= 8 && _z(wpisane.slice(-8)) === '10bp5bj') {
+      wpisane = '';
+      oszustwo = !oszustwo;
+      kolejny = 0;
+      skrzynia.classList.remove('mrug');
+      void skrzynia.offsetWidth;
+      skrzynia.classList.add('mrug');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

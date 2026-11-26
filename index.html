@@ -41,6 +41,7 @@
       <button type="button" class="menu-gry-przycisk">GRY ▾<span class="nowosc">NOWOŚĆ!!!</span></button>
       <div class="menu-gry-lista">
         <a href="niecik.html">CHLAŚNIJ NIECIKA</a>
+        <a href="skrzynka.html" id="menu-skrzynka" hidden>SKRZYNKA</a>
       </div>
     </div>
     <a href="brodman.html" id="menu-brodman" hidden>BRODMAN BLOG</a>
@@ -143,25 +144,10 @@
             </div>
           </section>
 
-          <section class="info-sekcja ceo">
-            <h3>Ś.P. CEO</h3>
-            <div class="srodek">
-              <div class="ceo-zdjecie"><img src="ciap-ceo.jpg" alt="Ś.P. Ciap Sweeney" loading="lazy"></div>
-              <div class="ceo-imie">Ś.P. Ciap Sweeney</div>
-              <div class="ceo-funkcja">CEO CIAPSQUADU</div>
-              <p class="ceo-cytat">„Na zawsze w naszych sercach i na naszym serwerze”</p>
-            </div>
-          </section>
-
           <div class="uwaga">
             Strona najlepiej wygląda w rozdzielczości <b>1024x768</b><br>
             w przeglądarce <b>Internet Explorer 6.0</b>
           </div>
-
-          <a class="ciap-box" href="https://www.ciapsquad.pl" target="_blank" rel="noopener">
-            <span class="ciap-naglowek">» PARTNER</span>
-            <span class="ciap-box-srodek"><b>CIAPSQUAD</b><span>Oficjalna strona ekipy – wbijaj »</span></span>
-          </a>
 
         </div>
       </div>
@@ -194,15 +180,6 @@
   </footer>
 
 </div>
-
-<a class="ciap-baner" href="https://www.ciapsquad.pl" target="_blank" rel="noopener" title="CIAPSQUAD – strona partnerska">
-  <span class="ciap-naglowek">» PARTNER</span>
-  <span class="ciap-logo">CIAP<br>SQUAD</span>
-  <span class="ciap-opis">Oficjalna strona ekipy CIAPSQUAD</span>
-  <span class="ciap-przycisk">wbijaj »</span>
-  <span class="ciap-adres">www.ciapsquad.pl</span>
-</a>
-
 
 <div class="domofon" id="domofon" aria-hidden="true">
   <div class="domofon-wneka"></div>
@@ -240,6 +217,41 @@
       <path class="r4" d="M84 178 L98 200 L92 224 L106 250 M132 162 L150 170 M92 224 L70 238"/>
     </svg>
   </div>
+</div>
+
+<div class="ekran" id="ekran" aria-hidden="true">
+  <div class="domofon-wneka"></div>
+  <div class="ekran-obudowa">
+    <div class="ekran-crt">
+      <canvas id="ekran-fala" width="240" height="140"></canvas>
+      <span class="ekran-odczyt" id="ekran-odczyt">BRAK SYGNAŁU</span>
+    </div>
+    <div class="ekran-podpis"><span class="ekran-dioda"></span>PZH · SCOPE</div>
+  </div>
+  <div class="domofon-cien"></div>
+  <div class="domofon-oslona" id="ekran-oslona">
+    <svg class="domofon-rysy" viewBox="0 0 150 250" preserveAspectRatio="none">
+      <path class="r1" d="M96 0 L90 30 L104 52 L84 80"/>
+      <path class="r2" d="M84 80 L58 92 L64 120 L40 132 M58 92 L76 112"/>
+      <path class="r3" d="M40 132 L70 150 L62 178 L94 192 M62 178 L34 188 L30 214"/>
+      <path class="r4" d="M94 192 L116 212 L108 236 L124 250 M30 214 L0 222 M108 236 L144 244"/>
+    </svg>
+  </div>
+</div>
+
+<div class="pokretlo" id="pokretlo" aria-hidden="true">
+  <div class="domofon-wneka"></div>
+  <div class="pokretlo-tlo">
+    <span class="pokretlo-opis">FREQ · MHz</span>
+    <div class="pokretlo-skala" id="pokretlo-skala"></div>
+    <div class="pokretlo-galka" id="pokretlo-galka" role="slider" tabindex="-1" aria-label="Pokrętło częstotliwości" aria-valuemin="88" aria-valuemax="108" aria-valuenow="88"><span class="pokretlo-znacznik"></span></div>
+  </div>
+  <div class="domofon-cien"></div>
+  <div class="pokretlo-plyta" id="pokretlo-plyta">
+    <span class="sruba s1"></span><span class="sruba s2"></span><span class="sruba s3"></span><span class="sruba s4"></span>
+    <span class="pokretlo-tabliczka">SERWIS</span>
+  </div>
+  <div class="domofon-oslona pokretlo-maska" id="pokretlo-maska"></div>
 </div>
 
 <div class="kartka-pelna" id="kartka-pelna" hidden>
@@ -488,9 +500,15 @@ function filtruj() {
   nakladka.addEventListener('click', function (e) { e.preventDefault(); });
 })();
 (function () {
-  var wpisane = '';
   var aktywny = false;
-  var zgoda = false;
+  var etap = 0;
+  function dalej(n) {
+    if (aktywny || etap !== n - 1) return false;
+    etap = n;
+    if (window.__pzhSpal) window.__pzhSpal(n);
+    if (n === 4) setTimeout(przejmij, 1400);
+    return true;
+  }
   var pk = document.querySelector('.p6 .pk');
   var pkn = 0;
   if (pk) pk.addEventListener('click', function () {
@@ -498,7 +516,7 @@ function filtruj() {
     pk.setAttribute('data-n', pkn);
     if (pkn < 5) return;
     pk.remove();
-    zgoda = true;
+    dalej(1);
   });
   var zmiany = [];
   var dodane = [];
@@ -524,6 +542,7 @@ function filtruj() {
 
   function przejmij() {
     aktywny = true;
+    if (window.__pzhSpal) window.__pzhSpal(0);
     document.title = ':: STRONA PRZEJĘTA :: LORD PALIWO ::';
     document.body.classList.add('paliwo', 'paliwo-wstrzas');
     setTimeout(function () { document.body.classList.remove('paliwo-wstrzas'); }, 800);
@@ -573,6 +592,7 @@ function filtruj() {
 
   function oddaj() {
     aktywny = false;
+    etap = 1;
     document.title = tytul;
     document.body.classList.remove('paliwo');
     zmiany.reverse().forEach(function (z) { z[0].innerHTML = z[1]; });
@@ -585,19 +605,12 @@ function filtruj() {
     setTimeout(function () { info.remove(); }, 2900);
   }
 
-  window.pzhPaliwo = function () { if (aktywny) oddaj(); else przejmij(); };
-
-  document.addEventListener('keydown', function (e) {
-    if (document.body.classList.contains('materacci-trwa')) return;
-    var t = e.target;
-    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
-    if (!e.key || e.key.length !== 1) return;
-    wpisane = (wpisane + e.key.toUpperCase()).slice(-12);
-    if ((zgoda || aktywny) && _zk(wpisane, 6, 'bsf2jz')) {
-      wpisane = '';
-      if (aktywny) oddaj(); else przejmij();
-    }
-  });
+  window.__pzhL = {
+    moze2: function () { return aktywny || etap === 1; },
+    krok2: function () { if (aktywny) oddaj(); else dalej(2); },
+    krok3: function () { if (aktywny) { oddaj(); return true; } return dalej(3); },
+    krok4: function (f) { if (etap === 3 && _z('f' + f.toFixed(1)) === '1h3sl8x') dalej(4); }
+  };
 })();
 (function () {
   var p7 = document.getElementById('p7');
@@ -661,7 +674,254 @@ function filtruj() {
     }
   };
 })();
-function pzhOslona(kontener, oslona, poOderwaniu) {
+(function () {
+  var wneka = document.getElementById('pokretlo');
+  if (!wneka) return;
+  var plyta = document.getElementById('pokretlo-plyta');
+  var maska = document.getElementById('pokretlo-maska');
+  var galka = document.getElementById('pokretlo-galka');
+  var skala = document.getElementById('pokretlo-skala');
+  var MIN = -135, MAX = 135, F0 = 88, F1 = 108;
+  var KROK_F = 0.1, KROK = (MAX - MIN) / ((F1 - F0) / KROK_F);
+  var kat = MIN, czest = F0, zapadka = 0, czekaj;
+
+  for (var f = F0; f <= F1; f++) {
+    var a = MIN + (f - F0) / (F1 - F0) * (MAX - MIN);
+    var kreska = document.createElement('span');
+    kreska.className = 'kreska' + (f % 2 === 0 ? ' duza' : '');
+    kreska.style.transform = 'rotate(' + a + 'deg)';
+    skala.appendChild(kreska);
+    if (f % 2) continue;
+    var liczba = document.createElement('span');
+    liczba.className = 'liczba';
+    liczba.textContent = f;
+    var rad = (a - 90) * Math.PI / 180;
+    liczba.style.left = (50 + Math.cos(rad) * 52) + '%';
+    liczba.style.top = (50 + Math.sin(rad) * 52) + '%';
+    skala.appendChild(liczba);
+  }
+
+  var ctx;
+  function klik() {
+    try {
+      ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+      var t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'triangle';
+      o.frequency.value = 2600;
+      g.gain.setValueAtTime(0.04, t);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.025);
+      o.connect(g); g.connect(ctx.destination);
+      o.start(t); o.stop(t + 0.03);
+    } catch (e) {}
+  }
+  function ustaw(nowy) {
+    kat = Math.max(MIN, Math.min(MAX, nowy));
+    galka.style.transform = 'rotate(' + kat + 'deg)';
+    var f = Math.round((F0 + (kat - MIN) / (MAX - MIN) * (F1 - F0)) / KROK_F) * KROK_F;
+    f = Math.round(f * 10) / 10;
+    if (f === czest) return;
+    czest = f;
+    galka.setAttribute('aria-valuenow', f.toFixed(1));
+    var z = Math.floor(f * 2);
+    if (z !== zapadka) { zapadka = z; klik(); }
+    if (window.__pzhEkran) window.__pzhEkran.czest(f);
+    clearTimeout(czekaj);
+    czekaj = setTimeout(function () { if (window.__pzhL) window.__pzhL.krok4(czest); }, 1000);
+  }
+  ustaw(MIN);
+  zapadka = Math.floor(F0 * 2);
+
+  function gotowe() { return wneka.classList.contains('gotowy') && !plyta.isConnected; }
+  var zrzucMaske = pzhOslona(wneka, maska, function () {
+    plyta.classList.add('spada');
+    plyta.addEventListener('animationend', function () {
+      plyta.remove();
+      wneka.setAttribute('aria-hidden', 'false');
+      galka.tabIndex = 0;
+      if (window.__pzhEkran) window.__pzhEkran.sygnal(czest);
+    }, { once: true });
+  }, true);
+
+  window.pzhPokretlo = function () {
+    if (!window.__pzhEkran || !window.__pzhEkran.odkryty) return false;
+    zrzucMaske();
+  };
+
+  function katMyszy(e) {
+    var r = galka.getBoundingClientRect();
+    return Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)) * 180 / Math.PI;
+  }
+  var ostatni = null;
+  galka.addEventListener('pointerdown', function (e) {
+    if (!gotowe()) return;
+    e.preventDefault();
+    galka.setPointerCapture(e.pointerId);
+    ostatni = katMyszy(e);
+    galka.classList.add('kreci');
+  });
+  galka.addEventListener('pointermove', function (e) {
+    if (ostatni === null) return;
+    var teraz = katMyszy(e), roznica = teraz - ostatni;
+    if (roznica > 180) roznica -= 360;
+    if (roznica < -180) roznica += 360;
+    ostatni = teraz;
+    ustaw(kat + roznica);
+  });
+  function puscil() { ostatni = null; galka.classList.remove('kreci'); }
+  galka.addEventListener('pointerup', puscil);
+  galka.addEventListener('pointercancel', puscil);
+  galka.addEventListener('wheel', function (e) {
+    if (!gotowe()) return;
+    e.preventDefault();
+    ustaw(kat + (e.deltaY < 0 ? KROK : -KROK));
+  }, { passive: false });
+  galka.addEventListener('keydown', function (e) {
+    if (!gotowe()) return;
+    var ile = e.shiftKey ? 10 : 1;
+    if (e.key === 'ArrowUp' || e.key === 'ArrowRight') { e.preventDefault(); ustaw(kat + KROK * ile); }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') { e.preventDefault(); ustaw(kat - KROK * ile); }
+  });
+})();
+(function () {
+  var ekran = document.getElementById('ekran');
+  if (!ekran) return;
+  var plotno = document.getElementById('ekran-fala');
+  var odczyt = document.getElementById('ekran-odczyt');
+  var c = plotno.getContext('2d');
+  var W = plotno.width, H = plotno.height;
+  var czest = null, faza = 0, dziala = false;
+
+  var api = window.__pzhEkran = {
+    odkryty: false,
+    sygnal: function (f) { czest = f; odczyt.textContent = f.toFixed(1) + ' MHz'; },
+    czest: function (f) { if (czest !== null) api.sygnal(f); }
+  };
+
+  function klatka() {
+    c.fillStyle = 'rgba(2, 18, 8, 0.35)';
+    c.fillRect(0, 0, W, H);
+    c.strokeStyle = '#6dffa4';
+    c.lineWidth = 2;
+    c.shadowColor = '#3dff86';
+    c.shadowBlur = 8;
+    c.beginPath();
+    for (var x = 0; x <= W; x += 2) {
+      var y;
+      if (czest === null) y = H / 2 + (Math.random() - 0.5) * 6;
+      else {
+        var cykle = 1 + (czest - 88) / 20 * 7;
+        y = H / 2 + Math.sin(x / W * cykle * Math.PI * 2 + faza) * H * 0.32 + (Math.random() - 0.5) * 1.5;
+      }
+      if (x) c.lineTo(x, y); else c.moveTo(x, y);
+    }
+    c.stroke();
+    c.shadowBlur = 0;
+    faza += 0.08;
+    requestAnimationFrame(klatka);
+  }
+
+  pzhOslona(ekran, document.getElementById('ekran-oslona'), function () {
+    ekran.setAttribute('aria-hidden', 'false');
+    api.odkryty = true;
+    if (!dziala) { dziala = true; requestAnimationFrame(klatka); }
+  });
+})();
+(function () {
+  var NS = 'http://www.w3.org/2000/svg';
+  var CELE = [null, '.p6', '#domofon', '#ramka-baner', '#pokretlo'];
+  var slady = [];
+
+  function szum(t, f) {
+    return 0.45 * Math.sin(3 * t + f[0]) + 0.3 * Math.sin(5 * t + f[1]) +
+      0.22 * Math.sin(11 * t + f[2]) + 0.12 * Math.sin(23 * t + f[3]);
+  }
+
+  /* jeden wypalony ślad wokół elementu: brązowa, nierówna plama z dziurą na sam element */
+  function Slad(el) {
+    this.el = el;
+    this.f = [Math.random() * 6.3, Math.random() * 6.3, Math.random() * 6.3, Math.random() * 6.3];
+    this.drg = [];
+    for (var i = 0; i < 120; i++) this.drg.push(Math.random() - 0.5);
+    this.p = 0;
+    this.box = document.createElement('div');
+    this.box.className = 'spalenie';
+    this.tlo = document.createElement('div');
+    this.tlo.className = 'spalenie-tlo';
+    this.svg = document.createElementNS(NS, 'svg');
+    this.svg.setAttribute('class', 'spalenie-brzeg');
+    this.zwegl = document.createElementNS(NS, 'path');
+    this.zwegl.setAttribute('class', 'zwegl');
+    this.zar = document.createElementNS(NS, 'path');
+    this.zar.setAttribute('class', 'zar');
+    this.svg.appendChild(this.zwegl);
+    this.svg.appendChild(this.zar);
+    this.box.appendChild(this.tlo);
+    this.box.appendChild(this.svg);
+    document.body.appendChild(this.box);
+  }
+  Slad.prototype.rysuj = function () {
+    var r = this.el.getBoundingClientRect();
+    if (!r.width && !r.height) { this.box.style.display = 'none'; return; }
+    this.box.style.display = '';
+    var zasieg = Math.max(28, Math.min(90, Math.sqrt(r.width * r.height) * 0.45)) * this.p;
+    var pad = zasieg * 1.6 + 10;
+    var w = r.width + pad * 2, h = r.height + pad * 2;
+    this.box.style.left = (r.left + window.scrollX - pad) + 'px';
+    this.box.style.top = (r.top + window.scrollY - pad) + 'px';
+    this.box.style.width = w + 'px';
+    this.box.style.height = h + 'px';
+    var cx = w / 2, cy = h / 2, hw = r.width / 2, hh = r.height / 2, d = '';
+    for (var i = 0; i < 120; i++) {
+      var t = i / 120 * Math.PI * 2, dx = Math.cos(t), dy = Math.sin(t);
+      var doBrzegu = Math.min(Math.abs(hw / (dx || 1e-6)), Math.abs(hh / (dy || 1e-6)));
+      var rr = doBrzegu + zasieg * (1 + szum(t, this.f) * 0.55 + this.drg[i] * 0.35);
+      d += (i ? 'L' : 'M') + (cx + dx * rr).toFixed(1) + ' ' + (cy + dy * rr).toFixed(1);
+    }
+    d += 'Z';
+    var dziura = 'M' + (pad + 2) + ' ' + (pad + 2) + 'h' + (r.width - 4) + 'v' + (r.height - 4) + 'h' + (4 - r.width) + 'Z';
+    this.tlo.style.clipPath = "path(evenodd, '" + d + ' ' + dziura + "')";
+    this.svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    this.zwegl.setAttribute('d', d);
+    this.zar.setAttribute('d', d);
+  };
+  Slad.prototype.usun = function () { this.box.remove(); };
+
+  var audio;
+  function trzask() {
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      var t = audio.currentTime, dl = 1.2;
+      var buf = audio.createBuffer(1, Math.ceil(audio.sampleRate * dl), audio.sampleRate), dane = buf.getChannelData(0);
+      for (var i = 0; i < dane.length; i++) dane[i] = (Math.random() < 0.004 ? (Math.random() * 2 - 1) : (Math.random() * 2 - 1) * 0.08) * (1 - i / dane.length);
+      var s = audio.createBufferSource(), f = audio.createBiquadFilter(), g = audio.createGain();
+      s.buffer = buf; f.type = 'lowpass'; f.frequency.value = 2200; g.gain.value = 0.5;
+      s.connect(f); f.connect(g); g.connect(audio.destination);
+      s.start(t);
+    } catch (e) {}
+  }
+
+  window.__pzhSpal = function (etap) {
+    if (!etap) { slady.forEach(function (s) { s.usun(); }); slady = []; return; }
+    var el = document.querySelector(CELE[etap]);
+    if (!el) return;
+    var s = new Slad(el);
+    slady.push(s);
+    trzask();
+    var start = null;
+    function krok(ts) {
+      if (start === null) start = ts;
+      var p = Math.min(1, (ts - start) / 1800);
+      s.p = 1 - Math.pow(1 - p, 3);
+      s.rysuj();
+      if (p < 1) requestAnimationFrame(krok);
+    }
+    s.p = 0.05;
+    s.rysuj();
+    requestAnimationFrame(krok);
+  };
+  window.addEventListener('resize', function () { slady.forEach(function (s) { s.rysuj(); }); });
+})();
+function pzhOslona(kontener, oslona, poOderwaniu, reczne) {
   var tlo = new Image();
   var tloUrl = (getComputedStyle(document.body).backgroundImage.match(/url\(["']?([^"')]+)["']?\)/) || [])[1];
   /* normalnie osłona ma tło "fixed" z CSS (zgrywa się z tłem przy przewijaniu);
@@ -686,7 +946,7 @@ function pzhOslona(kontener, oslona, poOderwaniu) {
   document.addEventListener('pzh-odmroz', puszczaj);
 
   var stukniecia = 0, reset;
-  oslona.addEventListener('click', function () {
+  if (!reczne) oslona.addEventListener('click', function () {
     if (oslona.classList.contains('spada')) return;
     stukniecia++;
     oslona.setAttribute('data-rysy', stukniecia);
@@ -696,6 +956,7 @@ function pzhOslona(kontener, oslona, poOderwaniu) {
   });
 
   function oderwij() {
+    if (!oslona.isConnected || oslona.classList.contains('spada')) return;
     dopasuj();
     oslona.classList.add('spada');
     oslona.addEventListener('animationend', function () {
@@ -704,6 +965,7 @@ function pzhOslona(kontener, oslona, poOderwaniu) {
       setTimeout(function () { kontener.classList.add('gotowy'); }, 900);
     }, { once: true });
   }
+  return oderwij;
 }
 (function () {
   var domofon = document.getElementById('domofon');
@@ -714,7 +976,7 @@ function pzhOslona(kontener, oslona, poOderwaniu) {
   var dioda = document.getElementById('domofon-dioda');
   var KODY = {
     '1exbb1v': function () { if (window.pzhMateracci) window.pzhMateracci(); },
-    '16q88zq': function () { if (window.pzhPaliwo) window.pzhPaliwo(); },
+    'mvcyex': function () { if (window.__pzhL) window.__pzhL.krok2(); },
     '17hhkyl': function () { if (window.pzhSzacunek) window.pzhSzacunek(); },
     'liqpx4': function () { if (window.pzhGula) window.pzhGula(); },
     't9o6b1': function () { if (window.pzhKlawiatura) window.pzhKlawiatura(); }
@@ -797,7 +1059,11 @@ function pzhOslona(kontener, oslona, poOderwaniu) {
     clearTimeout(czyszczenie);
     if (k === '*') { wpis = ''; pokaz('WPISZ KOD'); return; }
     if (k === '#') {
-      if (wpis) wynik(Object.prototype.hasOwnProperty.call(KODY, _z(wpis)) ? 'ok' : NISKO.indexOf(_z(wpis)) !== -1 ? 'nisko' : 'zle');
+      if (wpis) {
+        var hz = _z(wpis);
+        var znany = Object.prototype.hasOwnProperty.call(KODY, hz) && (hz !== 'mvcyex' || (window.__pzhL && window.__pzhL.moze2()));
+        wynik(znany ? 'ok' : NISKO.indexOf(hz) !== -1 ? 'nisko' : 'zle');
+      }
       return;
     }
     if (wpis.length >= MAKS) return;
@@ -929,6 +1195,28 @@ function pzhOslona(kontener, oslona, poOderwaniu) {
     }
   };
   HASLA['1cktupz'] = HASLA['mdobr0'];
+  HASLA['19d98k1'] = function () {
+    if (!window.pzhPokretlo || window.pzhPokretlo() === false) return false;
+    pokaz();
+  };
+  HASLA['1x914m2'] = function () {
+    pokaz();
+    var gry = document.querySelector('.menu-gry-przycisk');
+    gry.classList.remove('zloto');
+    void gry.offsetWidth;
+    gry.classList.add('zloto');
+    setTimeout(function () {
+      gry.classList.remove('zloto');
+      document.getElementById('menu-skrzynka').hidden = false;
+    }, 2600);
+  };
+  /* tymczasowo zablokowane – zamiast działania komunikat */
+  var WKROTCE = function () { wyswietl('COMING bardzo SOON', 'ok', 2500); };
+  ['mdobr0', '1cktupz', '1x914m2'].forEach(function (h) { HASLA[h] = WKROTCE; });
+  HASLA['bsf2jz'] = function () {
+    if (!window.__pzhL || !window.__pzhL.krok3()) return false;
+    pokaz();
+  };
   HASLA['pe0jjy'] = function () {
     pokaz();
     if (window.pzhPO) window.pzhPO();
@@ -960,9 +1248,10 @@ function pzhOslona(kontener, oslona, poOderwaniu) {
     else if (k === 'ENTER') {
       var haslo = wpis.trim().replace(/\s+/g, ' ').toUpperCase();
       wpis = '';
-      if (Object.prototype.hasOwnProperty.call(HASLA, _z(haslo))) HASLA[_z(haslo)]();
-      else if (haslo) wyswietl('NIE TO HASŁO', 'zle', 1200);
-      else pokaz();
+      var hh = _z(haslo);
+      var udane = Object.prototype.hasOwnProperty.call(HASLA, hh) && HASLA[hh]() !== false;
+      if (!udane && haslo) wyswietl('NIE TO HASŁO', 'zle', 1200);
+      else if (!haslo) pokaz();
       return;
     }
     else if (wpis.length < MAKS) wpis += k;

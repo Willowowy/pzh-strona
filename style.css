@@ -415,7 +415,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 #licznik small { color: #888; font-size: 10px; }
 
-/* ---------- Tablica Związku (licznik, social media, Ś.P. CEO w jednym boxie) ---------- */
+/* ---------- Tablica Związku (licznik, social media w jednym boxie) ---------- */
 .info-box {
   background: var(--mieta);
   border: 2px solid var(--zielony-jasny);
@@ -473,57 +473,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 }
 .info-sekcja .srodek { padding: 10px; }
 .info-przewijane .uwaga { margin: 10px; }
-.info-przewijane .ciap-box { margin: 0 10px 10px; }
 
-/* ---------- Ś.P. CEO Ciapsquadu ---------- */
-.info-sekcja.ceo { text-align: center; background: linear-gradient(#fafafa, #ececec); }
-.info-sekcja.ceo > h3 { background: linear-gradient(#5a5a5a, #222); }
-.ceo-zdjecie {
-  position: relative;
-  display: inline-block;
-  padding: 4px;
-  background: #fff;
-  border: 1px solid #999;
-  box-shadow: 2px 2px 0 rgba(0,0,0,.2);
-  overflow: hidden;
-}
-.ceo-zdjecie img {
-  display: block;
-  width: 200px;
-  max-width: 100%;
-  height: auto;
-  filter: grayscale(1);
-}
-/* żałobna wstążka w rogu */
-.ceo-zdjecie::after {
-  content: "";
-  position: absolute;
-  top: 14px;
-  right: -22px;
-  width: 90px;
-  height: 9px;
-  background: #111;
-  transform: rotate(45deg);
-}
-.ceo-imie {
-  margin-top: 8px;
-  font-family: "Trebuchet MS", Verdana, sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  color: #222;
-}
-.ceo-funkcja {
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: #17964a;
-}
-.ceo-cytat {
-  margin: 6px 10px 0;
-  font-size: 11px;
-  font-style: italic;
-  color: #666;
-}
 
 .uwaga {
   padding: 8px;
@@ -1222,97 +1172,6 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
 .pn-sterowanie { font-size: 12px; color: #ffe066; }
 #pn-canvas { cursor: pointer; }
 
-.ciap-baner {
-  --ciap-zloto: #f5c400;
-  --ciap-oliwka: #3c4f1c;
-  position: fixed;
-  top: 120px;
-  left: calc(50% + 505px);
-  z-index: 15;
-  width: 140px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 0 0 12px;
-  font-family: Verdana, Tahoma, sans-serif;
-  text-align: center;
-  text-decoration: none;
-  color: #d8e2c0;
-  background: linear-gradient(#1f2a12, #0f150a);
-  border: 2px solid #4d6224;
-  border-radius: 6px;
-  box-shadow: 0 0 0 1px #000, 0 0 18px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08);
-  transition: transform .15s, box-shadow .15s;
-}
-.ciap-baner:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 0 1px #000, 0 0 22px rgba(245,196,0,.35), inset 0 1px 0 rgba(255,255,255,.08);
-}
-.ciap-naglowek {
-  align-self: stretch;
-  padding: 5px 8px;
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-align: left;
-  color: #f5c400;
-  background: linear-gradient(#55702a, #2f3f15);
-  border-bottom: 1px solid #000;
-}
-.ciap-logo {
-  margin-top: 4px;
-  font-family: Impact, "Arial Black", sans-serif;
-  font-size: 34px;
-  line-height: .95;
-  letter-spacing: 1px;
-  color: #f5c400;
-  background: linear-gradient(#fff1a0, #f5c400 45%, #b07a00);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(2px 2px 0 #3a2800) drop-shadow(0 0 1px #000);
-}
-.ciap-opis { padding: 0 10px; font-size: 10px; line-height: 1.4; color: #b9c79a; }
-.ciap-przycisk {
-  padding: 5px 14px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #2a1d00;
-  background: linear-gradient(#ffe36a, #e0a800);
-  border: 1px solid #6b4a00;
-  border-radius: 4px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
-}
-.ciap-baner:hover .ciap-przycisk { filter: brightness(1.1); }
-.ciap-adres { font-size: 9px; color: #8fa06a; }
-
-/* wersja w bocznej kolumnie, gdy z boku strony nie ma miejsca */
-.ciap-box {
-  display: none;
-  margin-top: 15px;
-  text-decoration: none;
-  background: linear-gradient(#1f2a12, #0f150a);
-  border: 2px solid #4d6224;
-  border-radius: 6px;
-  overflow: hidden;
-}
-.ciap-box .ciap-naglowek { display: block; }
-.ciap-box-srodek { display: flex; flex-direction: column; gap: 2px; padding: 10px; text-align: center; }
-.ciap-box-srodek b {
-  font-family: Impact, "Arial Black", sans-serif;
-  font-size: 26px;
-  letter-spacing: 1px;
-  color: #f5c400;
-  text-shadow: 2px 2px 0 #3a2800;
-}
-.ciap-box-srodek span { font-size: 11px; color: #d8e2c0; }
-.ciap-box:hover b { color: #ffe36a; }
-
-@media (max-width: 1340px) {
-  .ciap-baner { display: none; }
-  .ciap-box { display: block; }
-}
 
 .materacci {
   position: fixed;
@@ -1336,8 +1195,7 @@ a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px dotted
   pointer-events: none;
 }
 body.materacci-trwa { overflow: hidden; }
-body.materacci-trwa #strona,
-body.materacci-trwa .ciap-baner { filter: blur(8px); pointer-events: none; user-select: none; }
+body.materacci-trwa #strona { filter: blur(8px); pointer-events: none; user-select: none; }
 
 body.paliwo {
   --link: #ffae42;
@@ -1378,11 +1236,9 @@ body.paliwo .info-box > h2 { background: linear-gradient(#ffa030 0%, #ff6a00 50%
 body.paliwo .info-box > h2 small { background: #6a1a00; }
 body.paliwo .info-przewijane { background: #1d1a19; color: #f0d8c0; border-top-color: #ff6a00; }
 body.paliwo .info-sekcja { border-bottom-color: #6a2a08; }
-body.paliwo .info-sekcja:nth-of-type(even), body.paliwo .info-sekcja.ceo { background: #241f1d; }
+body.paliwo .info-sekcja:nth-of-type(even) { background: #241f1d; }
 body.paliwo .info-sekcja > h3 { background: linear-gradient(#ff6a00, #b33a00); }
-body.paliwo .ceo-imie { color: #ffcf99; }
 body.paliwo .spolecznosc img { filter: hue-rotate(-115deg) saturate(1.4); }
-body.paliwo .ciap-baner { filter: grayscale(1) sepia(1) hue-rotate(-20deg) saturate(2); }
 
 body.paliwo #baner > img, body.paliwo #baner .kropki { visibility: hidden; }
 .paliwo-baner {
@@ -2055,7 +1911,6 @@ html.limonka body:not(.paliwo) .info-box > h2 {
   background: linear-gradient(to bottom, #b8e840 0%, #8cc414 50%, #7aae00 51%, #86ba08 100%);
 }
 html.limonka body:not(.paliwo) .info-box { box-shadow: 0 0 8px rgba(166,226,46,.6); }
-html.limonka body:not(.paliwo) .ceo-funkcja { color: #6fa800; }
 html.limonka body:not(.paliwo) .spolecznosc img { filter: hue-rotate(-40deg) saturate(1.2); }
 html.limonka body:not(.paliwo) #licznik .cyfry span { color: #c8ff00; }
 html.limonka body:not(.paliwo) .domofon-oslona { background-color: #9be000; background-blend-mode: luminosity; }
@@ -2100,3 +1955,555 @@ img.po-zdjecie { object-fit: cover; }
   .aktualizacja { position: static; transform: none; margin: 10px auto 0; }
 }
 body.paliwo .aktualizacja-timer { color: #ff8a00; }
+
+/* =========================================================
+   POKRĘTŁO – wnęka po lewej z metalową płytą
+   ========================================================= */
+.pokretlo {
+  position: absolute;
+  top: 528px;
+  left: calc(50% + 518px);
+  z-index: 15;
+  width: 150px;
+  height: 160px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.pokretlo-tlo {
+  position: absolute;
+  inset: 8px;
+  background:
+    radial-gradient(circle at 50% 55%, #2b2e31 0 40%, transparent 70%),
+    linear-gradient(#1a1c1e, #26292c);
+}
+.pokretlo-opis {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: 0;
+  font: bold 8px Tahoma, Verdana, sans-serif;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: #c9ccd0;
+}
+.pokretlo-skala {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  width: 112px;
+  height: 112px;
+  margin: -56px 0 0 -56px;
+}
+.pokretlo-skala .kreska {
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  width: 1px;
+  height: 6px;
+  margin-left: -.5px;
+  background: #c9ccd0;
+  transform-origin: 50% 47px;
+}
+.pokretlo-skala .kreska.duza { width: 2px; height: 9px; margin-left: -1px; top: 7px; transform-origin: 50% 49px; background: #fff; }
+.pokretlo-skala .liczba {
+  position: absolute;
+  font: bold 8px Tahoma, Verdana, sans-serif;
+  color: #c9ccd0;
+  transform: translate(-50%, -50%);
+}
+.pokretlo-galka {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  width: 62px;
+  height: 62px;
+  margin: -31px 0 0 -31px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 35%, #5a5d61 0, #2a2c2f 38%, #121314 70%),
+    #121314;
+  box-shadow:
+    0 0 0 4px #0b0c0d,
+    0 0 0 5px #3a3d41,
+    0 4px 8px 4px rgba(0,0,0,.7),
+    inset 0 1px 1px rgba(255,255,255,.25);
+  cursor: default;
+  touch-action: none;
+}
+/* radełko na brzegu */
+.pokretlo-galka::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(#2b2e31 0 5deg, #0b0c0d 5deg 10deg);
+  -webkit-mask: radial-gradient(circle, transparent 31px, #000 31.5px);
+  mask: radial-gradient(circle, transparent 31px, #000 31.5px);
+}
+/* wewnętrzna nasadka */
+.pokretlo-galka::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #7a7d82, #3a3d41 50%, #1d1f21);
+  box-shadow: 0 1px 2px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.3);
+}
+.pokretlo-znacznik {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 3px;
+  width: 3px;
+  height: 14px;
+  margin-left: -1.5px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 3px rgba(255,255,255,.6);
+}
+.pokretlo.gotowy .pokretlo-galka { cursor: grab; }
+.pokretlo-galka.kreci { cursor: grabbing; }
+
+/* metalowa płyta, która odpada */
+.pokretlo-plyta {
+  position: absolute;
+  z-index: 3;
+  inset: 2px;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 3px),
+    linear-gradient(160deg, #9ea4aa, #6d7379 45%, #858b91 60%, #5a5f64);
+  border: 1px solid #2a2d30;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -2px 4px rgba(0,0,0,.35), 2px 3px 5px rgba(0,0,0,.5);
+  transform-origin: 8% 8%;
+}
+.pokretlo-plyta .sruba {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e6e8ea, #6b7075 70%);
+  box-shadow: 0 1px 1px rgba(0,0,0,.6);
+}
+.pokretlo-plyta .sruba::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top: 4px;
+  height: 1px;
+  background: #3a3d41;
+  transform: rotate(35deg);
+}
+.pokretlo-plyta .s1 { left: 6px; top: 6px; }
+.pokretlo-plyta .s2 { right: 6px; top: 6px; }
+.pokretlo-plyta .s3 { left: 6px; bottom: 6px; }
+.pokretlo-plyta .s4 { right: 6px; bottom: 6px; }
+.pokretlo-tabliczka {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 3px 8px;
+  font: bold 9px Tahoma, Verdana, sans-serif;
+  letter-spacing: 2px;
+  color: #2a2d30;
+  background: linear-gradient(#e8d9a0, #c9b26a);
+  border: 1px solid #5a4a1a;
+  transform: translate(-50%, -50%);
+  text-shadow: 0 1px 0 rgba(255,255,255,.4);
+}
+.pokretlo-plyta.spada { pointer-events: none; animation: plyta-spada 1.5s cubic-bezier(.5, 0, .9, .5) forwards; }
+@keyframes plyta-spada {
+  0%   { transform: none; }
+  10%  { transform: rotate(-4deg); }
+  18%  { transform: rotate(-1deg); }
+  30%  { transform: rotate(-12deg); }
+  100% { transform: translate(30px, 110vh) rotate(-60deg); }
+}
+body.paliwo .pokretlo { display: none; }
+@media (max-width: 1340px) { .pokretlo { display: none; } }
+.pokretlo-maska { z-index: 4; }
+.pokretlo-skala .liczba { font-size: 7px; }
+
+/* =========================================================
+   EKRAN – wnęka po prawej z ekranem oscyloskopu
+   ========================================================= */
+.ekran {
+  position: absolute;
+  top: 372px;
+  left: calc(50% + 510px);
+  z-index: 15;
+  width: 160px;
+  height: 132px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.ekran-obudowa {
+  position: absolute;
+  inset: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 7px 7px 5px;
+  background: linear-gradient(#55595e, #34373b);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
+}
+.ekran-crt {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(80,255,150,.10) 1px, transparent 1px) 0 0 / 100% 20%,
+    linear-gradient(90deg, rgba(80,255,150,.10) 1px, transparent 1px) 0 0 / 12.5% 100%,
+    radial-gradient(ellipse at center, #08301a, #020c06 80%);
+  border: 2px solid #111;
+  border-radius: 8px / 12px;
+  box-shadow: inset 0 0 14px rgba(0,0,0,.9), 0 1px 0 rgba(255,255,255,.15);
+}
+.ekran-crt canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ekran-crt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(rgba(0,0,0,.25) 0 1px, transparent 1px 3px);
+  pointer-events: none;
+}
+.ekran-odczyt {
+  position: absolute;
+  z-index: 1;
+  right: 5px;
+  bottom: 3px;
+  font: bold 9px "Courier New", monospace;
+  color: #8dffb8;
+  text-shadow: 0 0 4px #3dff86;
+}
+.ekran-podpis {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font: bold 7px Tahoma, Verdana, sans-serif;
+  letter-spacing: 1.5px;
+  color: #c9ccd0;
+}
+.ekran-dioda { width: 5px; height: 5px; border-radius: 50%; background: #4dff4d; box-shadow: 0 0 4px #4dff4d; }
+body.paliwo .ekran { display: none; }
+@media (max-width: 1340px) { .ekran { display: none; } }
+
+/* =========================================================
+   SPALENIE – wypalony ślad wokół miejsca, gdzie coś się stało
+   ========================================================= */
+.spalenie {
+  position: absolute;
+  z-index: 16;
+  pointer-events: none;
+}
+.spalenie-tlo {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(closest-side, rgba(40,14,0,.55), rgba(90,40,5,.35) 60%, rgba(120,60,10,.12));
+  backdrop-filter: sepia(1) saturate(.45) brightness(.62) contrast(1.15) hue-rotate(-12deg);
+  -webkit-backdrop-filter: sepia(1) saturate(.45) brightness(.62) contrast(1.15) hue-rotate(-12deg);
+}
+.spalenie-brzeg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.spalenie-brzeg .zwegl { fill: none; stroke: #1e0c00; stroke-width: 7; opacity: .8; filter: blur(3px); }
+.spalenie-brzeg .zar {
+  fill: none;
+  stroke: #ff7a1a;
+  stroke-width: 1.5;
+  stroke-dasharray: 5 12 2 8;
+  filter: drop-shadow(0 0 2px #ff4a00);
+  animation: zar-tli 1.6s ease-in-out infinite alternate;
+}
+@keyframes zar-tli { from { opacity: .3; stroke-dashoffset: 0; } to { opacity: .95; stroke-dashoffset: 27; } }
+@media (prefers-reduced-motion: reduce) { .spalenie-brzeg .zar { animation: none; } }
+
+/* =========================================================
+   SKRZYNKA – przycisk w menu i gra
+   ========================================================= */
+#menu a#menu-skrzynka[hidden] { display: none; }
+.menu-gry-przycisk.zloto { animation: gry-zloto .26s steps(2) 10; }
+@keyframes gry-zloto {
+  from { background: linear-gradient(to bottom, #fff6b0 0%, #ffd700 50%, #e0a800 51%, #ffcf33 100%); color: #3a2a00; text-shadow: 0 0 6px #fff; box-shadow: 0 0 14px #ffd700; }
+  to   { background: none; }
+}
+
+.sk-scena {
+  position: relative;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 85%, rgba(255,200,80,.18), transparent 55%),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.25) 0 2px, transparent 2px 70px),
+    linear-gradient(#1b2a3a 0 55%, #5a3a1c 55% 56%, #6e4824 56%, #4a2e14);
+  border: 2px solid #111;
+  border-radius: 6px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.sk-promienie {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 700px;
+  height: 700px;
+  margin: -350px 0 0 -350px;
+  background: repeating-conic-gradient(rgba(255,220,120,.16) 0 8deg, transparent 8deg 22deg);
+  border-radius: 50%;
+  -webkit-mask: radial-gradient(circle, #000 10%, transparent 65%);
+  mask: radial-gradient(circle, #000 10%, transparent 65%);
+  opacity: 0;
+  transition: opacity .4s;
+  animation: sk-kolo 14s linear infinite;
+}
+@keyframes sk-kolo { to { transform: rotate(360deg); } }
+.sk-scena:has(.sk-skrzynia.otwarta) .sk-promienie,
+.sk-scena:has(.sk-skrzynia.zlota) .sk-promienie { opacity: 1; }
+
+.sk-skrzynia {
+  position: relative;
+  top: 40px;
+  width: 190px;
+  height: 150px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  perspective: 600px;
+  transition: transform .15s, filter .15s;
+}
+.sk-skrzynia:hover { transform: scale(1.04); filter: drop-shadow(0 0 14px rgba(255,215,0,.6)); }
+.sk-korpus {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 92px;
+  background:
+    repeating-linear-gradient(rgba(0,0,0,.18) 0 2px, transparent 2px 23px),
+    linear-gradient(#a8692c, #7a4618);
+  border: 4px solid #d9a520;
+  border-radius: 4px 4px 8px 8px;
+  box-shadow: inset 0 -10px 18px rgba(0,0,0,.4), 0 10px 18px rgba(0,0,0,.5);
+}
+.sk-pas { position: absolute; top: -4px; bottom: -4px; width: 16px; background: linear-gradient(90deg, #b8860b, #ffd84a 50%, #b8860b); }
+.sk-pas.l { left: 22px; }
+.sk-pas.p { right: 22px; }
+.sk-zamek {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  width: 42px;
+  height: 46px;
+  margin-left: -21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#ffe066, #c99700);
+  border: 2px solid #6b4a00;
+  border-radius: 6px 6px 14px 14px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.5);
+}
+.sk-czaszka { font-size: 26px; line-height: 1; color: #3a2400; text-shadow: 0 1px 0 rgba(255,255,255,.4); }
+.sk-wieko {
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: 88px;
+  height: 64px;
+  transform-origin: 50% 100%;
+  background:
+    repeating-linear-gradient(rgba(0,0,0,.18) 0 2px, transparent 2px 21px),
+    linear-gradient(#b87632, #8a521f);
+  border: 4px solid #d9a520;
+  border-radius: 60px 60px 4px 4px / 40px 40px 4px 4px;
+  transition: transform .45s cubic-bezier(.3, 1.6, .5, 1);
+  z-index: 2;
+}
+.sk-wieko-okucie { position: absolute; left: 50%; bottom: -4px; width: 30px; height: 20px; margin-left: -15px; background: linear-gradient(#ffe066, #c99700); border: 2px solid #6b4a00; border-radius: 4px 4px 0 0; }
+.sk-blask {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 80px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff6b0;
+  box-shadow: 0 0 40px 24px rgba(255,220,100,.9);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.sk-skrzynia.otwarta .sk-wieko { transform: rotateX(-105deg); }
+.sk-skrzynia.otwarta .sk-blask { opacity: 1; }
+.sk-skrzynia.otwarta, .sk-skrzynia.zlota { cursor: default; }
+.sk-skrzynia.trzesie { animation: sk-trzes .09s linear infinite; }
+@keyframes sk-trzes { 25% { translate: -3px 1px; rotate: -1.5deg; } 50% { translate: 2px -1px; } 75% { translate: 3px 1px; rotate: 1.5deg; } }
+.sk-skrzynia.zlota { filter: drop-shadow(0 0 22px #ffd700) brightness(1.25) saturate(1.4); }
+.sk-skrzynia.zlota .sk-korpus, .sk-skrzynia.zlota .sk-wieko { animation: sk-mieni .5s ease-in-out infinite alternate; }
+@keyframes sk-mieni { to { background: linear-gradient(#fff2a0, #e0a800); border-color: #fff6b0; } }
+.sk-skrzynia.mrug { animation: sk-mrug .5s steps(2) 2; }
+@keyframes sk-mrug { 50% { filter: brightness(1.6); } }
+.sk-pusto {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 28%;
+  text-align: center;
+  font: bold 22px "Trebuchet MS", Verdana, sans-serif;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,.75);
+  text-shadow: 0 2px 6px #000;
+  animation: sk-puf 1.6s ease-out both;
+}
+.sk-pusto[hidden] { display: none; }
+@keyframes sk-puf { from { transform: translateY(20px) scale(.8); opacity: 0; } 30% { opacity: 1; } to { transform: translateY(-20px); opacity: .6; } }
+
+/* ---------- ogłoszenie nagrody – nad całą stroną ---------- */
+.sk-ogloszenie {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: calc(14px + env(safe-area-inset-top, 0px));
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+  pointer-events: none;
+  font-family: Impact, "Arial Black", "Trebuchet MS", sans-serif;
+}
+.sk-ogloszenie.znika { animation: sk-o-wyjscie .6s ease-in forwards; }
+@keyframes sk-o-wyjscie { to { transform: translateY(-30px); opacity: 0; } }
+
+/* wielki złoty napis (tylko piracki token) */
+.sk-o-tytul {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: .12em;
+  margin-bottom: -.32em;
+  font-size: clamp(40px, 8.5vw, 104px);
+  line-height: 1;
+  letter-spacing: .02em;
+  animation: sk-o-tytul .6s cubic-bezier(.2, .9, .3, 1.2) both;
+}
+.sk-o-tytul > span {
+  background: linear-gradient(#fff6c8 0%, #ffd34a 38%, #f5a200 55%, #ffcc3a 75%, #b86500 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgba(120,60,0,.6);
+  filter: drop-shadow(0 3px 0 #7a3c00) drop-shadow(0 0 18px rgba(255,170,0,.55));
+}
+@keyframes sk-o-tytul { from { transform: scale(1.6); opacity: 0; filter: blur(6px); } }
+
+/* emblemat w ramce */
+.sk-o-emblemat {
+  position: relative;
+  z-index: 2;
+  width: 1.05em;
+  height: 1.05em;
+  font-size: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: sk-o-emb .55s .15s cubic-bezier(.2, .9, .3, 1.5) both;
+}
+.sk-o-tytul .sk-o-emblemat { font-size: .82em; }
+.sk-o-emblemat::before {
+  content: "";
+  position: absolute;
+  inset: -22%;
+  background: repeating-conic-gradient(from 0deg, #ffd34a 0 6deg, transparent 6deg 30deg);
+  -webkit-mask: radial-gradient(circle, transparent 40%, #000 41%, transparent 72%);
+  mask: radial-gradient(circle, transparent 40%, #000 41%, transparent 72%);
+  animation: sk-kolo 8s linear infinite;
+}
+.sk-o-emblemat > span {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+  font-size: .55em;
+  background: linear-gradient(135deg, #ff7a3a, #d4143c 60%, #8a0a2a);
+  border: .07em solid #ffd34a;
+  box-shadow: 0 0 0 .03em #7a3c00, 0 0 .3em rgba(255,200,60,.8), inset 0 0 .25em rgba(0,0,0,.5);
+  transform: rotate(-4deg);
+}
+.sk-ogloszenie.piracki .sk-o-emblemat > span { background: radial-gradient(circle at 40% 35%, #ffe98a, #e0a000 55%, #8a5200); color: #3a2000; }
+.sk-ogloszenie:not(.piracki) .sk-o-emblemat { margin-bottom: -14px; }
+@keyframes sk-o-emb { from { transform: scale(0) rotate(-40deg); opacity: 0; } }
+
+/* pas "ZNALAZŁEŚ" ze skrzydłami-błyskawicami */
+.sk-o-pas {
+  position: relative;
+  display: flex;
+  align-items: center;
+  animation: sk-o-pas .45s .1s cubic-bezier(.2, .9, .3, 1.2) both;
+}
+@keyframes sk-o-pas { from { transform: scaleX(.2); opacity: 0; } }
+.sk-o-srodek {
+  position: relative;
+  z-index: 1;
+  min-width: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 -26px;
+  padding: 12px 34px 10px;
+  text-align: center;
+  background: linear-gradient(90deg, rgba(40,14,0,0), rgba(40,14,0,.92) 18%, rgba(70,26,0,.92) 50%, rgba(40,14,0,.92) 82%, rgba(40,14,0,0));
+  border-top: 2px solid rgba(255,190,40,.55);
+  border-bottom: 2px solid rgba(255,190,40,.55);
+}
+.sk-ogloszenie:not(.piracki) .sk-o-srodek {
+  background: linear-gradient(90deg, rgba(120,50,0,.2), rgba(150,70,0,.92) 18%, rgba(90,36,0,.95) 50%, rgba(150,70,0,.92) 82%, rgba(120,50,0,.2));
+}
+.sk-o-srodek small { font-size: clamp(14px, 2vw, 20px); letter-spacing: .04em; color: #fff; text-shadow: 0 2px 0 rgba(0,0,0,.5); }
+.sk-o-srodek b {
+  font-size: clamp(20px, 3.2vw, 32px);
+  font-weight: normal;
+  letter-spacing: .03em;
+  background: linear-gradient(#fff6c8, #ffd34a 50%, #f5a200);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 0 #5a2a00);
+}
+.sk-o-skrzydlo {
+  position: relative;
+  z-index: 2;
+  width: 64px;
+  height: 78px;
+  flex: none;
+  overflow: visible;
+  filter: drop-shadow(0 0 6px rgba(255,170,0,.8));
+}
+.sk-o-skrzydlo.p { transform: scaleX(-1); }
+.sk-o-smuga {
+  height: 22px;
+  width: clamp(60px, 18vw, 240px);
+  background: linear-gradient(90deg, transparent, #ffb21a 70%, #fff3a6);
+  clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 65%);
+  filter: drop-shadow(0 0 8px rgba(255,170,0,.9));
+}
+.sk-o-smuga.p { transform: scaleX(-1); }
+@media (max-width: 600px) {
+  .sk-o-smuga { display: none; }
+  .sk-o-skrzydlo { width: 40px; height: 52px; }
+  .sk-o-srodek { min-width: 0; padding: 10px 22px 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sk-promienie, .sk-skrzynia.trzesie, .sk-o-emblemat::before { animation: none; }
+}
+.sk-ogloszenie.piracki { top: calc(30px + env(safe-area-inset-top, 0px)); }
